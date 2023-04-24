@@ -4,7 +4,8 @@ function App() {
   return (
     <>
     <GlobalStyle/>
-    <button>aaa</button>
+    {/* TEST용 버튼입니다. */}
+    <button>TEST</button>
     </>
   );
 }
