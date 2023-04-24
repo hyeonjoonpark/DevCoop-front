@@ -88,9 +88,6 @@ video {
   vertical-align: baseline;
   font-size: 4px;
 }
-body {
-  cursor: none;
-}
 article,
 aside,
 details,
