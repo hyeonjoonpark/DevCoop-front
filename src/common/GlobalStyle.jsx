@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-component";
+import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 html,
@@ -129,9 +129,10 @@ a {
 
 }
 button {
-  background: none;
+  background: #41434C;
+  color: #fff;
   border: none;
-  cursor: none;
+  cursor: pointer;
   padding: 0;
 }
 input {
