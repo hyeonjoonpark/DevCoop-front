@@ -1,17 +1,17 @@
-import React from 'react'
-import * as _ from "../../common/PageWrapStyle"
-import Header from '../Header'
+import React from "react";
+import Header from "../Header";
+import * as _ from "../../common/PageWrapStyle";
 
 const Main = () => {
   return (
     <>
-    <_.PageWrap>
-      <_.PageContainer>
-        <Header/>
-      </_.PageContainer>
-    </_.PageWrap>
+      <_.PageWrap>
+        <_.PageContainer>
+          <Header />
+        </_.PageContainer>
+      </_.PageWrap>
     </>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;
