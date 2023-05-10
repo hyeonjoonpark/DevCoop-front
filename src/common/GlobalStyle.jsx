@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 *, *::before, *::after {
@@ -24,8 +24,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    width: 100px;
+    height: 50px;
     border: none;
+    border-radius: 4px;
     background-color: #41434C;
+
+    font-size: 20px;
     color: #fff;
     cursor: pointer;
   }

@@ -21,10 +21,13 @@ export const ContentSubTitle = styled.h3`
 `;
 
 export const BtnWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 30px;
     text-align: center;
 
-    width: 150px;
+    width: 230px;
     height: 100px;
+
 `;
