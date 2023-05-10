@@ -22,4 +22,11 @@ export const GlobalStyle = createGlobalStyle`
   p {
     font-size: 1rem;
   }
+
+  button {
+    border: none;
+    background-color: #41434C;
+    color: #fff;
+    cursor: pointer;
+  }
 `;
