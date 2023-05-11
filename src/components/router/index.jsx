@@ -3,6 +3,7 @@ import {Route,  Routes as Switch} from "react-router-dom";
 import MainPage from "../Main";
 import PaymentsPage from '../../pages/Payments';
 import NotFoundPage from '../../pages/NotFoundPage';
+import CompeletePage from '../../pages/Compelete';
 
 const Router = () => {
   return (
@@ -10,6 +11,7 @@ const Router = () => {
         <Switch>
             <Route path="/" element={<MainPage/>}/>
             <Route path="/payments" element={<PaymentsPage/>}/>
+            <Route path="/compelete" element={<CompeletePage/>}/>
             <Route path='/*' element={<NotFoundPage/>}/>
         </Switch>
     </>

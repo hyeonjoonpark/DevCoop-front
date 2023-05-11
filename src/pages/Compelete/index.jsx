@@ -1,15 +1,15 @@
 import React from "react";
-import PaymentsCheck from "../../components/Payments";
 import Header from "../../components/Header";
 import * as P from "../../common/PageWrapStyle";
+import Compelete from "../../components/Compelete";
 
-export default function PaymentsPage() {
+export default function CompeletePage() {
   return (
     <>
       <P.PageWrap>
         <P.PageContainer>
           <Header />
-          <PaymentsCheck />
+          <Compelete />
         </P.PageContainer>
       </P.PageWrap>
     </>
