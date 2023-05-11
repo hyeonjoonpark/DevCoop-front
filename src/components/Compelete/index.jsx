@@ -46,7 +46,7 @@ const Compelete = () => {
               border={`1px solid #D3D3D3`}
             >
               <_.InfoText color={TextColor}>잔액</_.InfoText>
-              <_.Exchange fontSize={"30px"}>2000원</_.Exchange>
+              <_.Exchange fontSize={"30px"} fontWeight={"700"}>2000원</_.Exchange>
             </_.ExChangeDetailWrap>
 
           </_.ExChangeWrap>

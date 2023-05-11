@@ -77,6 +77,7 @@ export const ExChangeDetailWrap = styled.div`
 
 export const Exchange = styled.p`
     font-size: ${props => props.fontSize ? props.fontSize : "25px"};
+    font-weight: ${props => props.fontWeight ? props.fontWeight : null};
 `;
 
 export const GoBackBtn = styled.button`
