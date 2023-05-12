@@ -1,9 +1,11 @@
 import React from "react";
 import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
-import { useNavigate } from "react-router-dom";
 
 const Compelete = () => {
+  const isCharge = useLocation();
+
   const TextColor = "#8A8A8A";
   const navigate = useNavigate();
 
@@ -17,7 +19,10 @@ const Compelete = () => {
           <CheckLogo style={{ width: "70px", height: "70px" }} />
 
           <_.PaymentsTopTitle>3000원</_.PaymentsTopTitle>
-          <_.PaymentsTopSubTitle>결제완료</_.PaymentsTopSubTitle>
+          <_.PaymentsTopSubTitle>
+            {isCharge ? "충전" : "결제"}
+            완료
+          </_.PaymentsTopSubTitle>
         </_.PaymentsTopWrap>
 
         <_.PaymentsBottomWrap>
@@ -36,7 +41,9 @@ const Compelete = () => {
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
-              <_.InfoText color={TextColor}>결제금액</_.InfoText>
+              <_.InfoText color={TextColor}>
+                {isCharge ? "충전" : "결제"}금액
+              </_.InfoText>
               <_.Exchange>3000원</_.Exchange>
             </_.ExChangeDetailWrap>
 
@@ -46,9 +53,10 @@ const Compelete = () => {
               border={`1px solid #D3D3D3`}
             >
               <_.InfoText color={TextColor}>잔액</_.InfoText>
-              <_.Exchange fontSize={"30px"} fontWeight={"700"}>2000원</_.Exchange>
+              <_.Exchange fontSize={"30px"} fontWeight={"700"}>
+                2000원
+              </_.Exchange>
             </_.ExChangeDetailWrap>
-
           </_.ExChangeWrap>
         </_.PaymentsBottomWrap>
 

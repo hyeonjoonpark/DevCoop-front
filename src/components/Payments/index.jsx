@@ -2,6 +2,7 @@ import PaymentsCheck from "../PaymentsCheck";
 import UsePointLogItem from "../UsePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
+import ChargeCheck from "../Charge";
 
 const Payments = () => {
   const TextColor = "#8A8A8A";
@@ -35,19 +36,19 @@ const Payments = () => {
         </_.PointInTop>
 
         <_.PointBottom>
-            <_.NumberInput placeholder="교사코드 or 학번"/>
-            <button style={{marginRight: "10px"}}>충전</button>
-            <PaymentsCheck />
+          <_.NumberInput placeholder="교사코드 or 학번" />
+          <ChargeCheck />
+          <PaymentsCheck />
         </_.PointBottom>
       </_.PointWrap>
 
       <_.UseLogWrap>
         <C.InfoText>사용내역</C.InfoText>
         {data.map((item) => (
-        <li key={item}>
-          <UsePointLogItem />
-        </li>
-      ))}
+          <li key={item}>
+            <UsePointLogItem />
+          </li>
+        ))}
       </_.UseLogWrap>
     </C.CompeleteWrap>
   );
