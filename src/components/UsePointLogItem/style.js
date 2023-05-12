@@ -10,6 +10,7 @@ export const PointLogWrap = styled.div`
   height: 80px;
 
   background-color: ${props => props.backgroundColor ? props.backgroundColor : "#eff0f2"};
+  border: 1px solid ${props => props.borderColor ? props.borderColor : "#EFF0F2"};
   border-radius: 8px;
 `;
 

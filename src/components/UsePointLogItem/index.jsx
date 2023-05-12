@@ -10,7 +10,7 @@ const UsePointLogItem = () => {
   // }
 
   return ispoint ? (
-    <_.PointLogWrap backgroundColor={"#E8EBF5"}>
+    <_.PointLogWrap backgroundColor={"#E8EBF5"} borderColor={"#E8EBF5"}>
       <C.InfoText>2023.01.19</C.InfoText>
       <C.InfoText>+2500원</C.InfoText>
       <C.InfoText>충전</C.InfoText>
