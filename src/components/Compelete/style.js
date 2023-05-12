@@ -69,13 +69,14 @@ export const ExChangeDetailWrap = styled.div`
     margin-top: ${props => props.marginTop ? props.marginTop : "0"};
     padding-top: ${props => props.paddingTop ? props.paddingTop : "0"};
     
-    width: 800px;
+    width: ${props => props.width ? props.width : "800px"};
     height: 50px;
 
     border-top: ${props => props.border ? props.border : null};
 `;
 
 export const Exchange = styled.p`
+    padding-right: 15px;
     font-size: ${props => props.fontSize ? props.fontSize : "25px"};
     font-weight: ${props => props.fontWeight ? props.fontWeight : null};
 `;

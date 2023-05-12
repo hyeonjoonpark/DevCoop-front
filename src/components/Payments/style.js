@@ -1,33 +1,34 @@
 import styled from "styled-components";
 
-export const ContentWrap = styled.div`
-    margin: 0 auto;
-    padding-top: 60px;
-    text-align: center;
+export const PointWrap = styled.div`
+  margin-top: 20px;
+  padding-top: 20px;
+  width: 100%;
+  height: 150px;
 
-    width: 250px;
-    height: 250px;
-    /* background-color: orange; */
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
 `;
 
-export const ContentTitle = styled.h1`
-    font-size: 60px;
-    color: #333;
+export const PointInTop = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const ContentSubTitle = styled.h3`
-    font-size: 30px;
-    color: #555;
+export const PointInput = styled.input`
+  width: 400px;
 `;
 
-export const BtnWrap = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding-top: 30px;
-    text-align: center;
+export const NumberInput = styled.input`
+  border-radius: 10px 0px 0px 10px;
+`;
 
-    width: 230px;
-    height: 100px;
+export const PointBottom = styled.div`
+  display: flex;
+  justify-content: end;
 
+  margin-top: 10px;
+
+  width: 100%;
+  height: 50px;
 `;

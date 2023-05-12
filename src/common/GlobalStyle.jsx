@@ -34,4 +34,16 @@ export const GlobalStyle = createGlobalStyle`
     color: #fff;
     cursor: pointer;
   }
+
+  input {
+    padding: 10px;
+    height: 50px;
+
+    border: 1px solid #E3E5E7;
+    border-radius: 5px;
+
+    font-size: 20px;
+    outline: none;
+    color: #333;
+  }
 `;
