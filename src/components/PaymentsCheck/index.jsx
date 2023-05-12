@@ -10,7 +10,7 @@ const PaymentsCheck = () => {
   const navigate = useNavigate();
 
   const compeletePage = () => {
-    navigate("/compelete");
+    navigate("/compelete", { isCharge: false });
   };
 
   const openModal = () => {

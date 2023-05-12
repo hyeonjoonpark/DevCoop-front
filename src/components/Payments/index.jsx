@@ -2,7 +2,7 @@ import PaymentsCheck from "../PaymentsCheck";
 import UsePointLogItem from "../UsePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
-import ChargeCheck from "../Charge";
+import ChargeCheck from "../ChargeCheck";
 
 const Payments = () => {
   const TextColor = "#8A8A8A";

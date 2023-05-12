@@ -19,10 +19,12 @@ const Compelete = () => {
           <CheckLogo style={{ width: "70px", height: "70px" }} />
 
           <_.PaymentsTopTitle>3000원</_.PaymentsTopTitle>
-          <_.PaymentsTopSubTitle>
-            {isCharge ? "충전" : "결제"}
-            완료
-          </_.PaymentsTopSubTitle>
+
+          {isCharge === true ? (
+            <_.PaymentsTopSubTitle>충전완료</_.PaymentsTopSubTitle>
+          ) : (
+            <_.PaymentsTopSubTitle>결제완료</_.PaymentsTopSubTitle>
+          )}
         </_.PaymentsTopWrap>
 
         <_.PaymentsBottomWrap>
@@ -41,9 +43,12 @@ const Compelete = () => {
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
-              <_.InfoText color={TextColor}>
-                {isCharge ? "충전" : "결제"}금액
-              </_.InfoText>
+              {isCharge === true ? (
+                <_.InfoText color={TextColor}>충전금액</_.InfoText>
+              ) : (
+                <_.InfoText color={TextColor}>결제금액</_.InfoText>
+              )}
+
               <_.Exchange>3000원</_.Exchange>
             </_.ExChangeDetailWrap>
 
