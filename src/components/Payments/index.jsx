@@ -1,9 +1,11 @@
 import PaymentsCheck from "../PaymentsCheck";
+import UsePointLogItem from "../UsePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
 
 const Payments = () => {
   const TextColor = "#8A8A8A";
+  const data = [1, 2, 3, 4];
 
   return (
     <C.CompeleteWrap>
@@ -39,6 +41,14 @@ const Payments = () => {
         </_.PointBottom>
       </_.PointWrap>
 
+      <_.UseLogWrap>
+        <C.InfoText>사용내역</C.InfoText>
+        {data.map((item) => (
+        <li key={item}>
+          <UsePointLogItem />
+        </li>
+      ))}
+      </_.UseLogWrap>
     </C.CompeleteWrap>
   );
 };
