@@ -22,4 +22,8 @@ export const GlobalStyle = createGlobalStyle`
   p {
     font-size: 1rem;
   }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
 `;
