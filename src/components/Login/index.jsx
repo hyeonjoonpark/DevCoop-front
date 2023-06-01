@@ -1,32 +1,54 @@
-import React, { useEffect } from 'react';
-import { GoogleButton } from 'react-google-button';
-import { useNavigate } from 'react-router-dom';
-import { UserAuth } from '../../context/AuthContext'
+import React from "react";
+import { auth } from "../../firebase";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
 
-  const handleGoogleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (user != null) {
-      navigate('/account');
-    }
-  }, [user]);
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        // 로그인 된 상태일 경우
+        setIsLoggedIn(true);
+      } else {
+        // 로그아웃 된 상태일 경우
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider(); // provider를 구글로 설정
+    signInWithPopup(auth, provider) // popup을 이용한 signup
+      .then((data) => {
+        setUserData(data.user); // user data 설정
+        console.log(data); // console로 들어온 데이터 표시
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleGoogleLogout = () => {
+    auth.signOut();
+    navigate("/");
+  };
 
   return (
     <div>
-      <h1 className='text-center text-3xl font-bold py-8'>Sign in</h1>
-      <div className='max-w-[240px] m-auto py-4'>
-        <GoogleButton onClick={handleGoogleSignIn} />
-      </div>
+      {isLoggedIn && userData ? (
+        <button onClick={handleGoogleLogout}>Logout</button>
+      ) : (
+        <button onClick={handleGoogleLogin}>Login</button>
+      )}
+
+      {userData ? userData.displayName : null}
     </div>
   );
 };
