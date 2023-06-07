@@ -30,4 +30,5 @@ export default Header;
 const LogOutBtn = styled.button`
   background-color: #fff;
   color: #333;
+  font-weight: 600;
 `;
