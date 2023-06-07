@@ -1,18 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ReactComponent as NotFoundLogo } from "../assets/404AriPayC.svg";
-import styled from "styled-components";
+import * as N from "../common/PageWrapStyle";
 
 export default function NotFoundPage() {
   return (
-    <NotFoundWrap>
-        <NotFoundLogo width={"400px"} height={"200px"} />
-        <h1>페이지를 찾을 수 없습니다 :{"("} </h1>
-        <Link to="/">메인으로 돌아가기</Link>
-    </NotFoundWrap>
+    <N.NotFoundWrap>
+      <NotFoundLogo width={"400px"} height={"200px"} />
+      <N.NotFoundTitle>
+        죄송합니다. 페이지를 찾을 수 없습니다 :{"("}{" "}
+      </N.NotFoundTitle>
+      <p>
+        존재하지 않는 주소를 입력하셨거나
+        <br />
+        요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.
+      </p>
+      <N.HomeButton to="/">홈으로</N.HomeButton>
+    </N.NotFoundWrap>
   );
 }
 
-const NotFoundWrap = styled.p`
-  text-align: center;
-`;
