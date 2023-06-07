@@ -3,9 +3,10 @@ import { ReactComponent as AriPayLogo } from "../../assets/AriPayL_ver2.svg";
 import { ReactComponent as LockLogo } from "../../assets/LockLogo.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { isLoggedIn, handleGoogleLogin, handleGoogleLogout } = useLogin();
 
   return (
     <H.PageHeader>
@@ -15,9 +16,9 @@ const Header = () => {
       <H.HeaderInBox testAlign={"center"} paddingTop={"50px"}>
         <LockLogo />
         {isLoggedIn ? (
-          <Link to="/">로그아웃</Link>
+          <button onClick={handleGoogleLogout}>로그아웃</button>
         ) : (
-          <Link to="login">로그인</Link>
+          <button onClick={handleGoogleLogin}>로그인</button>
         )}
       </H.HeaderInBox>
     </H.PageHeader>
