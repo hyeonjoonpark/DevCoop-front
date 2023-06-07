@@ -3,7 +3,6 @@ import { ReactComponent as AriPayLogo } from "../../assets/AriPayL_ver2.svg";
 import { ReactComponent as LockLogo } from "../../assets/LockLogo.svg";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
-import styled from "styled-components";
 
 const Header = () => {
   const { isLoggedIn, handleGoogleLogout } = useLogin();
@@ -16,7 +15,7 @@ const Header = () => {
       <H.HeaderInBox testAlign={"center"} paddingTop={"50px"}>
         <LockLogo />
         {isLoggedIn ? (
-          <LogOutBtn onClick={handleGoogleLogout}>로그아웃</LogOutBtn>
+          <H.LogOutBtn onClick={handleGoogleLogout}>로그아웃</H.LogOutBtn>
         ) : (
           <Link to="/login">로그인</Link>
         )}
@@ -27,8 +26,3 @@ const Header = () => {
 
 export default Header;
 
-const LogOutBtn = styled.button`
-  background-color: #fff;
-  color: #333;
-  font-weight: 600;
-`;

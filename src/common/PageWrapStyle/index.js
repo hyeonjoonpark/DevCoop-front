@@ -33,3 +33,9 @@ export const HeaderInBox = styled.div`
   padding-left: 20px;
   padding-top: ${(props) => props.paddingTop ? props.paddingTop : ""};
 `;
+
+export const LogOutBtn = styled.button`
+  background-color: #fff;
+  color: #333;
+  font-weight: 600;
+`;

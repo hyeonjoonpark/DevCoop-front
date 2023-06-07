@@ -29,7 +29,7 @@ const useLogin = () => {
       .catch((err) => {
         console.log(err);
       });
-    navigate("/")
+    navigate("/");
   };
 
   const handleGoogleLogout = () => {
