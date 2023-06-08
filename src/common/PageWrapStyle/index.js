@@ -41,3 +41,7 @@ export const HomeButton = styled(Link)`
   background-color: #f5d410;
   color: #fff;
 `;
+
+export const NotFoundContent = styled.p`
+  margin: 20px 0 20px 0;
+`;
