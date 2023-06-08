@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   p {
     font-size: 1rem;
   }
-
+  
   a {
     text-decoration: none;
     color: #333;
@@ -54,4 +54,5 @@ export const GlobalStyle = createGlobalStyle`
   li,ol {
     list-style: none;
   }
+
 `;
