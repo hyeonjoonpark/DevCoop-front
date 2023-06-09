@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import * as _ from "./style"
 import * as P from "../../common/PageWrapStyle"
 import Header from '../Header'
 import * as InfoList from "./infolist"
+// import axios from 'axios'
+import { json } from 'react-router-dom'
 
 const dummyList = [
     {
@@ -29,7 +31,28 @@ const dummyList = [
 ]
 
 const Studentinfo = () => {
-  return (
+//     const [data, setData] = useState(false);
+//     useEffect(() => {
+//         const fetchData = async () => {
+//           try {
+//             const response = await fetch('http://10.129.57.252:6002/api/studentinfo');
+//             const jsonData = await response.json(); // 응답을 JSON 형식으로 변환
+//             setData(jsonData); // 응답 데이터를 상태로 설정
+//           } catch (error) {
+//             console.error('Error fetching data:', error);
+//           }
+//         };
+    
+//         fetchData(); // 데이터 요청 함수 실행
+    
+//         // 필요에 따라 정리(clean-up) 함수를 반환하여 컴포넌트가 언마운트될 때 이펙트를 정리할 수 있습니다.
+//         // 예를 들어, 타이머나 이벤트 리스너를 제거하는 등의 작업을 수행할 수 있습니다.
+//         // return () => {
+//         //   cleanup logic…
+//         // };
+//       }, []); // 종속성 배열에 빈 배열([])을 전달하여 마운트 시에만 실행되도록 설정
+
+      return (
     <>
     <P.PageWrap>
         <P.PageContainer>
