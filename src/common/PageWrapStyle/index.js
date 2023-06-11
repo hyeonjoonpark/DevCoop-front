@@ -39,6 +39,7 @@ export const LogOutBtn = styled.button`
   background-color: #fff;
   color: #333;
   font-weight: 600;
+`;
 
 export const NotFoundWrap = styled.p`
   margin-top: 150px;
