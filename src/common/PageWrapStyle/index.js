@@ -2,22 +2,43 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const PageWrap = styled.div`
-    width: 100%;
-    height: 800px;
-    background-color: #D9D9D9;
+  width: 100%;
+  height: 800px;
+  background-color: #d9d9d9;
 `;
 
 export const PageContainer = styled.div`
-    margin: 0 auto;
-    width: 1000px;
-    height: 100%;
-    background-color: #fff;
+  margin: 0 auto;
+  width: 1000px;
+  height: 100%;
+  background-color: #fff;
 `;
 
 export const PageHeader = styled.header`
-    width: 100%;
-    height: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100px;
 `;
+
+export const HeaderInBox = styled.div`
+  width: 300px;
+  height: 100%;
+
+  text-align: ${(props) => props.testAlign ? props.testAlign : ""};
+  font-size: 20px;
+  font-weight: 700;
+  color: #8A8A8A;
+
+  padding-left: 20px;
+  padding-top: ${(props) => props.paddingTop ? props.paddingTop : ""};
+`;
+
+export const LogOutBtn = styled.button`
+  background-color: #fff;
+  color: #333;
+  font-weight: 600;
 
 export const NotFoundWrap = styled.p`
   margin-top: 150px;
