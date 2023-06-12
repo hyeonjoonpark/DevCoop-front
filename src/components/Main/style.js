@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ReactComponent as CallLogo } from "../../assets/CallLogo.svg";
-import { ReactComponent as LightIcon } from "../../assets/LightIcon.svg";
 
 export const maintop = styled.div`
   margin: 0 auto;
@@ -95,9 +94,4 @@ export const CallLogoStyle = styled(CallLogo)`
   width: 550px;
   height: 300px;
   border-radius: 12px;
-`;
-
-export const LightLogo = styled(LightIcon)`
-  width: 170px;
-  height: 170px;
 `;

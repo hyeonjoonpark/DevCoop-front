@@ -32,7 +32,6 @@ const Main = () => {
                   사용하는 방법
                 </p>
               </div>
-              <_.LightLogo />
             </_.UseBox>
 
             <_.AskBox>
