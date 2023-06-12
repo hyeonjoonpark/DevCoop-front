@@ -15,7 +15,7 @@ export const InfoHeader = styled.div`
   height: 55px;
 `;
 
-export const Infotitle = styled.text`
+export const Infotitle = styled.p`
   font-size: 30px;
   font-weight: bold;
   color: #333;
@@ -51,7 +51,7 @@ export const Infochoose = styled.div`
   line-height: 60px;
 `;
 
-export const Infotext = styled.text`
+export const Infotext = styled.p`
   font-size: 20px;
   font-weight: bold;
   text-align: center;

@@ -1,0 +1,29 @@
+{
+  "studentlists": [
+    {
+      "student_number": 2405,
+      "student_name": "김준일",
+      "code_number": "2022037"
+    },
+    {
+      "student_number": 3106,
+      "student_name": "심미진",
+      "code_number": "000006"
+    },
+    {
+      "student_number": 3301,
+      "student_name": "마이쮸",
+      "code_number": "2022001"
+    },
+    {
+      "student_number": 2207,
+      "student_name": "김은혜",
+      "code_number": "2022027"
+    },
+    {
+      "student_number": 2405,
+      "student_name": "박현준",
+      "code_number": "2022046"
+    }
+  ]
+}
