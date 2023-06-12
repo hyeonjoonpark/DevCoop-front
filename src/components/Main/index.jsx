@@ -2,7 +2,6 @@ import React from "react";
 import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
-import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
