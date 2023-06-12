@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import styled from "styled-components";
 
-export const StudentinfoItem = () => {
-  const [studentinfo, setStudentinfo] = useState([]);
-  // 함수의 재생성 막기 => 불필요한 메모리 낭비 감소
-  useEffect(() => {
-    fetchStudentinfo();
-  }, []);
-
-  const fetchStudentinfo = async () => {
-    try {
-      const response = await fetchStudentinfo();
-      setStudentinfo(response);
-    } catch (error) {
-      console.log("fail fetch", error);
-    }
-  };
-
+export const StudentinfoItem = ({ student }) => {
   return (
-    <>
-      <div>StudentinfoItem</div>
-      {studentinfo}
-    </>
+    <div>
+      <InfoWrap>
+        <input type="radio" />
+        <div key={student.student_number} style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>{student.student_number}</div>
+          <div>{student.student_name}</div>
+          <div>{student.code_number}</div>
+        </div>
+      </InfoWrap>
+    </div>
   );
 };
+
+const InfoWrap = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-color: #eff0f2;
+`;
+

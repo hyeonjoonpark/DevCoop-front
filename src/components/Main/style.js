@@ -71,7 +71,7 @@ export const AskBox = styled.div`
   border-radius: 12px;
 `;
 
-export const Infotext = styled.text`
+export const Infotext = styled.p`
   font-size: 20px;
   text-align: center;
   color: #fff;
