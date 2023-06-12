@@ -9,15 +9,22 @@ const Main = () => {
       <P.PageWrap>
         <P.PageContainer>
           <Header />
-          <_.maintop>
-            <_.topdiv></_.topdiv>
-            <_.bottomdiv>
+
+          <_.Maintop>
+            <_.TopBox>
+              <_.MainTopInBox>
+                현재 사용 가능한 금액
+                <p>로그인 후 조회 가능합니다.</p>
+              </_.MainTopInBox>
+            </_.TopBox>
+
+            <_.BottomBox>
               <_.Infotext>사용 내역이 궁금하다면?</_.Infotext>
-            </_.bottomdiv>
-          </_.maintop>
+              <_.StudentinfoLink to="/studentinfo">보러가기</_.StudentinfoLink>
+            </_.BottomBox>
+          </_.Maintop>
 
           <_.Mainbottom>
-            
             <_.UseBox>
               <div>
                 How

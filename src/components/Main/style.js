@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { ReactComponent as CallLogo } from "../../assets/CallLogo.svg";
+import { Link } from "react-router-dom";
 
-export const maintop = styled.div`
+export const Maintop = styled.div`
   margin: 0 auto;
   width: 1000px;
   height: 400px;
@@ -16,16 +17,21 @@ export const Mainbottom = styled.div`
   background: #e3e5e7;
 `;
 
-export const topdiv = styled.div`
+export const TopBox = styled.div`
   margin: 0 auto;
+  padding: 70px;
   width: 970px;
-  height: 280px;
+  height: 250px;
   background: #41434c;
   border-radius: 50px 50px 0 0;
 `;
 
-export const bottomdiv = styled.div`
+export const BottomBox = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
+  padding: 70px;
+
   width: 970px;
   height: 100px;
   background: #34343c;
@@ -47,7 +53,7 @@ export const UseBox = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 40px;
-  
+
   p {
     display: block;
     width: 200px;
@@ -66,9 +72,9 @@ export const AskBox = styled.div`
 `;
 
 export const Infotext = styled.text`
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
-  color: white;
+  color: #fff;
 `;
 
 export const AskInTop = styled.div`
@@ -94,4 +100,19 @@ export const CallLogoStyle = styled(CallLogo)`
   width: 550px;
   height: 300px;
   border-radius: 12px;
+`;
+
+export const StudentinfoLink = styled(Link)`
+  color: #fff;
+`;
+
+export const MainTopInBox = styled.div`
+  margin-top: 20px;
+  font-size: 20px;
+  color: #fff;
+  p {
+    margin-top: "10px";
+    font-size: "50px";
+    font-weight: "600";
+  }
 `;
