@@ -17,7 +17,24 @@ const Main = () => {
           </_.maintop>
 
           <_.Mainbottom>
-            <_.UseBox></_.UseBox>
+            
+            <_.UseBox>
+              <div>
+                How
+                <br />
+                To
+                <br />
+                Use?
+                <br />
+                <p>
+                  아리페이를 더 똑똑하게
+                  <br />
+                  사용하는 방법
+                </p>
+              </div>
+              <_.LightLogo />
+            </_.UseBox>
+
             <_.AskBox>
               <_.AskInTop>
                 <a

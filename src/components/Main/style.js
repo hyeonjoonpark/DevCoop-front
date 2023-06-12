@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as CallLogo } from "../../assets/CallLogo.svg";
+import { ReactComponent as LightIcon } from "../../assets/LightIcon.svg";
 
 export const maintop = styled.div`
   margin: 0 auto;
@@ -33,11 +34,26 @@ export const bottomdiv = styled.div`
 `;
 
 export const UseBox = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin: 15px 10px 15px 15px;
+  padding: 20px;
+
   width: 400px;
   height: 270px;
+
   background: #f0ce00;
   border-radius: 12px;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  
+  p {
+    display: block;
+    width: 200px;
+    font-size: 15px;
+  }
 `;
 
 export const AskBox = styled.div`
@@ -79,4 +95,9 @@ export const CallLogoStyle = styled(CallLogo)`
   width: 550px;
   height: 300px;
   border-radius: 12px;
+`;
+
+export const LightLogo = styled(LightIcon)`
+  width: 170px;
+  height: 170px;
 `;
