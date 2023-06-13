@@ -13,7 +13,7 @@ const Header = () => {
         <AriPayLogo width={"130px"} height={"130px"} />
       </H.HeaderInBox>
       <H.HeaderInBox testAlign={"center"} paddingTop={"50px"}>
-        <LockLogo />
+        {/* <LockLogo /> */}
         {isLoggedIn ? (
           <H.LogOutBtn onClick={handleGoogleLogout}>로그아웃</H.LogOutBtn>
         ) : (
