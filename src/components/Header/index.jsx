@@ -1,6 +1,5 @@
 import * as H from "../../common/PageWrapStyle";
 import { ReactComponent as AriPayLogo } from "../../assets/AriPayL_ver2.svg";
-import { ReactComponent as LockLogo } from "../../assets/LockLogo.svg";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 
@@ -10,10 +9,7 @@ const Header = () => {
   return (
     <H.PageHeader>
       <H.HeaderInBox>
-        <AriPayLogo width={"130px"} height={"130px"} />
-      </H.HeaderInBox>
-      <H.HeaderInBox testAlign={"center"} paddingTop={"50px"}>
-        {/* <LockLogo /> */}
+        <AriPayLogo width={"130px"} height={"100px"} />
         {isLoggedIn ? (
           <H.LogOutBtn onClick={handleGoogleLogout}>로그아웃</H.LogOutBtn>
         ) : (
