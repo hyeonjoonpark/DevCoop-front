@@ -2,8 +2,11 @@ import React from "react";
 import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
+import useLogin from "../../hooks/useLogin";
 
-const Main = () => {
+const Main = ({ student }) => {
+  const { isLoggedIn } = useLogin();
+
   return (
     <>
       <P.PageWrap>
@@ -14,7 +17,13 @@ const Main = () => {
             <_.TopBox>
               <_.MainTopInBox>
                 현재 사용 가능한 금액
-                <p>로그인 후 조회 가능합니다.</p>
+                {isLoggedIn ? (
+                  <p>
+                    {student[0].point}원
+                  </p>
+                ) : (
+                  <p>로그인 후 조회 가능합니다.</p>
+                )}
               </_.MainTopInBox>
             </_.TopBox>
 

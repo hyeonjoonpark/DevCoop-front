@@ -23,7 +23,9 @@ export const PageHeader = styled.header`
 `;
 
 export const HeaderInBox = styled.div`
-  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  width: 950px;
   height: 100%;
 
   text-align: ${(props) => props.testAlign ? props.testAlign : ""};
@@ -36,6 +38,7 @@ export const HeaderInBox = styled.div`
 `;
 
 export const LogOutBtn = styled.button`
+  margin-top: 30px;
   background-color: #fff;
   color: #333;
   font-weight: 600;

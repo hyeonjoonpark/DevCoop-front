@@ -112,7 +112,7 @@ export const MainTopInBox = styled.div`
   color: #fff;
   p {
     margin-top: 10px;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 600;
   }
 `;

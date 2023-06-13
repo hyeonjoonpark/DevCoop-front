@@ -1,29 +1,34 @@
 {
   "studentlists": [
     {
-      "student_number": 2405,
-      "student_name": "김준일",
-      "code_number": "2022037"
-    },
-    {
       "student_number": 3106,
       "student_name": "심미진",
-      "code_number": "000006"
+      "code_number": "000006",
+      "point" : "2000"
+    },
+    {
+      "student_number": 2405,
+      "student_name": "김준일",
+      "code_number": "2022037",
+      "point" : "2000"
     },
     {
       "student_number": 3301,
       "student_name": "마이쮸",
-      "code_number": "2022001"
+      "code_number": "2022001",
+      "point" : "2000"
     },
     {
       "student_number": 2207,
       "student_name": "김은혜",
-      "code_number": "2022027"
+      "code_number": "2022027",
+      "point" : "2000"
     },
     {
       "student_number": 2405,
       "student_name": "박현준",
-      "code_number": "2022046"
+      "code_number": "2022046",
+      "point" : "2000"
     }
   ]
 }

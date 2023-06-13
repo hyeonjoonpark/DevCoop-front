@@ -10,7 +10,7 @@ const Router = () => {
     <>
         <Switch>
             <Route path="/" element={<MainPage/>}/>
-            <Route path='/Login' element={<LoginPage/>}/>
+            <Route path='/login' element={<LoginPage/>}/>
             <Route path="/studentinfo" element={<StudentinfoPage/>}/>
             <Route path='/*' element={<NotFoundPage/>}/>
         </Switch>
