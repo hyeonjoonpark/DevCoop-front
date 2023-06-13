@@ -13,7 +13,9 @@ const Header = () => {
         {isLoggedIn ? (
           <H.LogOutBtn onClick={handleGoogleLogout}>로그아웃</H.LogOutBtn>
         ) : (
-          <Link to="/login">로그인</Link>
+          <H.LogOutBtn>
+            <Link to="/login">로그인</Link>
+          </H.LogOutBtn>
         )}
       </H.HeaderInBox>
     </H.PageHeader>
@@ -21,4 +23,3 @@ const Header = () => {
 };
 
 export default Header;
-
