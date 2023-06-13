@@ -16,9 +16,9 @@ const Main = ({ student }) => {
           <_.Maintop>
             <_.TopBox>
               <_.MainTopInBox>
-                현재 사용 가능한 금액
+                <p style={{paddingTop: "10px"}}>현재 사용 가능한 금액</p>
                 {isLoggedIn ? (
-                  <p>{student[0].point}원</p>
+                  <p style={{ fontSize: "70px" }}>{student[0].point}원</p>
                 ) : (
                   <p>로그인 후 조회 가능합니다.</p>
                 )}
