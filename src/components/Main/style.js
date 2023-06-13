@@ -102,7 +102,7 @@ export const CallLogoStyle = styled(CallLogo)`
   border-radius: 12px;
 `;
 
-export const StudentinfoLink = styled(Link)`
+export const UserlogLink = styled(Link)`
   color: #fff;
 `;
 
