@@ -17,7 +17,7 @@ export const login = async (email, password) => {
       refreshtoken: response.data.refToken,
       name: response.data.name,
       point: response.data.point,
-      message: response.data.message,
+      message: response.data.message
     };
   } catch (error) {
     throw error;
@@ -30,12 +30,14 @@ export const login = async (email, password) => {
 export const checkToken = (hello) => {
   try {
     const accToken = localStorage.getItem("token");
+    const refToken = localStorage.getItem("refreshtoken");
     const response = axiosInstance.post(
       "/me",
       { hello },
       {
         headers: {
-          Authorization: `Bearer ${accToken}`,
+          accessToken: `${accToken}`,
+          refrashToken: `${refToken}`,
           "Content-Type": "application/json",
         },
       }
