@@ -102,17 +102,19 @@ export const CallLogoStyle = styled(CallLogo)`
   border-radius: 12px;
 `;
 
-export const StudentinfoLink = styled(Link)`
+export const UserlogLink = styled(Link)`
   color: #fff;
 `;
 
 export const MainTopInBox = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
   font-size: 20px;
   color: #fff;
   p {
     margin-top: 10px;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 600;
   }
 `;
