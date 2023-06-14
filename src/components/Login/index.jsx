@@ -1,27 +1,51 @@
-import React from "react";
-import useLogin from "../../hooks/useLogin";
+import React, { useState } from "react";
 import imgLogo from "../../assets/AriPayL.svg";
 import styled from "styled-components";
+import axios from "axios";
 
-const Login = () => {
-  const { isLoggedIn, userData, handleGoogleLogin, handleGoogleLogout } = useLogin();
+function Login ()  {
+  const [inputId, setInputId] = useState('');
+  const [inputPw, setInputPw] = useState('');
+  const handleInputId = (e) => {
+    setInputId(e.target.value)
+  };
 
+  const handleInputPw = (e) => {
+    setInputPw(e.target.value)
+  };
+
+    
+  const onClickLogin = () => {
+    const url = "http://10.129.57.252:6002/api/login";
+    const data = {
+      'email' : inputId,
+      'password' : inputPw
+    };
+    const config = {"Contest-Type": 'application/json'};
+    console.log('click login')
+    console.log('ID : ', inputId)
+    console.log('PW : ', inputPw)
+    axios.post(url, null, {
+      params: {
+      'email': inputId,
+      'password': inputPw
+      }
+  })
+    .then(res => console.log(res))
+    .catch()
+  }
   return (
     <div>
-      {isLoggedIn && userData ? (
-        <button onClick={handleGoogleLogout}>로그아웃</button>
-      ) : (
+      {
         <LoginWrap>
           <LogoImg src={imgLogo} alt='logo image' />
-          <LoginInput
+          <LoginInput type = 'email' name='input_id' value={inputId} onChange={handleInputId}
           placeholder="아이디를 입력해주세요"/>
-          <LoginInput
+          <LoginInput type = 'password' name='input_pw' value={inputPw} onChange={handleInputPw}
           placeholder="비밀번호를 입력해주세요"/>
-          <LoginButton onClick={handleGoogleLogin}>로그인</LoginButton>
+          <LoginButton onClick ={onClickLogin}>로그인</LoginButton>
         </LoginWrap>
-      )}
-
-      {userData ? userData.displayName : null}
+      }
     </div>
   );
 };
