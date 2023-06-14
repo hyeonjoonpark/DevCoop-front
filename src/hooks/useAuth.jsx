@@ -27,8 +27,8 @@ export const useAuth = () => {
       // const { acctoken } = await checkToken("token");
       localStorage.setItem("token", token);
       localStorage.setItem("refreshtoken", refreshtoken);
-      // setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
-      console.log(name, point, message);
+      // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
+      console.log(name, point, message, isLoggedIn);
       navigate("/");
     } catch (error) {
       console.log("로그인에 실패했습니다.", error);

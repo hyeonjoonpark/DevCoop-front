@@ -2,10 +2,10 @@ import React from "react";
 import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
-import useLogin from "../../hooks/useLogin";
+import { useAuth } from "../../hooks/useAuth";
 
 const Main = ({ student }) => {
-  const { isLoggedIn } = useLogin();
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
