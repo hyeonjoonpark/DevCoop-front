@@ -6,7 +6,7 @@ export const PointLogWrap = styled.div`
 
   margin-bottom: 15px;
   padding-top: 20px;
-  width: 100%;
+  width: 400px;
   height: 80px;
 
   background-color: ${props => props.backgroundColor ? props.backgroundColor : "#eff0f2"};
