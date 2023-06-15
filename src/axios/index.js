@@ -52,7 +52,7 @@ export const getPoint = async () => {
   try {
     const access_token = localStorage.getItem("token");
     const response = await axiosInstance.get("/studentinfo", {
-      headers: { Authorization: `Bearer ${access_token}` },
+      headers: { Authorization: `${access_token}` },
     });
     return {
       number: response.data.number,
