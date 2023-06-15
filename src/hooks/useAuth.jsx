@@ -46,12 +46,20 @@ export const useAuth = () => {
     }
   };
 
+  const handleLogout = (e) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshtoken");
+    setIsLoggedIn(false);
+    window.location.replace("/")
+  };
+
   return {
     email,
     password,
     handleInputId,
     handleInputPw,
     handleSubmit,
+    handleLogout,
     isLoggedIn,
   };
 };

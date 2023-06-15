@@ -3,9 +3,11 @@ import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
 import { useAuth } from "../../hooks/useAuth";
+import { usePoint } from "../../hooks/usePoint";
 
 const Main = ({ student }) => {
   const { isLoggedIn } = useAuth();
+  const { point } = usePoint();
 
   return (
     <>
@@ -16,9 +18,11 @@ const Main = ({ student }) => {
           <_.Maintop>
             <_.TopBox>
               <_.MainTopInBox>
-                <p style={{paddingTop: "10px",fontSize: "30px"}}>현재 사용 가능한 금액</p>
+                <p style={{ paddingTop: "10px", fontSize: "30px" }}>
+                  현재 사용 가능한 금액
+                </p>
                 {isLoggedIn ? (
-                  <p style={{ fontSize: "70px" }}>{student[0].point}원</p>
+                  <p style={{ fontSize: "70px" }}>{point}원</p>
                 ) : (
                   <p>로그인 후 조회 가능합니다.</p>
                 )}
