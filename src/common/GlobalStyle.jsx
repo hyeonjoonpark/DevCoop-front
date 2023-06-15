@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: #333;
   }
+
   button {
     width: 100px;
     height: 50px;
