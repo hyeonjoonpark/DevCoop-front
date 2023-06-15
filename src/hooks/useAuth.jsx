@@ -40,7 +40,7 @@ export const useAuth = () => {
       localStorage.setItem("refreshtoken", refreshtoken);
       // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
       console.log(name, point, message, isLoggedIn);
-      navigate("/");
+      window.location.replace("/")
     } catch (error) {
       console.log("로그인에 실패했습니다.", error);
     }

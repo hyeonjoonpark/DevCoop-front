@@ -51,8 +51,12 @@ export const checkToken = (hello) => {
 export const getPoint = async () => {
   try {
     const access_token = localStorage.getItem("token");
+    const refrash_token = localStorage.getItem("refrashtoken");
     const response = await axiosInstance.get("/studentinfo", {
-      headers: { Authorization: `${access_token}` },
+      headers: { 
+        access: access_token,
+        refrash: refrash_token
+     },
     });
     return {
       number: response.data.number,

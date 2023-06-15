@@ -24,7 +24,7 @@ const Main = ({ student }) => {
                 {isLoggedIn ? (
                   <p style={{ fontSize: "70px" }}>{point}원</p>
                 ) : (
-                  <p>로그인 후 조회 가능합니다.</p>
+                  <p style={{ fontSize: "42px" }}>로그인 후 조회 가능합니다.</p>
                 )}
               </_.MainTopInBox>
             </_.TopBox>
