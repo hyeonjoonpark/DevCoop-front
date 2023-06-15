@@ -9,7 +9,9 @@ const Header = () => {
   return (
     <H.PageHeader>
       <H.HeaderInBox>
-        <AriPayLogo width={"130px"} height={"100px"} />
+        <Link to="/">
+          <AriPayLogo width={"130px"} height={"100px"} />
+        </Link>
         {isLoggedIn ? (
           <H.LogOutBtn>로그아웃</H.LogOutBtn>
         ) : (
