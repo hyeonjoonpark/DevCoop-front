@@ -1,9 +1,13 @@
 import React from 'react'
 import {Route,  Routes as Switch} from "react-router-dom";
-import MainPage from "../Main";
 import PaymentsPage from '../../pages/Payments';
 import NotFoundPage from '../../pages/NotFoundPage';
 import CompeletePage from '../../pages/Compelete';
+import MainPage from "../../pages/MainPage";
+import StudentinfoPage from "../../pages/StudentinfoPage";
+import NotFoundPage from '../../pages/NotFoundPage';
+import LoginPage from '../../pages/LoginPage';
+import UserlogPage from '../../pages/UserlogPage';
 
 const Router = () => {
   return (
@@ -12,6 +16,9 @@ const Router = () => {
             <Route path="/" element={<MainPage/>}/>
             <Route path="/payments" element={<PaymentsPage/>}/>
             <Route path="/compelete" element={<CompeletePage/>}/>
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path="/studentinfo" element={<StudentinfoPage/>}/>
+            <Route path="/userlog" element={<UserlogPage/>}/>
             <Route path='/*' element={<NotFoundPage/>}/>
         </Switch>
     </>
