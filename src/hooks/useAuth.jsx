@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkToken, login } from "../axios";
+import { login } from "../axios";
 
 export const useAuth = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const refreshtoken = localStorage.getItem("refreshtoken");
+
+    if (token || refreshtoken) {
+      setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn]);
 
   const handleInputId = (e) => {
     setEmail(e.target.value);
