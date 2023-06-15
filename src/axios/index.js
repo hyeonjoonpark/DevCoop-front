@@ -45,3 +45,20 @@ export const checkToken = (hello) => {
     throw error;
   }
 };
+
+export const getPoint = async () => {
+  try {
+    const access_token = localStorage.getItem("token");
+    const response = await axiosInstance.get("/studentinfo", {
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
+    return {
+      number: response.data.number,
+      name: response.data.name,
+      code: response.data.code,
+      point: response.data.point
+    };
+  } catch (error) {
+    throw error;
+  }
+};

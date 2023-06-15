@@ -3,18 +3,19 @@ import UsePointLogItem from "../UsePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
 import ChargeCheck from "../ChargeCheck";
+import { usePoint } from "../../hooks/usePoint";
 
 const Payments = () => {
   const TextColor = "#8A8A8A";
   const data = [1, 2, 3, 4];
-
+  const { name, point, number } = usePoint();
   return (
     <C.CompeleteWrap>
       <C.StudentInfo>
         <C.InfoText color={TextColor}>학생정보</C.InfoText>
         <C.StudentInfoDetail>
-          <C.InfoText>학번 : 2206</C.InfoText>
-          <C.InfoText>이름 : 김알이</C.InfoText>
+          <C.InfoText>학번 : {number}</C.InfoText>
+          <C.InfoText>이름 : {name}</C.InfoText>
         </C.StudentInfoDetail>
       </C.StudentInfo>
 
@@ -24,9 +25,7 @@ const Payments = () => {
         marginTop={"5px"}
       >
         <C.InfoText color={TextColor}>잔액</C.InfoText>
-        <C.Exchange fontSize={"30px"} fontWeight={"700"}>
-          2000원
-        </C.Exchange>
+        <C.Exchange fontSize={"30px"} fontWeight={"700"}>{point}</C.Exchange>
       </C.ExChangeDetailWrap>
 
       <_.PointWrap>
