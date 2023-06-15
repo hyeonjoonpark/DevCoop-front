@@ -1,3 +1,4 @@
+
 import React from 'react'
 import {Route,  Routes as Switch} from "react-router-dom";
 import PaymentsPage from '../../pages/Payments';
@@ -11,6 +12,7 @@ import UserlogPage from '../../pages/UserlogPage';
 const Router = () => {
   return (
     <>
+
         <Switch>
             <Route path="/" element={<MainPage/>}/>
             <Route path="/payments" element={<PaymentsPage/>}/>
@@ -20,8 +22,9 @@ const Router = () => {
             <Route path="/userlog" element={<UserlogPage/>}/>
             <Route path='/*' element={<NotFoundPage/>}/>
         </Switch>
-    </>
-  )
-}
 
-export default Router
+    </>
+  );
+};
+
+export default Router;
