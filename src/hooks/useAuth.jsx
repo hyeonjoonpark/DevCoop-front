@@ -12,7 +12,7 @@ export const useAuth = () => {
     const token = localStorage.getItem("token");
     const refreshtoken = localStorage.getItem("refreshtoken");
 
-    if (token || refreshtoken) {
+    if (token && refreshtoken) {
       setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
     } else {
       setIsLoggedIn(false);
