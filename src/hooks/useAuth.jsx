@@ -10,7 +10,9 @@ export const useAuth = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
+    const refreshtoken = localStorage.getItem("refreshtoken");
+
+    if (token || refreshtoken) {
       setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
     } else {
       setIsLoggedIn(false);
