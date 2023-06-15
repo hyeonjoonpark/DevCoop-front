@@ -5,7 +5,6 @@ import NotFoundPage from '../../pages/NotFoundPage';
 import CompeletePage from '../../pages/Compelete';
 import MainPage from "../../pages/MainPage";
 import StudentinfoPage from "../../pages/StudentinfoPage";
-import NotFoundPage from '../../pages/NotFoundPage';
 import LoginPage from '../../pages/LoginPage';
 import UserlogPage from '../../pages/UserlogPage';
 
