@@ -4,9 +4,9 @@ import { usePoint } from "../../hooks/usePoint";
 import * as C from "../Compelete/style";
 import * as P from "../Payments/style";
 import ChargePointLogItem from "../ChargePointLogItem";
+import { color } from "../../constants/color";
 
 export const Userlog = ({ student, log }) => {
-  const TextColor = "#8A8A8A";
   const data = [1, 2, 3, 4];
   const { point } = usePoint();
   return (
@@ -16,7 +16,7 @@ export const Userlog = ({ student, log }) => {
         paddingTop={"10px"}
         // marginTop={"5px"}
       >
-        <C.InfoText color={TextColor}>잔액</C.InfoText>
+        <C.InfoText color={color.default}>잔액</C.InfoText>
         <C.Exchange fontSize={"30px"} fontWeight={"700"}>
           {point}
         </C.Exchange>
