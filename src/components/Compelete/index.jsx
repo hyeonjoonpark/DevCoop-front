@@ -2,11 +2,11 @@ import React from "react";
 import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
+import { color } from "../../constants/color";
 
 const Compelete = () => {
   const isCharge = useLocation();
 
-  const TextColor = "#8A8A8A";
   const navigate = useNavigate();
 
   const GoBack = () => {
@@ -29,7 +29,7 @@ const Compelete = () => {
 
         <_.PaymentsBottomWrap>
           <_.StudentInfo>
-            <_.InfoText color={TextColor}>학생정보</_.InfoText>
+            <_.InfoText color={color.default}>학생정보</_.InfoText>
             <_.StudentInfoDetail>
               <_.InfoText>학번 : 2206</_.InfoText>
               <_.InfoText>이름 : 김알이</_.InfoText>
@@ -38,15 +38,15 @@ const Compelete = () => {
 
           <_.ExChangeWrap>
             <_.ExChangeDetailWrap marginTop={"30px"}>
-              <_.InfoText color={TextColor}>원래금액</_.InfoText>
+              <_.InfoText color={color.default}>원래금액</_.InfoText>
               <_.Exchange>5000원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
               {isCharge === true ? (
-                <_.InfoText color={TextColor}>충전금액</_.InfoText>
+                <_.InfoText color={color.default}>충전금액</_.InfoText>
               ) : (
-                <_.InfoText color={TextColor}>결제금액</_.InfoText>
+                <_.InfoText color={color.default}>결제금액</_.InfoText>
               )}
 
               <_.Exchange>3000원</_.Exchange>
@@ -57,7 +57,7 @@ const Compelete = () => {
               marginTop={"5px"}
               border={`1px solid #D3D3D3`}
             >
-              <_.InfoText color={TextColor}>잔액</_.InfoText>
+              <_.InfoText color={color.default}>잔액</_.InfoText>
               <_.Exchange fontSize={"30px"} fontWeight={"700"}>
                 2000원
               </_.Exchange>
