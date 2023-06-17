@@ -35,5 +35,5 @@ export const PointBottom = styled.div`
 
 export const UseLogWrap = styled.div`
   margin-top: 20px;
-  width: 100%;
+  width: 1000px;
 `;

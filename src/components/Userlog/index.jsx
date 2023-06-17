@@ -27,7 +27,7 @@ export const Userlog = ({ student, log }) => {
         {/* <div style={{display: "flex"}}> */}
         {data.map((item) => (
           <div style={{ width: "900px", marginTop: "5px" }}>
-            <ul style={{ display: "flex", justifyContent: "space-between" }}>
+            <ul style={{ display: "flex", justifyContent: "space-between", padding: 0 }}>
               <li key={item}>
                 <UsePointLogItem />
               </li>
