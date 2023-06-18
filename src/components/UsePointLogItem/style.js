@@ -4,9 +4,9 @@ export const PointLogWrap = styled.div`
   display: flex;
   justify-content: space-around;
 
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   padding-top: 20px;
-  width: 100%;
+  width: 440px;
   height: 80px;
 
   background-color: ${props => props.backgroundColor ? props.backgroundColor : "#eff0f2"};
