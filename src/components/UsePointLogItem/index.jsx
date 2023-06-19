@@ -3,8 +3,6 @@ import * as _ from "./style";
 import * as C from "../Compelete/style";
 
 const UsePointLogItem = () => {
-  const [ispoint, setIsPoint] = useState(true);
-
   // const handlePoint = () => {
   //   // TODO : 만약 결제를 했다면 isPoint를 false로, 성공했다면 true로 반환하는 함수 로직 작성
   // }

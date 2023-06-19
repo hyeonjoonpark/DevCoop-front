@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   function (config) {
     const accToken = localStorage.getItem("token");
-    const refToken = localStorage.getItem("refreshtoken");ㄴ
+    const refToken = localStorage.getItem("refreshtoken");
     if (!accToken) {
       console.log("no accToken")
       config.headers["access"] = null;
