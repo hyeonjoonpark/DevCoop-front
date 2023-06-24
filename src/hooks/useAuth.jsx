@@ -9,10 +9,10 @@ export const useAuth = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const refreshtoken = localStorage.getItem("refreshtoken");
+    const access = localStorage.getItem("access");
+    const refresh = localStorage.getItem("refresh");
 
-    if (token && refreshtoken) {
+    if (access && refresh) {
       setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
     } else {
       setIsLoggedIn(false);
@@ -31,13 +31,12 @@ export const useAuth = () => {
     e.preventDefault();
 
     try {
-      const { token, refreshtoken, name, point, message } = await login(
+      const { access, refresh, name, point, message } = await login(
         email,
         password
       );
-      // const { acctoken } = await checkToken("token");
-      localStorage.setItem("token", token);
-      localStorage.setItem("refreshtoken", refreshtoken);
+      localStorage.setItem("access", access);
+      localStorage.setItem("refresh", refresh);
       // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
       console.log(name, point, message, isLoggedIn);
       window.location.replace("/")
@@ -47,8 +46,8 @@ export const useAuth = () => {
   };
 
   const handleLogout = (e) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshtoken");
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
     setIsLoggedIn(false);
     window.location.replace("/")
   };
