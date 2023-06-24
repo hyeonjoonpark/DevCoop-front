@@ -11,8 +11,10 @@ const axiosInstance = axios.create({
 // 엑세스 토큰 체킹 후 없으면 헤더에 추가하지 않고 있으면 둘다 추가해서 서버에 보냄
 axiosInstance.interceptors.request.use(
   function (config) {
+
     const accToken = localStorage.getItem("access");
     const refToken = localStorage.getItem("refresh");
+
     if (!accToken) {
       console.log("no accToken")
       config.headers["access"] = null;

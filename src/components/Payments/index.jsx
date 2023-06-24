@@ -1,7 +1,9 @@
 import PaymentsCheck from "../PaymentsCheck";
 import UsePointLogItem from "../UsePointLogItem";
+import ChargePointLogItem from "../ChargePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
+import * as U from "../Userlog/style";
 import ChargeCheck from "../ChargeCheck";
 import { usePoint } from "../../hooks/usePoint";
 import { color } from "../../constants/color";
@@ -25,7 +27,9 @@ const Payments = () => {
         marginTop={"5px"}
       >
         <C.InfoText color={color.default}>잔액</C.InfoText>
-        <C.Exchange fontSize={"30px"} fontWeight={"700"}>{point}</C.Exchange>
+        <C.Exchange fontSize={"30px"} fontWeight={"700"}>
+          {point}
+        </C.Exchange>
       </C.ExChangeDetailWrap>
 
       <_.PointWrap>
@@ -44,9 +48,16 @@ const Payments = () => {
       <_.UseLogWrap>
         <C.InfoText>사용내역</C.InfoText>
         {data.map((item) => (
-          <li key={item}>
-            <UsePointLogItem />
-          </li>
+          <U.PointContainer>
+            <U.PointList>
+              <li key={item}>
+                <UsePointLogItem />
+              </li>
+              <li key={item}>
+                <ChargePointLogItem />
+              </li>
+            </U.PointList>
+          </U.PointContainer>
         ))}
       </_.UseLogWrap>
     </C.CompeleteWrap>
