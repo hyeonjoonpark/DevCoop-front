@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as _ from "./style";
 import * as C from "../Compelete/style";
 
-const UsePointLogItem = () => {
+const ChargePointLogItem = () => {
   const [ispoint, setIsPoint] = useState(true);
 
   // const handlePoint = () => {
@@ -10,12 +10,12 @@ const UsePointLogItem = () => {
   // }
 
   return (
-    <_.PointLogWrap>
+    <_.PointLogWrap backgroundColor={"#E8EBF5"} borderColor={"#E8EBF5"}>
       <C.InfoText>2023.01.19</C.InfoText>
-      <C.InfoText>-2500원</C.InfoText>
-      <C.InfoText>결제</C.InfoText>
+      <C.InfoText>+2500원</C.InfoText>
+      <C.InfoText>충전</C.InfoText>
     </_.PointLogWrap>
   );
 };
 
-export default UsePointLogItem;
+export default ChargePointLogItem;

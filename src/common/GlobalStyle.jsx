@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
   button {
     width: 100px;
     height: 50px;

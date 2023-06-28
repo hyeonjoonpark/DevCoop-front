@@ -34,6 +34,16 @@ export const PointBottom = styled.div`
 `;
 
 export const UseLogWrap = styled.div`
+  display: flex;
   margin-top: 20px;
   width: 100%;
+`;
+
+export const rightWrap = styled.div`
+  width: 50%;
+  margin-right: 15px;
+`;
+
+export const leftWrap = styled.div`
+  width: 50%;
 `;

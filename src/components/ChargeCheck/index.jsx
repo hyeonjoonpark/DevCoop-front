@@ -4,7 +4,7 @@ import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
 
-const ChargeCheck = () => {
+const ChargeCheck = ({props}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const ChargeCheck = () => {
       <Modal isOpen={modalOpen}>
         <_.ContentWrap>
           <QuestionLogo style={{ width: "60px", height: "60px" }} />
-          <_.ContentTitle>3000원</_.ContentTitle>
+          <_.ContentTitle props={props}>{props}원</_.ContentTitle>
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
