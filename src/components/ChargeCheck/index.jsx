@@ -3,11 +3,10 @@ import Modal from "../Modal";
 import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
-import axios from "axios";
-
+// import axios from "axios";
+import {axiosInstance} from "../../axios/index"
 const ChargeCheck = ({state}) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const url = "http://10.1.1.5/api";
 
   const navigate = useNavigate();
 
@@ -24,7 +23,7 @@ const ChargeCheck = ({state}) => {
   };
 
   const handleCharge = () => {
-    axios.post(`${url}/charge`,{
+    axiosInstance.post(`${url}/charge`,{
       charger: state.charger,
       plusPoint: state.pluspoint,
       code_number: "01024502415",
