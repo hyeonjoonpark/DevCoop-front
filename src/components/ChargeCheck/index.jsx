@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
 import axios from "axios";
 
-const ChargeCheck = ({charger}) => {
+const ChargeCheck = ({state}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const url = "http://10.1.1.5/api";
 
   const navigate = useNavigate();
 
-  const compeletePage = ({pluspoint}) => {
+  const compeletePage = ({state}) => {
     navigate("/compelete", { isCharge: true });
   };
 
@@ -25,8 +25,8 @@ const ChargeCheck = ({charger}) => {
 
   const handleCharge = () => {
     axios.post(`${url}/charge`,{
-      charger: charger,
-      plusPoint: "2",
+      charger: state.charger,
+      plusPoint: state.pluspoint,
       code_number: "01024502415",
     })
     .then((result) => {
@@ -47,11 +47,11 @@ const ChargeCheck = ({charger}) => {
       <Modal isOpen={modalOpen}>
         <_.ContentWrap>
           <QuestionLogo style={{ width: "60px", height: "60px" }} />
-          <_.ContentTitle>{charger}원</_.ContentTitle>
+          <_.ContentTitle>{state.pluspoint}원</_.ContentTitle>
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button onClick={() => {compeletePage({charger}); handleCharge();}}>네</button>
+          <button onClick={() => {compeletePage(state.pluspoint); handleCharge();}}>네</button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>
