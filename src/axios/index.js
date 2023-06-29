@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosInstance = axios.create({
-  baseURL: `http://${process.env.REACT_APP_backip}:${process.env.REACT_APP_backport }/api`,
+  baseURL: `http://${process.env.REACT_APP_backip}/api`,
   headrs: {
     "Content-Type": "application/json",
     withCredentials: true,

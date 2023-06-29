@@ -9,7 +9,7 @@ export const Barcode = () => {
     console.log(e.target.value);
   };
   return (
-    <BarcodeWrap>
+    <BarcodeWrap onSubmit={handleSubmit}>
       <BarcodeIn>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
