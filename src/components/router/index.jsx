@@ -8,6 +8,7 @@ import MainPage from "../../pages/MainPage";
 import StudentinfoPage from "../../pages/StudentinfoPage";
 import LoginPage from '../../pages/LoginPage';
 import UserlogPage from '../../pages/UserlogPage';
+import AdminLoginPage from '../../pages/AdminLoginPage';
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
             <Route path="/studentinfo" element={<StudentinfoPage/>}/>
             <Route path="/userlog" element={<UserlogPage/>}/>
             <Route path='/*' element={<NotFoundPage/>}/>
+            <Route path="/adminlogin" element={<AdminLoginPage/>} />
         </Switch>
 
     </>
