@@ -16,7 +16,7 @@ export const ContentTitle = styled.h1`
 `;
 
 export const ContentSubTitle = styled.h3`
-    font-size: 30px;
+    font-size: 25px;
     color: #555;
 `;
 

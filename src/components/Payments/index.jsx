@@ -8,37 +8,75 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 
-const Payments = () => {
+const Payments = ({code_number}) => {
   const TextColor = "#8A8A8A";
   const data = [1, 2, 3, 4];
-  const url = "http://10.1.1.5:6002/api";
-  const [point, setPoint] = useState(0);
+  const url = "http://10.1.1.5/api";
+  const [pluspoint, setChargePoint] = useState('');
+  const [charger, setCharger] = useState('');
   const [user, setUser] = useState('');
+  const [error, setError] = useState(null);
 
   const onChargePoint = (e) => {
-    setPoint(e.target.value);
+    setChargePoint(e.target.value);
     console.log(e.target.value);
   };
 
-  const onChargeUser = (e) => {
-    setUser(e.target.value);
+  const onChargeCharger = (e) => {
+    setCharger(e.target.value);
     console.log(e.target.value);
   };
 
-  useEffect(() => {
-    axios.post(`${url}/charge`,{
-      point: point,
-      user: user,
-    })
-    .then((result) => {
-      console.log("요청성공")
-      console.log(result)
-    })
-    .catch((error) => {
-      console.log("요청실패")
-      console.log(error)
-    })
-  });
+  // const onChargeCharger = (e) => {
+  //   setCharger(e.target.value);
+  //   console.log(e.target.value);
+  // };
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const response = await axios.get(`${url}/check`);
+  //       setUser(response.data);
+  //     }catch (e) {
+  //       setError(e);
+  //     }
+  //   };
+
+  //   fetchUser();
+  // },[]);
+
+  // useEffect(async() => {
+  //   await axios.get(`${url}/check`,{
+  //     params:{
+  //       code_number: code_number,
+  //       point: point,
+  //       }
+  //   })
+  //   .then((result) => {
+  //     console.log("요청성공")
+  //     console.log(result)
+  //   })
+  //   .catch((error) => {
+  //     console.log("요청실패")
+  //     console.log(error)
+  //   })
+  // },[]);
+
+  // const handleCharge = () => {
+  //   axios.post(`${url}/charge`,{
+  //     charger: "2409",
+  //     plusPoint: point,
+  //     code_number: "01024502415"
+  //   })
+  //   .then((result) => {
+  //     console.log("요청성공")
+  //     console.log(result)
+  //   })
+  //   .catch((error) => {
+  //     console.log("요청실패")
+  //     console.log(error)
+  //   })
+  // };
 
   return (
     <C.CompeleteWrap>
@@ -46,7 +84,6 @@ const Payments = () => {
         <C.InfoText color={TextColor}>학생정보</C.InfoText>
         <C.StudentInfoDetail>
           <C.InfoText>학번 : 2206</C.InfoText>
-          <C.InfoText>이름 : 김알이</C.InfoText>
         </C.StudentInfoDetail>
       </C.StudentInfo>
 
@@ -57,19 +94,19 @@ const Payments = () => {
       >
         <C.InfoText color={TextColor}>잔액</C.InfoText>
         <C.Exchange fontSize={"30px"} fontWeight={"700"}>
-          2000원
+          5000원
         </C.Exchange>
       </C.ExChangeDetailWrap>
 
       <_.PointWrap>
         <_.PointInTop>
           <C.InfoText color={TextColor}>포인트</C.InfoText>
-          <_.PointInput value={point} onChange={onChargePoint} />
+          <_.PointInput pluspoint={pluspoint} onChange={onChargePoint} />
         </_.PointInTop>
 
         <_.PointBottom>
-          <_.NumberInput value={user} onChange={onChargeUser} placeholder="교사코드 or 학번" />
-          <ChargeCheck props={point}/>
+          <_.NumberInput charger={charger} onChange={onChargeCharger} placeholder="교사코드 or 학번" />
+          <ChargeCheck pluspoint={pluspoint} charger={charger}/>
           <PaymentsCheck />
         </_.PointBottom>
       </_.PointWrap>

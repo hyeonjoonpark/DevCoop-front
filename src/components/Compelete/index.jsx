@@ -3,7 +3,7 @@ import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 
-const Compelete = ({props}) => {
+const Compelete = ({plusPoint}) => {
   const isCharge = useLocation();
 
   const TextColor = "#8A8A8A";
@@ -18,7 +18,7 @@ const Compelete = ({props}) => {
         <_.PaymentsTopWrap>
           <CheckLogo style={{ width: "70px", height: "70px" }} />
 
-          <_.PaymentsTopTitle>{props}원</_.PaymentsTopTitle>
+          <_.PaymentsTopTitle>{plusPoint}원</_.PaymentsTopTitle>
 
           {isCharge === true ? (
             <_.PaymentsTopSubTitle>충전완료</_.PaymentsTopSubTitle>
@@ -49,7 +49,7 @@ const Compelete = ({props}) => {
                 <_.InfoText color={TextColor}>결제금액</_.InfoText>
               )}
 
-              <_.Exchange>{props}원</_.Exchange>
+              <_.Exchange>{plusPoint}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap

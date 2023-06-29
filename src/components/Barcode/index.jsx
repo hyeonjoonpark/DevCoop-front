@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/AriPayL.svg"
+import axios from "axios";
 
 export const Barcode = () => {
+  const url = "http://10.1.1.5/api";
+
   const handleChange = (e) => {
     console.log(e.target.value);
   };
@@ -12,7 +15,7 @@ export const Barcode = () => {
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
           placeholder="바코드를 스캔해주세요"
-          onChange={handleChange}
+          onSubmit={handleChange}
           type="password"
           autoFocus
         />
