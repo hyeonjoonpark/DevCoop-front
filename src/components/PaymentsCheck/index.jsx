@@ -4,7 +4,7 @@ import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
 
-const PaymentsCheck = () => {
+const PaymentsCheck = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const navigate = useNavigate();

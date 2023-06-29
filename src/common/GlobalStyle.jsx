@@ -28,6 +28,11 @@ export const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
   button {
     width: 100px;
     height: 50px;

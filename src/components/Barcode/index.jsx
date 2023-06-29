@@ -1,23 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/AriPayL.svg"
-import useBarcode from "../../hooks/useBarcode.jsx";
+import axios from "axios";
 
 export const Barcode = () => {
-  // const handleChange = (e) => {
-  //   console.log(e.target.value);
-  // };
-  const{
-    handleSubmit,
-    handleChange
-  } = useBarcode();
+  const url = "http://10.1.1.5/api";
+  const handleChange = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <BarcodeWrap onSubmit={handleSubmit}>
       <BarcodeIn>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
           placeholder="바코드를 스캔해주세요"
-          onChange={handleChange}
+          onSubmit={handleChange}
           type="password"
           autoFocus
         />

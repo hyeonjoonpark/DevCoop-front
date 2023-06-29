@@ -4,13 +4,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
 
-const Compelete = () => {
+const Compelete = ({state}) => {
   const isCharge = useLocation();
 
   const navigate = useNavigate();
 
   const GoBack = () => {
-    navigate("/");
+    navigate("/barcode");
   };
   return (
     <>
@@ -18,7 +18,7 @@ const Compelete = () => {
         <_.PaymentsTopWrap>
           <CheckLogo style={{ width: "70px", height: "70px" }} />
 
-          <_.PaymentsTopTitle>3000원</_.PaymentsTopTitle>
+          <_.PaymentsTopTitle>{state}원</_.PaymentsTopTitle>
 
           {isCharge === true ? (
             <_.PaymentsTopSubTitle>충전완료</_.PaymentsTopSubTitle>
@@ -49,7 +49,7 @@ const Compelete = () => {
                 <_.InfoText color={color.default}>결제금액</_.InfoText>
               )}
 
-              <_.Exchange>3000원</_.Exchange>
+              <_.Exchange>{state}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap

@@ -16,11 +16,13 @@ export const PointInTop = styled.div`
 `;
 
 export const PointInput = styled.input`
-  width: 400px;
+  width: 450px;
+  border-radius: 10px;
 `;
 
 export const NumberInput = styled.input`
   border-radius: 10px 0px 0px 10px;
+  width: 240px;
 `;
 
 export const PointBottom = styled.div`
@@ -34,6 +36,16 @@ export const PointBottom = styled.div`
 `;
 
 export const UseLogWrap = styled.div`
+  display: flex;
   margin-top: 20px;
   width: 100%;
+`;
+
+export const rightWrap = styled.div`
+  width: 50%;
+  margin-right: 15px;
+`;
+
+export const leftWrap = styled.div`
+  width: 50%;
 `;
