@@ -7,6 +7,7 @@ import * as _ from "./style";
 import {axiosInstance} from "../../axios/index"
 const ChargeCheck = ({state}) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const url = "http://10.1.1.5/api";
 
   const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ const ChargeCheck = ({state}) => {
   };
 
   const handleCharge = () => {
-    axiosInstance.post(`${url}/charge`,{
+    axiosInstance.post(`/charge`,{
       charger: state.charger,
       plusPoint: state.pluspoint,
       code_number: "01024502415",
