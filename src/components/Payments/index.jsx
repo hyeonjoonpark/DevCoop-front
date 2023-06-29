@@ -3,11 +3,10 @@ import UsePointLogItem from "../UsePointLogItem";
 import ChargePointLogItem from "../ChargePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
-import * as U from "../Userlog/style";
+// import * as U from "../Userlog/style";
 import ChargeCheck from "../ChargeCheck";
-import ChargePointLogItem from "../ChargePointLogItem";
 import { useEffect, useState } from "react";
-
+import { color } from "../../constants/color";
 
 const Payments = ({code_number}) => {
   const TextColor = "#8A8A8A";
