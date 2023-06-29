@@ -16,6 +16,7 @@ const Router = () => {
           <Route path="/barcode" element={<BarcodePage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Switch>
+
     </>
   );
 };

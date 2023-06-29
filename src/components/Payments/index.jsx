@@ -1,7 +1,9 @@
 import PaymentsCheck from "../PaymentsCheck";
 import UsePointLogItem from "../UsePointLogItem";
+import ChargePointLogItem from "../ChargePointLogItem";
 import * as C from "../Compelete/style";
 import * as _ from "./style";
+import * as U from "../Userlog/style";
 import ChargeCheck from "../ChargeCheck";
 import ChargePointLogItem from "../ChargePointLogItem";
 import { useEffect, useState } from "react";
@@ -24,11 +26,10 @@ const Payments = ({code_number}) => {
     })
     console.log(state);
   }
-
   return (
     <C.CompeleteWrap>
       <C.StudentInfo>
-        <C.InfoText color={TextColor}>학생정보</C.InfoText>
+        <C.InfoText color={color.default}>학생정보</C.InfoText>
         <C.StudentInfoDetail>
           <C.InfoText>학번 : 2206</C.InfoText>
         </C.StudentInfoDetail>
@@ -39,8 +40,8 @@ const Payments = ({code_number}) => {
         paddingTop={"10px"}
         marginTop={"5px"}
       >
-        <C.InfoText color={TextColor}>잔액</C.InfoText>
-        <C.Exchange fontSize={"30px"} fontWeight={"700"}>
+        <C.InfoText color={color.default}>잔액</C.InfoText>
+        <C.Exchange fontSize={"30px"} fontWeight={"700"}>\
           5000원
         </C.Exchange>
       </C.ExChangeDetailWrap>

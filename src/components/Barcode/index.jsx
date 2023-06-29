@@ -5,7 +5,6 @@ import axios from "axios";
 
 export const Barcode = () => {
   const url = "http://10.1.1.5/api";
-
   const handleChange = (e) => {
     console.log(e.target.value);
   };
