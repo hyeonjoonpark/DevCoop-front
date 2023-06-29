@@ -115,6 +115,26 @@ export const login = async (email, password) => {
   }
 };
 
+export const adminlogin = async (email, password) => {
+  try {
+    console.log(email);
+    console.log(password);
+    const response = await axiosInstance.post("/adminlogin", {
+      email: email,
+      password: password,
+    });
+    return {
+      access: response.data.accToken,
+      refresh: response.data.refToken,
+      name: response.data.name,
+      point: response.data.point,
+      message: response.data.message
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 
 // 토큰이 없거나 있는데 둘 다 만료된 ->로그인페이지
