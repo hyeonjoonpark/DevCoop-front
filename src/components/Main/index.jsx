@@ -9,6 +9,8 @@ const Main = ({ student }) => {
   const { isLoggedIn } = useAuth();
   const { point } = usePoint();
 
+  const formatPoint = point.toLocaleString();
+
   return (
     <>
       <P.PageWrap>
@@ -22,7 +24,7 @@ const Main = ({ student }) => {
                   현재 사용 가능한 금액
                 </p>
                 {isLoggedIn ? (
-                  <p style={{ fontSize: "70px" }}>{point}원</p>
+                  <p style={{ fontSize: "70px" }}>{formatPoint}원</p>
                 ) : (
                   <p style={{ fontSize: "42px" }}>로그인 후 조회 가능합니다.</p>
                 )}

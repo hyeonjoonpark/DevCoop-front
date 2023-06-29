@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/AriPayL.svg"
+import useBarcode from "../../hooks/useBarcode.jsx";
 
 export const Barcode = () => {
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  // };
+  const{
+    handleSubmit,
+    handleChange
+  } = useBarcode();
   return (
-    <BarcodeWrap>
+    <BarcodeWrap onSubmit={handleSubmit}>
       <BarcodeIn>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
