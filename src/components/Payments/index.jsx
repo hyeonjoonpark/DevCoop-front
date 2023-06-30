@@ -13,9 +13,11 @@ const Payments = ({code_number}) => {
   const data = [1, 2, 3, 4];
 
   const [state, setState] = useState({
-    charger: '',
+    charger: localStorage.getItem("adminname"),
+    clientname : localStorage.getItem("clientname"),
+    clientpoint : localStorage.getItem("clientpoint"),
     pluspoint: '',
-    code_number: '',
+    code_number: localStorage.getItem("clientbarcode"),
   });
 
   const handleChange = (e) => {
@@ -30,7 +32,7 @@ const Payments = ({code_number}) => {
       <C.StudentInfo>
         <C.InfoText color={color.default}>학생정보</C.InfoText>
         <C.StudentInfoDetail>
-          <C.InfoText>학번 : 2206</C.InfoText>
+          <C.InfoText>이름 : {state.clientname}</C.InfoText>
         </C.StudentInfoDetail>
       </C.StudentInfo>
 
@@ -40,8 +42,8 @@ const Payments = ({code_number}) => {
         marginTop={"5px"}
       >
         <C.InfoText color={color.default}>잔액</C.InfoText>
-        <C.Exchange fontSize={"30px"} fontWeight={"700"}>\
-          5000원
+        <C.Exchange fontSize={"30px"} fontWeight={"700"}>
+        {state.clientpoint.toLocaleString()}
         </C.Exchange>
       </C.ExChangeDetailWrap>
       <_.PointWrap>
@@ -49,14 +51,14 @@ const Payments = ({code_number}) => {
           <C.InfoText color={TextColor}>포인트</C.InfoText>
           <_.PointInput 
           name="pluspoint"
-          value={state.pluspoint}
+          value={state.pluspoint.toLocaleString()}
           onChange={handleChange}
           />
         </_.PointInTop>
 
         <_.PointBottom>
           <_.NumberInput 
-          placeholder="교사코드 or 학번" 
+          placeholder={state.charger}
           name="charger"
           value={state.charger}
           onChange={handleChange}

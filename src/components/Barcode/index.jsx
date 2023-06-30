@@ -1,20 +1,40 @@
 import React from "react";
 import styled from "styled-components";
-import imgLogo from "../../assets/AriPayL.svg"
+import imgLogo from "../../assets/AriPayL.svg";
+import { useEffect, useState } from "react";
+// import { axios } from "../axios";
 import axios from "axios";
-
+import { sendBarcode } from "../../axios";
 export const Barcode = () => {
   const url = "http://10.1.1.5/api";
+  const [barcode, setBarcode] = useState("");
   const handleChange = (e) => {
     console.log(e.target.value);
+    setBarcode(e.target.value);
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Hello")
+    try{
+        const { message, nowPoint, stName } = await sendBarcode(barcode)
+        console.log(message, nowPoint, stName)
+        localStorage.setItem("clientname", stName)
+        localStorage.setItem("clientpoint", nowPoint)
+        localStorage.setItem("clientbarcode", barcode)
+        window.location.replace("/payments")
+    } catch (error) {
+        console.log("바코드 인식에 실패했습니다.", error);
+    }
+};
+
+
   return (
-    <BarcodeWrap onSubmit={handleSubmit}>
-      <BarcodeIn>
+    <BarcodeWrap>
+      <BarcodeIn onSubmit={handleSubmit}>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
           placeholder="바코드를 스캔해주세요"
-          onSubmit={handleChange}
+          onChange={handleChange}
           type="password"
           autoFocus
         />
@@ -30,7 +50,7 @@ const BarcodeWrap = styled.div`
   height: 600px;
 `;
 
-const BarcodeIn = styled.div`
+const BarcodeIn = styled.form`
   margin: 0 auto;
   width: 500px;
   height: 100%;

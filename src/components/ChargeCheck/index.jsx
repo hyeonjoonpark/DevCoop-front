@@ -27,7 +27,7 @@ const ChargeCheck = ({state}) => {
     axiosInstance.post(`/charge`,{
       charger: state.charger,
       plusPoint: state.pluspoint,
-      code_number: "01024502415",
+      code_number: state.code_number,
     })
     .then((result) => {
       console.log("요청성공")

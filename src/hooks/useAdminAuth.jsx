@@ -7,7 +7,6 @@ export const useAdminAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   useEffect(() => {
     const access = localStorage.getItem("access");
     const refresh = localStorage.getItem("refresh");
@@ -37,9 +36,10 @@ export const useAdminAuth = () => {
       );
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
+      localStorage.setItem("adminname", name);
       // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
       console.log(name, point, message, isLoggedIn);
-      window.location.replace("/payments")
+      window.location.replace("/barcode")
     } catch (error) {
       console.log("로그인에 실패했습니다.", error);
     }
