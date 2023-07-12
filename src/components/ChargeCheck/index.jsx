@@ -26,7 +26,7 @@ const ChargeCheck = ({state}) => {
   const handleCharge = () => {
     axiosInstance.post(`/charge`,{
       charger: state.charger,
-      plusPoint: state.pluspoint,
+      plusPoint: state.point,
       code_number: state.code_number,
     })
     .then((result) => {
@@ -47,7 +47,7 @@ const ChargeCheck = ({state}) => {
       <Modal isOpen={modalOpen}>
         <_.ContentWrap>
           <QuestionLogo style={{ width: "60px", height: "60px" }} />
-          <_.ContentTitle>{state.pluspoint}원</_.ContentTitle>
+          <_.ContentTitle>{state.point}원</_.ContentTitle>
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>

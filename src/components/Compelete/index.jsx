@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect , useState } from "react";
 import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
+import axios from "axios";
 
 const Compelete = () => {
 
@@ -17,6 +18,52 @@ const Compelete = () => {
 // clientpoint : localStorage.getItem("clientpoint"),
 // pluspoint: '',
 // code_number: localStorage.getItem("clientbarcode"),
+
+const [data, setData] = useState(null);
+const [inner, setInner] = useState(null);
+const [minus, setMinus] = useState(null);
+const [point, setPoint] = useState(null);
+const [total, setTotal] = useState(null);
+const id = localStorage.getItem("clientbarcode");
+
+// useEffect(() => {
+//   axios.get('http://10.1.1.5/api/chargecomplete',{
+//     params: {
+//       id:id
+//     }  
+//   })
+//   .then(response => {
+//     setData(response.data);
+//     console.log(response.data);
+//     setInner(response.data.inner_point);
+//     setInner(response.data.);
+//     setPoint(response.data.point);
+//     setTotal(response.data.total);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+// },[]);
+
+useEffect(() => {
+  axios.get('http://10.1.1.5/api/paycomplete',{
+    params: {
+      id:id
+    }  
+  })
+  .then(response => {
+    setData(response.data);
+    console.log(response.data);
+    setInner(response.data.inner_point);
+    setPoint(response.data.point);
+    setTotal(response.data.total);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+},[]);
+
+  
 
   const name = localStorage.getItem("adminname");
 
@@ -36,12 +83,12 @@ const Compelete = () => {
         <_.PaymentsTopWrap>
           <CheckLogo style={{ width: "70px", height: "70px" }} />
 
-          <_.PaymentsTopTitle>??원</_.PaymentsTopTitle>
+          <_.PaymentsTopTitle>{inner}원</_.PaymentsTopTitle>
 
           {location.isCharge === true ? (
-            <_.PaymentsTopSubTitle>충전완료</_.PaymentsTopSubTitle>
-          ) : (
             <_.PaymentsTopSubTitle>결제완료</_.PaymentsTopSubTitle>
+          ) : (
+            <_.PaymentsTopSubTitle>충전완료</_.PaymentsTopSubTitle>
           )}
         </_.PaymentsTopWrap>
 
@@ -56,17 +103,17 @@ const Compelete = () => {
           <_.ExChangeWrap>
             <_.ExChangeDetailWrap marginTop={"30px"}>
               <_.InfoText color={color.default}>원래금액</_.InfoText>
-              <_.Exchange>??</_.Exchange>
+              <_.Exchange>{point}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
               {location.isCharge === true ? (
-                <_.InfoText color={color.default}>충전금액</_.InfoText>
-              ) : (
                 <_.InfoText color={color.default}>결제금액</_.InfoText>
+              ) : (
+                <_.InfoText color={color.default}>충전금액</_.InfoText>
               )}
 
-              <_.Exchange>??원</_.Exchange>
+              <_.Exchange>{inner}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap
@@ -76,7 +123,7 @@ const Compelete = () => {
             >
               <_.InfoText color={color.default}>잔액</_.InfoText>
               <_.Exchange fontSize={"30px"} fontWeight={"700"}>
-                ???원
+                {total}원
               </_.Exchange>
             </_.ExChangeDetailWrap>
           </_.ExChangeWrap>

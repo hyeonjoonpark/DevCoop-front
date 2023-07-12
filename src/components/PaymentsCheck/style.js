@@ -11,12 +11,12 @@ export const ContentWrap = styled.div`
 `;
 
 export const ContentTitle = styled.h1`
-    font-size: 60px;
+    font-size: 50px;
     color: #333;
 `;
 
 export const ContentSubTitle = styled.h3`
-    font-size: 30px;
+    font-size: 25px;
     color: #555;
 `;
 

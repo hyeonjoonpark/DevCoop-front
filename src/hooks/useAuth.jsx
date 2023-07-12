@@ -14,7 +14,7 @@ export const useAuth = () => {
 
     if (access && refresh) {
       setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
-    } else {
+    } else{
       setIsLoggedIn(false);
     }
   }, [isLoggedIn]);

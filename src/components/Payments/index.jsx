@@ -16,7 +16,7 @@ const Payments = ({code_number}) => {
     charger: localStorage.getItem("adminname"),
     clientname : localStorage.getItem("clientname"),
     clientpoint : localStorage.getItem("clientpoint"),
-    pluspoint: '',
+    point: '',
     code_number: localStorage.getItem("clientbarcode"),
   });
 
@@ -50,8 +50,8 @@ const Payments = ({code_number}) => {
         <_.PointInTop>
           <C.InfoText color={TextColor}>포인트</C.InfoText>
           <_.PointInput 
-          name="pluspoint"
-          value={state.pluspoint.toLocaleString()}
+          name="point"
+          value={state.point.toLocaleString()}
           onChange={handleChange}
           />
         </_.PointInTop>
@@ -64,7 +64,7 @@ const Payments = ({code_number}) => {
           onChange={handleChange}
           />
           <ChargeCheck state={state}/>
-          <PaymentsCheck />
+          <PaymentsCheck state={state}/>
         </_.PointBottom>
       </_.PointWrap>
 
