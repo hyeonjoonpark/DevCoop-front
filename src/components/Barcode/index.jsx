@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { sendBarcode } from "../../axios";
 export const Barcode = () => {
-  const url = "http://10.1.1.5/api";
   const [barcode, setBarcode] = useState("");
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -14,7 +13,6 @@ export const Barcode = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Hello")
     try{
         const { message, nowPoint, stName } = await sendBarcode(barcode)
         console.log(message, nowPoint, stName)

@@ -6,13 +6,13 @@ import * as _ from "./style";
 // import axios from "axios";
 import {axiosInstance} from "../../axios/index"
 const ChargeCheck = ({state}) => {
+  console.log("ChargeCheck work")
+  const State = state
+  console.log(State)
   const [modalOpen, setModalOpen] = useState(false);
-  const url = "http://10.1.1.5/api";
-
   const navigate = useNavigate();
-
-  const compeletePage = ({state}) => {
-    navigate("/compelete", { isCharge: true });
+  const compeletePage = () => {
+    navigate("/compelete", { state: { id : State.charger} });
   };
 
   const openModal = () => {
@@ -51,7 +51,7 @@ const ChargeCheck = ({state}) => {
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button onClick={() => {compeletePage(state.pluspoint); handleCharge();}}>네</button>
+          <button onClick={(state) => {compeletePage(state); handleCharge();}}>네</button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>

@@ -11,7 +11,7 @@ export const ContentWrap = styled.div`
 `;
 
 export const ContentTitle = styled.h1`
-    font-size: 60px;
+    font-size: 50px;
     color: #333;
 `;
 
