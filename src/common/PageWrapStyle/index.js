@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export const PageWrap = styled.div`
   width: 100%;
-  height: 800px;
+  height: 100vh;
+  overflow: auto;
   background-color: #d9d9d9;
 `;
 
@@ -11,7 +12,9 @@ export const PageContainer = styled.div`
   margin: 0 auto;
   width: 1000px;
   height: 100%;
+  overflow: auto;
   background-color: #fff;
+  overflow-x: hidden
 `;
 
 export const PageHeader = styled.header`

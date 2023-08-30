@@ -34,7 +34,6 @@ export const PaymentsBottomWrap = styled.div`
 export const StudentInfo = styled.div`
     display: flex;
     justify-content: space-between;
-
     width: 100%;
 `;
 
@@ -46,7 +45,7 @@ export const InfoText = styled.h2`
 export const StudentInfoDetail = styled.div`
     display: flex;
     justify-content: space-around;
-    
+    width" 100%;
     width: 300px;
 `;
 

@@ -38,10 +38,9 @@ export const useAdminAuth = () => {
       localStorage.setItem("refresh", refresh);
       localStorage.setItem("adminname", name);
       // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
-      console.log(name, point, message, isLoggedIn);
-      window.location.replace("/barcode")
+      window.location.replace("/studentinfo");
     } catch (error) {
-      console.log("로그인에 실패했습니다.", error);
+      throw error;
     }
   };
 
@@ -49,7 +48,7 @@ export const useAdminAuth = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     setIsLoggedIn(false);
-    window.location.replace("/")
+    window.location.replace("/");
   };
 
   return {

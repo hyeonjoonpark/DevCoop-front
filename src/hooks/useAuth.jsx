@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { login } from "../axios";
 
 export const useAuth = () => {
-  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,19 +35,24 @@ export const useAuth = () => {
       );
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
+      localStorage.setItem("clientname", name);
       // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
       console.log(name, point, message, isLoggedIn);
-      window.location.replace("/")
+      window.location.replace("/");
     } catch (error) {
-      console.log("로그인에 실패했습니다.", error);
+      throw error;
     }
   };
 
   const handleLogout = (e) => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
+    localStorage.removeItem("clientbarcode");
+    localStorage.removeItem("clientpoint");
+    localStorage.removeItem("adminname");
+    localStorage.removeItem("clientname");
     setIsLoggedIn(false);
-    window.location.replace("/")
+    window.location.replace("/");
   };
 
   return {

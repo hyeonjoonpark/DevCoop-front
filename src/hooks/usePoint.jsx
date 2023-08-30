@@ -19,7 +19,7 @@ export const usePoint = () => {
       setCode(response.code);
       setNumber(response.number);
     } catch (error) {
-      console.log("fail fetch", error);
+      throw error;
     }
   };
 
@@ -27,6 +27,6 @@ export const usePoint = () => {
     point,
     name,
     code,
-    number
+    number,
   };
 };
