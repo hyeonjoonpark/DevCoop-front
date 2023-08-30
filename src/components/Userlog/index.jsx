@@ -3,36 +3,38 @@ import UsePointLogItem from "../UsePointLogItem";
 import ChargePointLogItem from "../ChargePointLogItem";
 import { usePoint } from "../../hooks/usePoint";
 import { color } from "../../constants/color";
-import * as C from "../Compelete/style";
+import * as C from "../ChargeComplete/style";
 import * as P from "../Payments/style";
 import * as _ from "./style";
 
 export const Userlog = () => {
-  const data = [1, 2, 3, 4];
   const { point } = usePoint();
+  const formatPoint = point.toLocaleString();
   return (
     <C.CompeleteWrap>
       <C.ExChangeDetailWrap width={"900px"} paddingTop={"10px"}>
-        <C.InfoText color={color.default}>잔액</C.InfoText>
+        <C.InfoText color={color.default}>남은금액</C.InfoText>
         <C.Exchange fontSize={"30px"} fontWeight={"700"}>
-          {point}
+          {formatPoint}원
         </C.Exchange>
       </C.ExChangeDetailWrap>
 
-      <P.UseLogWrap>
+      <P.UseLogWrap style={{flexDirection: "column"}}>
         <C.InfoText>사용내역</C.InfoText>
-        {data.map((item) => (
+        
           <_.PointContainer>
-            <_.PointList>
-              <li key={item}>
+            <P.rightWrap>
+              <li style={{display: "flex"}}>
                 <UsePointLogItem />
               </li>
-              <li key={item}>
+            </P.rightWrap>
+            <P.leftWrap>
+              <li style={{display: "flex"}}>
                 <ChargePointLogItem />
               </li>
-            </_.PointList>
+            </P.leftWrap>
           </_.PointContainer>
-        ))}
+
       </P.UseLogWrap>
     </C.CompeleteWrap>
   );

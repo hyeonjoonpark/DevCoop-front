@@ -43,6 +43,8 @@ export const Barcode = () => {
   );
 };
 
+export default Barcode;
+
 const BarcodeWrap = styled.div`
   width: 100%;
   height: 600px;

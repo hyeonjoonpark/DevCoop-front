@@ -4,15 +4,16 @@ import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
 // import axios from "axios";
-import {axiosInstance} from "../../axios/index"
-const ChargeCheck = ({state}) => {
-  console.log("ChargeCheck work")
-  const State = state
-  console.log(State)
+import { axiosInstance } from "../../axios/index";
+
+const ChargeCheck = ({ state }) => {
+  console.log("ChargeCheck work");
+  const State = state;
+  console.log(State);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-  const compeletePage = () => {
-    navigate("/compelete", { state: { id : State.charger} });
+  const completePage = () => {
+    navigate("/studentinfo");
   };
 
   const openModal = () => {
@@ -24,19 +25,30 @@ const ChargeCheck = ({state}) => {
   };
 
   const handleCharge = () => {
-    axiosInstance.post(`/charge`,{
+    const chargeLogPromise = axiosInstance.post(`/charge`, {
       charger: state.charger,
       plusPoint: state.point,
       code_number: state.code_number,
-    })
-    .then((result) => {
-      console.log("요청성공")
-      console.log(result)
-    })
-    .catch((error) => {
-      console.log("요청실패")
-      console.log(error)
-    })
+    });
+
+    const allChargeLogPromise = axiosInstance.post(`/allcharge`, {
+      charger: state.charger,
+      plusPoint: state.point,
+      code_number: state.code_number,
+    });
+
+    Promise.all([chargeLogPromise, allChargeLogPromise])
+      .then(([chargeResponse, allChargeResponse]) => {
+        // Handle chargeLogResponse.data to set date, point, inner_point, total states
+        const chargeData = chargeResponse.data;
+        const allChargeData = allChargeResponse.data;
+
+        console.log(chargeData);
+        console.log(allChargeData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -51,7 +63,14 @@ const ChargeCheck = ({state}) => {
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button onClick={(state) => {compeletePage(state); handleCharge();}}>네</button>
+          <button
+            onClick={() => {
+              handleCharge();
+              completePage();
+            }}
+          >
+            네
+          </button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>

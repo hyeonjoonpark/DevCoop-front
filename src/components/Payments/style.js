@@ -43,7 +43,6 @@ export const UseLogWrap = styled.div`
 
 export const rightWrap = styled.div`
   width: 50%;
-  margin-right: 15px;
 `;
 
 export const leftWrap = styled.div`

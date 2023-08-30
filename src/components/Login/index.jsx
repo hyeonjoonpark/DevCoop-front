@@ -4,13 +4,8 @@ import { useAuth } from "../../hooks/useAuth";
 import * as L from "./style";
 
 function Login() {
-  const {
-    email,
-    password,
-    handleInputId,
-    handleInputPw,
-    handleSubmit,
-  } = useAuth();
+  const { email, password, handleInputId, handleInputPw, handleSubmit } =
+    useAuth();
 
   return (
     <div>
@@ -39,5 +34,3 @@ function Login() {
 }
 
 export default Login;
-
-
