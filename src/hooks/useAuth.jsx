@@ -1,5 +1,25 @@
 import { useEffect, useState } from "react";
-import { login } from "../axios";
+import { axiosInstance } from "../axios";
+
+
+export const login = async (email, password) => {
+  try {
+    const response = await axiosInstance.post("/login", {
+      email: email,
+      password: password,
+    });
+    return {
+      access: response.data.accToken,
+      refresh: response.data.refToken,
+      name: response.data.name,
+      point: response.data.point,
+      message: response.data.message,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

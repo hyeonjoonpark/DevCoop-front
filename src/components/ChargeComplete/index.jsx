@@ -3,20 +3,12 @@ import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
-import axios from "axios";
+import { axiosInstance } from "../../axios";
 
 const ChargeComplete = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // localStorage.removeItem("clientname")
-  // localStorage.removeItem("clientpoint")
-  // localStorage.removeItem("clientbarcode")
-  // console.log(location.state.state);
-  //    charger: localStorage.getItem("adminname"),
-  // clientname : localStorage.getItem("clientname"),
-  // clientpoint : localStorage.getItem("clientpoint"),
-  // pluspoint: '',
-  // code_number: localStorage.getItem("clientbarcode"),
+
 
   const [data, setData] = useState(null);
   const [inner, setInner] = useState(null);
@@ -26,8 +18,8 @@ const ChargeComplete = () => {
   const id = localStorage.getItem("clientbarcode");
 
   useEffect(() => {
-    axios
-      .get("http://10.10.0.8:6002/api/chargecomplete", {
+    axiosInstance
+      .get("/chargecomplete", {
         params: {
           id: id,
         },

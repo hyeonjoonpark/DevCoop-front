@@ -80,57 +80,6 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export const login = async (email, password) => {
-  try {
-    const response = await axiosInstance.post("/login", {
-      email: email,
-      password: password,
-    });
-    return {
-      access: response.data.accToken,
-      refresh: response.data.refToken,
-      name: response.data.name,
-      point: response.data.point,
-      message: response.data.message,
-    };
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const adminlogin = async (email, password) => {
-  try {
-    const response = await axiosInstance.post("/adminlogin", {
-      email: email,
-      password: password,
-    });
-    return {
-      access: response.data.accToken,
-      refresh: response.data.refToken,
-      name: response.data.name,
-      point: response.data.point,
-      message: response.data.message,
-    };
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const sendBarcode = async (barcode) => {
-  try {
-    console.log(barcode);
-    const response = await axiosInstance.post("/barcode", {
-      code_number: barcode,
-    });
-    return {
-      stName: response.data.studentname,
-      nowPoint: response.data.point,
-      message: response.data.message,
-    };
-  } catch (error) {
-    throw error;
-  }
-};
 
 export const checkToken = (hello) => {
   try {

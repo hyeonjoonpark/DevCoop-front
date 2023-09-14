@@ -1,5 +1,24 @@
 import { useState, useEffect } from "react";
-import { sendbarcode } from "../axios";
+import { axiosInstance } from "../axios";
+
+export const sendBarcode = async (barcode) => {
+    try {
+      console.log(barcode);
+      const response = await axiosInstance.post("/barcode", {
+        code_number: barcode,
+      });
+      return {
+        stName: response.data.studentname,
+        nowPoint: response.data.point,
+        message: response.data.message,
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  
+
 
 export const useBarcode = () => {
     console.log("BArcord~")
@@ -20,7 +39,7 @@ export const useBarcode = () => {
             console.log(message, point, student_number)
             //window.location.replace("/payments")
         } catch (error) {
-            console.log("바코드 인식에 실패했ㅅㅂ니다.", error);
+            console.log("바코드 인식에 실패했습니다.", error);
         }
     };
 

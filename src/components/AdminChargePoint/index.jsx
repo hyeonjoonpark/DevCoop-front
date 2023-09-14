@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
-import axios from "axios";
+import axiosInstance from "../../axios";
 
 const AdminChargePoint = () => {
   const [data, setData] = useState(null);
@@ -12,13 +12,13 @@ const AdminChargePoint = () => {
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
-      const adminChargeUserLogPromise = axios.post(
-        "http://10.10.0.8:6002/api/adminchargeuserlog",
+      const adminChargeUserLogPromise = axiosInstance.post(
+        "/adminchargeuserlog",
         { clientbarcode }
       );
 
-      const chargeLogPromise = axios.get(
-        "http://10.10.0.8:6002/api/chargelog",
+      const chargeLogPromise = axiosInstance.get(
+        "/chargelog",
         {
           params: {
             id: clientbarcode,

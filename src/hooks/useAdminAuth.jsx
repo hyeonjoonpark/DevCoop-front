@@ -1,6 +1,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { adminlogin } from "../axios";
+import { axiosInstance } from "../axios";
+
+export const adminlogin = async (email, password) => {
+  try {
+    const response = await axiosInstance.post("/adminlogin", {
+      email: email,
+      password: password,
+    });
+    return {
+      access: response.data.accToken,
+      refresh: response.data.refToken,
+      name: response.data.name,
+      point: response.data.point,
+      message: response.data.message,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const useAdminAuth = () => {
   const navigate = useNavigate();

@@ -2,9 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/AriPayL.svg";
 import { useEffect, useState } from "react";
-// import { axios } from "../axios";
-import axios from "axios";
-import { sendBarcode } from "../../axios";
+import { axiosInstance } from "../../axios";
+
+
+export const sendBarcode = async (barcode) => {
+  try {
+    console.log(barcode);
+    const response = await axiosInstance.post("/barcode", {
+      code_number: barcode,
+    });
+    return {
+      stName: response.data.studentname,
+      nowPoint: response.data.point,
+      message: response.data.message,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 export const Barcode = () => {
   const [barcode, setBarcode] = useState("");
   const handleChange = (e) => {

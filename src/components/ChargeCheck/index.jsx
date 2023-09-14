@@ -3,8 +3,7 @@ import Modal from "../Modal";
 import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
-// import axios from "axios";
-import { axiosInstance } from "../../axios/index";
+import { axiosInstance } from "../../axios";
 
 const ChargeCheck = ({ state }) => {
   console.log("ChargeCheck work");
