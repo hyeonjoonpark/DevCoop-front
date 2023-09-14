@@ -1,11 +1,12 @@
 import axios from "axios";
 
+const currentDomain = window.location.hostname;
 export const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_backip,
-  headers: {
-    "Content-Type": "application/json",
-    withCredentials: true,
-  },
+	baseURL: `http://${currentDomain}/api`,
+	headers: {
+		"Content-Type": "application/json",
+		withCredentials: true,
+	},
 });
 
 // 엑세스 토큰 체킹 후 없으면 헤더에 추가하지 않고 있으면 둘다 추가해서 서버에 보냄
