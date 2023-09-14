@@ -19,7 +19,6 @@ const Studentinfo = () => {
   const toggleSelectAll = () => {
     setSelectAll(!selectAll);
   };
-  console.log(data);
 
   const movePage = useNavigate();
 
@@ -78,11 +77,7 @@ const Studentinfo = () => {
                 </_.Infochoose>
               </_.Info>
               <div>
-                {data.studentlists.map((student) => (
-                  <>
-                    <StudentinfoItem student={student} checked={selectAll} />
-                  </>
-                ))}
+                <StudentinfoItem student={"student"} checked={selectAll} />
               </div>
             </_.Infolist>
           </_.InfoContainer>

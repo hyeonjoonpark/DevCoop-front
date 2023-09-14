@@ -15,7 +15,7 @@ export const StudentinfoItem = ({ student, checked }) => {
     axiosInstance
       .get("/alluser")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setAllUser(response.data);
       })
       .catch((error) => {
