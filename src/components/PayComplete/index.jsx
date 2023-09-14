@@ -3,7 +3,7 @@ import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
-import axios from "axios";
+import axiosInstance from "../../axios";
 
 const PayComplete = () => {
   const location = useLocation();
@@ -26,8 +26,8 @@ const PayComplete = () => {
   const id = localStorage.getItem("clientbarcode");
 
   useEffect(() => {
-    axios
-      .get("http://10.10.0.8:6002/api/paycomplete", {
+    axiosInstance
+      .get("/paycomplete", {
         params: {
           id: id,
         },

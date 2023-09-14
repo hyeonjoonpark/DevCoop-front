@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as _ from "./style";
 import styled from "styled-components";
-import axios from "axios";
+import { axiosInstance } from "../../../axios";
 
 export const StudentinfoItem = ({ student, checked }) => {
   const [selected, setSelected] = useState(checked);
@@ -12,8 +12,8 @@ export const StudentinfoItem = ({ student, checked }) => {
   }, [checked]);
 
   useEffect(() => {
-    axios
-      .get("http://10.10.0.8:6002/api/alluser")
+    axiosInstance
+      .get("/alluser")
       .then((response) => {
         console.log(response.data);
         setAllUser(response.data);

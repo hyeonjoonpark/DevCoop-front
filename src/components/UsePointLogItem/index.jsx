@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
-import axios from "axios";
+import {axiosInstance } from "../../axios";
 
 const UsePointLogItem = () => {
   // const handlePoint = () => {
@@ -21,7 +21,7 @@ const UsePointLogItem = () => {
     const clientname = localStorage.getItem("clientname");
     if (clientname) {
       axios
-        .get("http://10.10.0.8:6002/api/useuserlog", {
+        .get("/useuserlog", {
           params: {
             clientname: clientname,
           },
