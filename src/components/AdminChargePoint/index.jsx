@@ -3,20 +3,25 @@ import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
 
+function PrettyDateTime(date) {
+  const formattedDate = new Date(date);
+  return formattedDate.toLocaleDateString("ko-KR") + " " +
+    formattedDate.toLocaleTimeString("en-US", { hour12: false });
+}
+
 const AdminChargePoint = () => {
   const [data, setData] = useState(null);
   const [logEntries, setLogEntries] = useState([]);
   const [modalStates, setModalStates] = useState([]);
 
-  console.log("Check userlog");
+  console.log("Check user log");
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
-      const adminChargeUserLogPromise = axiosInstance.post(
+      const adminUserLogPromise = axiosInstance.post(
         "/adminchargeuserlog",
         { clientbarcode }
       );
-
       const chargeLogPromise = axiosInstance.get(
         "/chargelog",
         {
@@ -26,13 +31,13 @@ const AdminChargePoint = () => {
         }
       );
 
-      Promise.all([adminChargeUserLogPromise, chargeLogPromise])
+      Promise.all([adminUserLogPromise, chargeLogPromise])
         .then(([adminChargeResponse, chargeLogResponse]) => {
           setData(adminChargeResponse.data);
           // Handle chargeLogResponse.data to set date, point, inner_point, total states
           const chargeLogData = chargeLogResponse.data;
 
-          console.log(chargeLogData);
+          console.log(adminChargeResponse.data);
 
           setLogEntries(chargeLogData);
           // 초기 모달 상태 설정
@@ -63,7 +68,7 @@ const AdminChargePoint = () => {
     return (
       <_.PPointLogWrap>
         <_.PPointLogWrapBar>
-          <div>{new Date(date).toLocaleDateString()}</div>
+          <div>{PrettyDateTime(date)}</div>
           <_.PointState>충전</_.PointState>
         </_.PPointLogWrapBar>
         <_.PPointSection>
@@ -101,10 +106,10 @@ const AdminChargePoint = () => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <C.InfoText key={item} name="date">
-                  {new Date(item.date).toLocaleDateString()}
+                  {PrettyDateTime(item.date)}
                 </C.InfoText>
                 <C.InfoText key={item}>+{item.inner_point}원</C.InfoText>
-                <C.InfoText key={item}>{"충전"}</C.InfoText>
+                <C.InfoText key={item}>{""}{"충전"}</C.InfoText>
               </div>
             </_.PointLogWrap>
             <div>

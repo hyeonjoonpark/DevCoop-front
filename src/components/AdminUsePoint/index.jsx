@@ -3,12 +3,19 @@ import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
 
-const AdminChargePoint = () => {
+function PrettyDateTime(date) {
+  const formattedDate = new Date(date);
+  return formattedDate.toLocaleDateString("ko-KR") + " " +
+    formattedDate.toLocaleTimeString("en-US", { hour12: false });
+}
+
+
+const AdminUsePoint = () => {
   const [data, setData] = useState(null);
   const [logEntries, setLogEntries] = useState([]);
   const [modalStates, setModalStates] = useState([]);
 
-  console.log("Check userlog");
+  console.log("Check user pay log");
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
@@ -16,7 +23,7 @@ const AdminChargePoint = () => {
         "/adminuseuserlog",
         { clientbarcode }
       );
-
+    console.log("UseLog Test!")
       const chargeLogPromise = axiosInstance.get("/api/paylog", {
         params: {
           id: clientbarcode,
@@ -53,7 +60,7 @@ const AdminChargePoint = () => {
     return (
       <_.PPointLogWrap>
         <_.PPointLogWrapBar>
-          <div>{new Date(date).toLocaleDateString()}</div>
+          <div>{PrettyDateTime(date)}</div>
           <_.PointState>결제</_.PointState>
         </_.PPointLogWrapBar>
         <_.PPointSection>
@@ -91,7 +98,7 @@ const AdminChargePoint = () => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <C.InfoText key={item} name="date">
-                  {new Date(item.date).toLocaleDateString()}
+                  {PrettyDateTime(item.date)}
                 </C.InfoText>
                 <C.InfoText key={item}>-{item.inner_point}원</C.InfoText>
                 <C.InfoText key={item}>{"결제"}</C.InfoText>
@@ -109,4 +116,4 @@ const AdminChargePoint = () => {
   );
 };
 
-export default AdminChargePoint;
+export default AdminUsePoint;

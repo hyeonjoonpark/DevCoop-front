@@ -20,7 +20,7 @@ const UsePointLogItem = () => {
   useEffect(() => {
     const clientname = localStorage.getItem("clientname");
     if (clientname) {
-      axios
+      axiosInstance
         .get("/useuserlog", {
           params: {
             clientname: clientname,

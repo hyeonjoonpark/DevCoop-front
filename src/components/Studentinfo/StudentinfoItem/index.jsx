@@ -3,42 +3,34 @@ import * as _ from "./style";
 import styled from "styled-components";
 import { axiosInstance } from "../../../axios";
 
-export const StudentinfoItem = ({ student, checked }) => {
-  const [selected, setSelected] = useState(checked);
+export const StudentinfoItem = ({ checked }) => {
   const [alluser, setAllUser] = useState([]);
-
-  useEffect(() => {
-    setSelected(checked);
-  }, [checked]);
+  const [checkboxValues, setCheckboxValues] = useState({});
 
   useEffect(() => {
     axiosInstance
       .get("/alluser")
       .then((response) => {
-        // console.log(response.data);
         setAllUser(response.data);
+        // Initialize checkboxValues with the default checked state
+        const initialCheckboxValues = {};
+        response.data.forEach((user) => {
+          initialCheckboxValues[user.code_number] = checked;
+        });
+        setCheckboxValues(initialCheckboxValues);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
-
-  useEffect(() => {
-    setSelected(checked);
   }, [checked]);
 
-  // const [checkboxValues, setCheckboxValues] = useState({
-  //   code_number: false,
-  // });
-
-  // const handleCheckboxChange = (event) => {
-  //   const { name, checked } = event.target;
-  //   setCheckboxValues((prevValues) => ({
-  //     ...prevValues,
-  //     [name]: checked,
-  //   }));
-  // };
-
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setCheckboxValues((prevValues) => ({
+      ...prevValues,
+      [name]: checked,
+    }));
+  };
   return (
     <InfoWrap>
       {alluser.map((user, index) => (
@@ -46,13 +38,13 @@ export const StudentinfoItem = ({ student, checked }) => {
           <_.Infochoose>
             <input
               type="checkbox"
-              name={`${student.code_number}`} // Use a unique identifier for each checkbox
-              checked={selected}
-              // onChange={handleCheckboxChange}
+              name={`${user.code_number}`} // Use a unique identifier for each checkbox
+              checked={checkboxValues[user.code_number] || false}
+              onChange={handleCheckboxChange}
             />
           </_.Infochoose>
           <_.Infochoose>
-            <_.Infotext>{user.student_number}</_.Infotext>
+            <_.Infotext>{user.student_name}</_.Infotext>
           </_.Infochoose>
           <_.Infochoose>
             <_.Infotext>{user.code_number}</_.Infotext>

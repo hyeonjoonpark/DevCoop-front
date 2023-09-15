@@ -4,7 +4,7 @@ import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
 import { StudentinfoItem } from "./StudentinfoItem";
 // import { getStudentinfo } from "../../axios";
-import data from "./data.json";
+// import data from "./data.json";
 import { useNavigate } from "react-router-dom";
 // import { ReactComponent as SearchIcon } from "../../assets/Searchicon.svg";
 import { ReactComponent as BarcodeIcon } from "../../assets/BarcodeIcon.svg";
@@ -15,6 +15,8 @@ import StudentCharge from "../StudentCharge";
 const Studentinfo = () => {
   const [selectAll, setSelectAll] = useState(false); // 라디오 박스 전체 선택 상태
 
+
+  
   // 라디오 박스 상태 전환 함수
   const toggleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -70,14 +72,14 @@ const Studentinfo = () => {
                   <_.Infotext>선택</_.Infotext>
                 </_.Infochoose>
                 <_.Infochoose>
-                  <_.Infotext>학번</_.Infotext>
+                  <_.Infotext>이름</_.Infotext>
                 </_.Infochoose>
                 <_.Infochoose>
                   <_.Infotext>바코드번호</_.Infotext>
                 </_.Infochoose>
               </_.Info>
               <div>
-                <StudentinfoItem student={"student"} checked={selectAll} />
+                <StudentinfoItem checked={selectAll} />
               </div>
             </_.Infolist>
           </_.InfoContainer>

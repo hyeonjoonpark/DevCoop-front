@@ -7,8 +7,7 @@ import { axiosInstance } from "../../axios";
 
 const ChargeCheck = ({ state }) => {
   console.log("ChargeCheck work");
-  const State = state;
-  console.log(State);
+  console.log(state);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const completePage = () => {
