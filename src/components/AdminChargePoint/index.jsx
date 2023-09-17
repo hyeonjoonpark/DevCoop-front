@@ -13,8 +13,7 @@ const AdminChargePoint = () => {
   const [data, setData] = useState(null);
   const [logEntries, setLogEntries] = useState([]);
   const [modalStates, setModalStates] = useState([]);
-
-  console.log("Check user log");
+  console.log("Check user charge log");
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
