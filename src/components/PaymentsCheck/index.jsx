@@ -23,7 +23,7 @@ const PaymentsCheck = ({ state }) => {
     setModalOpen(false);
   };
 
-  const handleCharge = () => {
+  const handlePay = () => {
     axiosInstance
       .post(`/pay`, {
         code_number: state.code_number,
@@ -55,7 +55,7 @@ const PaymentsCheck = ({ state }) => {
           <button
             onClick={(state) => {
               compeletePage(state);
-              handleCharge();
+              handlePay();
             }}
           >
             네

@@ -38,7 +38,7 @@ const StudentCharge = () => {
 
   const handleCharge = () => {
     axiosInstance
-      .post(`/pointchange`, {
+      .post(`/charge`, {
         charger: state.charger,
         changePoint: state.point,
         code_number: state.code_number,

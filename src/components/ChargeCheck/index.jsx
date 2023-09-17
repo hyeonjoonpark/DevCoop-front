@@ -7,11 +7,12 @@ import { axiosInstance } from "../../axios";
 
 const ChargeCheck = ({ state }) => {
   console.log("ChargeCheck work");
+  const State = state;
   console.log(state);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const completePage = () => {
-    navigate("/studentinfo");
+    navigate("/chargecomplete", { state: { id: State.charger } });
   };
 
   const openModal = () => {
@@ -28,25 +29,27 @@ const ChargeCheck = ({ state }) => {
       plusPoint: state.point,
       code_number: state.code_number,
     });
+  
+    // const allChargeLogPromise = axiosInstance.post(`/allcharge`, {
+    //   charger: state.charger,
+    //   plusPoint: state.point,
+    //   code_number: state.code_number,
+    // });
+    
+    const chargeData = chargeLogPromise.data;
 
-    const allChargeLogPromise = axiosInstance.post(`/allcharge`, {
-      charger: state.charger,
-      plusPoint: state.point,
-      code_number: state.code_number,
-    });
+  //   Promise.all([chargeLogPromise, allChargeLogPromise])
+  //     .then(([chargeResponse, allChargeResponse]) => {
+  //       // Handle chargeLogResponse.data to set date, point, inner_point, total states
+  //       const chargeData = chargeResponse.data;
+  //       const allChargeData = allChargeResponse.data;
 
-    Promise.all([chargeLogPromise, allChargeLogPromise])
-      .then(([chargeResponse, allChargeResponse]) => {
-        // Handle chargeLogResponse.data to set date, point, inner_point, total states
-        const chargeData = chargeResponse.data;
-        const allChargeData = allChargeResponse.data;
-
-        console.log(chargeData);
-        console.log(allChargeData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  //       console.log(chargeData);
+  //       console.log(allChargeData);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
   };
 
   return (
