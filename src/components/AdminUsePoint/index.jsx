@@ -24,7 +24,7 @@ const AdminUsePoint = () => {
         { clientbarcode }
       );
     console.log("UseLog Test!")
-      const chargeLogPromise = axiosInstance.get("/api/paylog", {
+      const chargeLogPromise = axiosInstance.get("/paylog", {
         params: {
           id: clientbarcode,
         },

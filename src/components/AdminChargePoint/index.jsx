@@ -56,11 +56,11 @@ const AdminChargePoint = () => {
     setModalStates(newModalStates);
 
     // 3초 후에 모달 자동으로 닫기
-    setTimeout(() => {
-      const newModalStates = [...modalStates];
-      newModalStates[index] = false;
-      setModalStates(newModalStates);
-    }, 3000);
+    // setTimeout(() => {
+    //   const newModalStates = [...modalStates];
+    //   newModalStates[index] = false;
+    //   setModalStates(newModalStates);
+    // }, 3000);
   };
 
   const PointToggleWrap = ({ logEntry }) => {
