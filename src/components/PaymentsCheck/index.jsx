@@ -11,8 +11,14 @@ const PaymentsCheck = ({ state }) => {
   console.log(State);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-  const compeletePage = () => {
-    navigate("/paycomplete", { state: { id: State.charger } });
+  const compeletePage = (payData) => {
+    // payData를 필요한대로 사용하여 state에 전달
+    navigate("/paycomplete", { 
+      state: { 
+        id: state.charger,
+        payData: payData  // 예시로 payData를 전달
+      } 
+    });
   };
 
   const openModal = () => {
@@ -31,20 +37,20 @@ const PaymentsCheck = ({ state }) => {
         charger: state.charger,
       })
       .then((result) => {
-        console.log("요청성공");
-        console.log(result);
+        const payData = result.data;
+        console.log("요청성공", payData);
+
+        // 결제가 성공적으로 완료되었다면 compeletePage를 호출
+        compeletePage(payData);
       })
       .catch((error) => {
-        console.log("요청실패");
-        console.log(error);
+        console.log("요청실패", error);
       });
   };
 
   return (
     <>
-      <button onClick={openModal}>
-        결제
-      </button>
+      <button onClick={openModal}>결제</button>
       <Modal isOpen={modalOpen}>
         <_.ContentWrap>
           <QuestionLogo style={{ width: "60px", height: "60px" }} />
@@ -52,14 +58,7 @@ const PaymentsCheck = ({ state }) => {
           <_.ContentSubTitle>결제하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button
-            onClick={(state) => {
-              compeletePage(state);
-              handlePay();
-            }}
-          >
-            네
-          </button>
+          <button onClick={handlePay}>네</button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>

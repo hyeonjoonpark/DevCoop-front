@@ -1,59 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
-import axiosInstance from "../../axios";
 
 const PayComplete = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // localStorage.removeItem("clientname")
-  // localStorage.removeItem("clientpoint")
-  // localStorage.removeItem("clientbarcode")
-  // console.log(location.state.state);
-  //    charger: localStorage.getItem("adminname"),
-  // clientname : localStorage.getItem("clientname"),
-  // clientpoint : localStorage.getItem("clientpoint"),
-  // pluspoint: '',
-  // code_number: localStorage.getItem("clientbarcode"),
-
-  const [data, setData] = useState(null);
-  const [inner, setInner] = useState(null);
-  const [point, setPoint] = useState(null);
-  const [total, setTotal] = useState(null);
-  const [name, setName] = useState(null);
-  const id = localStorage.getItem("clientbarcode");
-
-  useEffect(() => {
-    axiosInstance
-      .get("/paycomplete", {
-        params: {
-          id: id,
-        },
-      })
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-        setName(response.data.name);
-        setInner(response.data.inner_point);
-        setPoint(response.data.point);
-        setTotal(response.data.total);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  
+  const payDataFromState = location.state.payData || {};
+  const minusPoint = payDataFromState.minusPoint;
+  const oldPoint = payDataFromState.oldPoint;
+  const newPoint = payDataFromState.newPoint;
+  const student_name = payDataFromState.student_name;
 
   const GoBack = () => {
     navigate("/barcode");
   };
+
   return (
     <>
       <_.CompeleteWrap>
         <_.PaymentsTopWrap>
           <CheckLogo style={{ width: "70px", height: "70px" }} />
-          <_.PaymentsTopTitle>{inner}원</_.PaymentsTopTitle>
+          <_.PaymentsTopTitle>{minusPoint}원</_.PaymentsTopTitle>
           <_.PaymentsTopSubTitle>결제완료</_.PaymentsTopSubTitle>
         </_.PaymentsTopWrap>
 
@@ -61,19 +31,19 @@ const PayComplete = () => {
           <_.StudentInfo>
             <_.InfoText color={color.default}>학생정보</_.InfoText>
             <_.StudentInfoDetail>
-              <_.InfoText>이름 : {name}</_.InfoText>
+              <_.InfoText>이름 : {student_name}</_.InfoText>
             </_.StudentInfoDetail>
           </_.StudentInfo>
 
           <_.ExChangeWrap>
             <_.ExChangeDetailWrap marginTop={"30px"}>
               <_.InfoText color={color.default}>원래금액</_.InfoText>
-              <_.Exchange>{point}원</_.Exchange>
+              <_.Exchange>{oldPoint}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
               <_.InfoText color={color.default}>결제금액</_.InfoText>
-              <_.Exchange>{inner}원</_.Exchange>
+              <_.Exchange>{minusPoint}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap
@@ -83,7 +53,7 @@ const PayComplete = () => {
             >
               <_.InfoText color={color.default}>남은금액</_.InfoText>
               <_.Exchange fontSize={"30px"} fontWeight={"700"}>
-                {total}원
+                {newPoint}원
               </_.Exchange>
             </_.ExChangeDetailWrap>
           </_.ExChangeWrap>

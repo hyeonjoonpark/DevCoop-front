@@ -3,38 +3,40 @@ import { ReactComponent as CheckLogo } from "../../assets/CheckLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as _ from "./style";
 import { color } from "../../constants/color";
-import { axiosInstance } from "../../axios";
 
 const ChargeComplete = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const chargeDataFromState = location.state?.chargeData || {};
 
-
-  const [data, setData] = useState(null);
   const [inner, setInner] = useState(null);
-  const [point, setPoint] = useState(null);
-  const [total, setTotal] = useState(null);
+  const [oldpoint, setOldPoint] = useState(null);
+  const [newPoint, setNewPoint] = useState(null);
   const [name, setName] = useState(null);
-  const id = localStorage.getItem("clientbarcode");
 
   useEffect(() => {
-    axiosInstance
-      .get("/chargecomplete", {
-        params: {
-          id: id,
-        },
-      })
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-        setName(response.data.name);
-        setInner(response.data.inner_point);
-        setPoint(response.data.point);
-        setTotal(response.data.total);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // axiosInstance
+    //   .get("/chargecomplete", {
+    //     params: {
+    //       id: id,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     setData(response.data);
+    //     console.log(response.data);
+    //     setName(response.data.name);
+    //     setInner(response.data.inner_point);
+    //     setPoint(response.data.point);
+    //     setTotal(response.data.total);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    console.log(chargeDataFromState)
+    setName(chargeDataFromState.student_name);
+    setInner(chargeDataFromState.plusPoint);
+    setOldPoint(chargeDataFromState.oldPoint);
+    setNewPoint(chargeDataFromState.newPoint);
   }, []);
 
   const GoBack = () => {
@@ -61,7 +63,7 @@ const ChargeComplete = () => {
           <_.ExChangeWrap>
             <_.ExChangeDetailWrap marginTop={"30px"}>
               <_.InfoText color={color.default}>원래금액</_.InfoText>
-              <_.Exchange>{point}원</_.Exchange>
+              <_.Exchange>{oldpoint}원</_.Exchange>
             </_.ExChangeDetailWrap>
 
             <_.ExChangeDetailWrap>
@@ -76,7 +78,7 @@ const ChargeComplete = () => {
             >
               <_.InfoText color={color.default}>남은금액</_.InfoText>
               <_.Exchange fontSize={"30px"} fontWeight={"700"}>
-                {total}원
+                {newPoint}원
               </_.Exchange>
             </_.ExChangeDetailWrap>
           </_.ExChangeWrap>

@@ -6,13 +6,17 @@ import * as _ from "./style";
 import { axiosInstance } from "../../axios";
 
 const ChargeCheck = ({ state }) => {
-  console.log("ChargeCheck work");
-  const State = state;
-  console.log(state);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-  const completePage = () => {
-    navigate("/chargecomplete", { state: { id: State.charger } });
+
+  const completePage = (chargeData) => {
+    // chargeData를 필요한대로 사용하여 state에 전달
+    navigate("/chargecomplete", { 
+      state: { 
+        id: state.charger, 
+        chargeData: chargeData  // 예시로 chargeData를 전달
+      } 
+    });
   };
 
   const openModal = () => {
@@ -24,32 +28,21 @@ const ChargeCheck = ({ state }) => {
   };
 
   const handleCharge = () => {
-    const chargeLogPromise = axiosInstance.post(`/charge`, {
+    axiosInstance.post(`/charge`, {
       charger: state.charger,
       plusPoint: state.point,
       code_number: state.code_number,
+    })
+    .then((chargeResponse) => {
+      const chargeData = chargeResponse.data;
+      console.log(chargeData);
+      
+      // 충전이 성공적으로 완료되었다면 completePage를 호출
+      completePage(chargeData);
+    })
+    .catch((error) => {
+      console.error(error);
     });
-  
-    // const allChargeLogPromise = axiosInstance.post(`/allcharge`, {
-    //   charger: state.charger,
-    //   plusPoint: state.point,
-    //   code_number: state.code_number,
-    // });
-    
-    const chargeData = chargeLogPromise.data;
-
-  //   Promise.all([chargeLogPromise, allChargeLogPromise])
-  //     .then(([chargeResponse, allChargeResponse]) => {
-  //       // Handle chargeLogResponse.data to set date, point, inner_point, total states
-  //       const chargeData = chargeResponse.data;
-  //       const allChargeData = allChargeResponse.data;
-
-  //       console.log(chargeData);
-  //       console.log(allChargeData);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
   };
 
   return (
@@ -64,14 +57,7 @@ const ChargeCheck = ({ state }) => {
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button
-            onClick={() => {
-              handleCharge();
-              completePage();
-            }}
-          >
-            네
-          </button>
+          <button onClick={handleCharge}>네</button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>

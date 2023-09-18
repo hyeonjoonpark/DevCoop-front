@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import AdminHeader from "../../components/AdminHeader ";
 import * as P from "../../common/PageWrapStyle";
 import PayComplete from "../../components/PayComplete";
 
@@ -8,7 +8,7 @@ export default function PayCompletePage() {
     <>
       <P.PageWrap>
         <P.PageContainer>
-          <Header />
+          <AdminHeader />
           <PayComplete />
         </P.PageContainer>
       </P.PageWrap>
