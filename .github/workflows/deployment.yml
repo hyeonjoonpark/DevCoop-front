@@ -3,7 +3,7 @@ name: CI/CD Deployment
 on:
   push:
     branches:
-      - main # Or the branch name you wish to trigger the deployment
+      - develop # Or the branch name you wish to trigger the deployment
 
 jobs:
   deploy:
