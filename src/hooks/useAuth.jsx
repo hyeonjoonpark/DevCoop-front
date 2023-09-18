@@ -75,6 +75,17 @@ export const useAuth = () => {
     window.location.replace("/");
   };
 
+  const handleAdminLogout = (e) => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("clientbarcode");
+    localStorage.removeItem("clientpoint");
+    localStorage.removeItem("adminname");
+    localStorage.removeItem("clientname");
+    setIsLoggedIn(false);
+    window.location.replace("/adminLogin");
+  }
+
   return {
     email,
     password,
@@ -83,5 +94,6 @@ export const useAuth = () => {
     handleSubmit,
     handleLogout,
     isLoggedIn,
+    handleAdminLogout,
   };
 };

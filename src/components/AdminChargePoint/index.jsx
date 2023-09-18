@@ -13,7 +13,7 @@ const AdminChargePoint = () => {
   const [data, setData] = useState(null);
   const [logEntries, setLogEntries] = useState([]);
   const [modalStates, setModalStates] = useState([]);
-  console.log("Check user charge log");
+  // console.log("Check user charge log");
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
@@ -36,7 +36,7 @@ const AdminChargePoint = () => {
           // Handle chargeLogResponse.data to set date, point, inner_point, total states
           const chargeLogData = chargeLogResponse.data;
 
-          console.log(adminChargeResponse.data);
+          // console.log(adminChargeResponse.data);
 
           setLogEntries(chargeLogData);
           // 초기 모달 상태 설정
@@ -100,15 +100,12 @@ const AdminChargePoint = () => {
               onClick={() => toggleModal(index)}
               style={{ background: "#E6EBFF" }}
             >
-              <div
-                key={item}
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
-                <C.InfoText key={item} name="date">
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <C.InfoText name="date">
                   {PrettyDateTime(item.date)}
                 </C.InfoText>
-                <C.InfoText key={item}>+{item.inner_point}원</C.InfoText>
-                <C.InfoText key={item}>{""}{"충전"}</C.InfoText>
+                <C.InfoText>+{item.inner_point}원</C.InfoText>
+                <C.InfoText>{"충전"}</C.InfoText>
               </div>
             </_.PointLogWrap>
             <div>

@@ -15,7 +15,7 @@ const AdminUsePoint = () => {
   const [logEntries, setLogEntries] = useState([]);
   const [modalStates, setModalStates] = useState([]);
 
-  console.log("Check user pay log");
+  // console.log("Check user pay log");
   useEffect(() => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
@@ -23,7 +23,7 @@ const AdminUsePoint = () => {
         "/adminpayuserlog",
         { clientbarcode }
       );
-    console.log("UseLog Test!")
+    // console.log("UseLog Test!")
       const chargeLogPromise = axiosInstance.get("/paylog", {
         params: {
           id: clientbarcode,
@@ -36,7 +36,7 @@ const AdminUsePoint = () => {
           // Handle chargeLogResponse.data to set date, point, inner_point, total states
           const chargeLogData = chargeLogResponse.data;
 
-          console.log(chargeLogData);
+          // console.log(chargeLogData);
 
           setLogEntries(chargeLogData);
           // 초기 모달 상태 설정
@@ -94,14 +94,13 @@ const AdminUsePoint = () => {
               style={{ background: "#E7E7E7" }}
             >
               <div
-                key={item}
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <C.InfoText key={item} name="date">
+                <C.InfoText name="date">
                   {PrettyDateTime(item.date)}
                 </C.InfoText>
-                <C.InfoText key={item}>-{item.inner_point}원</C.InfoText>
-                <C.InfoText key={item}>{"결제"}</C.InfoText>
+                <C.InfoText>-{item.inner_point}원</C.InfoText>
+                <C.InfoText>{"결제"}</C.InfoText>
               </div>
             </_.PointLogWrap>
             <div>
@@ -114,6 +113,9 @@ const AdminUsePoint = () => {
         ))}
     </div>
   );
+
+
+
 };
 
 export default AdminUsePoint;

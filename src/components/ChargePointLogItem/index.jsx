@@ -40,23 +40,22 @@ const UsePointLogItem = () => {
     <div style={{ flexDirection: "column" }}>
       {data &&
         data.map((item) => (
-          <_.PointLogWrap style={{ background: "#E6EBFF" }}>
+          <_.PointLogWrap key={item.id} style={{ background: "#E6EBFF" }}> {/* <-- key를 여기에 설정 */}
             <div
-              key={item}
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <C.InfoText key={item}>
+              <C.InfoText>
                 {new Date(item.date).toLocaleDateString()}
               </C.InfoText>
-              <C.InfoText key={item}>
+              <C.InfoText>
                 +{item.inner_point.toLocaleString()}원
               </C.InfoText>
-              <C.InfoText key={item}>{"충전"}</C.InfoText>
+              <C.InfoText>{"충전"}</C.InfoText>
             </div>
           </_.PointLogWrap>
         ))}
     </div>
   );
-};
+}
 
 export default UsePointLogItem;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import imgLogo from "../../assets/AriPayL.svg";
+import imgLogo from "../../assets/DevCoopL.svg";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../../axios";
 

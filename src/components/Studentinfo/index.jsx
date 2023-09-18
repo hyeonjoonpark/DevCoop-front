@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
+import AdminHeader from "../AdminHeader ";
 import { StudentinfoItem } from "./StudentinfoItem";
 // import { getStudentinfo } from "../../axios";
 // import data from "./data.json";
@@ -42,8 +43,7 @@ const Studentinfo = () => {
     <>
       <P.PageWrap>
         <P.PageContainer>
-          <Header />
-
+          <AdminHeader />
           <_.InfoContainer>
             <_.InfoHeader>
               <_.Infotitle>학생 정보 조회</_.Infotitle>
