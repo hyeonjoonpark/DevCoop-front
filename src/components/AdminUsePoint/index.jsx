@@ -20,11 +20,11 @@ const AdminUsePoint = () => {
     const clientbarcode = localStorage.getItem("clientbarcode");
     if (clientbarcode) {
       const adminChargeUserLogPromise = axiosInstance.post(
-        "/adminpayuserlog",
+        "/admin/payuserlog",
         { clientbarcode }
       );
     // console.log("UseLog Test!")
-      const chargeLogPromise = axiosInstance.get("/paylog", {
+      const chargeLogPromise = axiosInstance.get("/admin/paylog", {
         params: {
           id: clientbarcode,
         },

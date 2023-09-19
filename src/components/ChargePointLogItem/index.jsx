@@ -21,7 +21,7 @@ const UsePointLogItem = () => {
     const clientname = localStorage.getItem("clientname");
     if (clientname) {
       axiosInstance
-        .get("/chargeuserlog", {
+        .get("/admin/chargeuserlog", {
           params: {
             clientname: clientname,
           },

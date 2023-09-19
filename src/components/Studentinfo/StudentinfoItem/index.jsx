@@ -9,7 +9,7 @@ export const StudentinfoItem = ({ checked }) => {
 
   useEffect(() => {
     axiosInstance
-      .get("/alluser")
+      .get("/admin/alluser")
       .then((response) => {
         setAllUser(response.data);
         // Initialize checkboxValues with the default checked state
