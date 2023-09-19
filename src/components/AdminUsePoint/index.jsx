@@ -9,10 +9,12 @@ function PrettyDateTime(date) {
     hour12: false
   };
 
-  const formattedDate = new Date(date);
+  const formattedDate = new Date(date+"Z");
+  console.log( formattedDate)
   return formattedDate.toLocaleDateString("ko-KR", options) + " " +
          formattedDate.toLocaleTimeString("en-US", options);
 }
+
 
 const AdminUsePoint = () => {
   const [data, setData] = useState(null);
