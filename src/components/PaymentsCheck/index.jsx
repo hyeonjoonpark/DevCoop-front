@@ -31,7 +31,7 @@ const PaymentsCheck = ({ state }) => {
 
   const handlePay = () => {
     axiosInstance
-      .post(`/pay`, {
+      .post(`/admin/pay`, {
         code_number: state.code_number,
         minusPoint: state.point,
         charger: state.charger,
