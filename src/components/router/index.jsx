@@ -23,7 +23,7 @@ const Router = () => {
           <Route path="/studentinfo" element={<StudentinfoPage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path="/userlog" element={<UserlogPage/>}/>
-          <Route path="/adminlogin" element={<AdminLoginPage/>} />
+          <Route path="/admin" element={<AdminLoginPage/>} />
           <Route path="/*" element={<NotFoundPage />} />
         
       </Switch>

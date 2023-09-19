@@ -83,7 +83,7 @@ export const useAuth = () => {
     localStorage.removeItem("adminname");
     localStorage.removeItem("clientname");
     setIsLoggedIn(false);
-    window.location.replace("/adminLogin");
+    window.location.replace("/admin");
   }
 
   return {
