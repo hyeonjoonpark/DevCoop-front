@@ -28,7 +28,7 @@ const ChargeCheck = ({ state }) => {
   };
 
   const handleCharge = () => {
-    axiosInstance.post(`/charge`, {
+    axiosInstance.post(`/admin/charge`, {
       charger: state.charger,
       plusPoint: state.point,
       code_number: state.code_number,
