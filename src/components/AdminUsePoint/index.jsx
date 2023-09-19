@@ -4,11 +4,15 @@ import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
 
 function PrettyDateTime(date) {
-  const formattedDate = new Date(date);
-  return formattedDate.toLocaleDateString("ko-KR") + " " +
-    formattedDate.toLocaleTimeString("en-US", { hour12: false });
-}
+  const options = {
+    timeZone: "Asia/Seoul",
+    hour12: false
+  };
 
+  const formattedDate = new Date(date);
+  return formattedDate.toLocaleDateString("ko-KR", options) + " " +
+         formattedDate.toLocaleTimeString("en-US", options);
+}
 
 const AdminUsePoint = () => {
   const [data, setData] = useState(null);
