@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../axios";
 
-
 export const login = async (email, password) => {
   try {
     const response = await axiosInstance.post("/login", {
@@ -9,8 +8,6 @@ export const login = async (email, password) => {
       password: password,
     });
     return {
-      access: response.data.accToken,
-      refresh: response.data.refToken,
       name: response.data.name,
       point: response.data.point,
       message: response.data.message,
@@ -20,6 +17,13 @@ export const login = async (email, password) => {
   }
 };
 
+export const logout = async () => {
+  try {
+    await axiosInstance.post("/logout"); // Assuming your server uses "/logout" endpoint for logout
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,14 +31,11 @@ export const useAuth = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const access = localStorage.getItem("access");
-    const refresh = localStorage.getItem("refresh");
-
-    if (access && refresh) {
-      setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
-    } else {
-      setIsLoggedIn(false);
-    }
+    // Check if user is logged in by trying to access a protected resource or endpoint
+    // Alternatively, server could return isLoggedIn status
+    // Here I'm assuming it's based on the presence of cookies.
+    // If cookies are not present or invalid, server should handle it.
+    setIsLoggedIn(document.cookie.includes('isLoggedIn')); 
   }, [isLoggedIn]);
 
   const handleInputId = (e) => {
@@ -47,44 +48,26 @@ export const useAuth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const { access, refresh, name, point, message } = await login(
-        email,
-        password
-      );
-      localStorage.setItem("access", access);
-      localStorage.setItem("refresh", refresh);
-      localStorage.setItem("clientname", name);
-      // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
+      const { name, point, message } = await login(email, password);
+      setIsLoggedIn(true); 
       console.log(name, point, message, isLoggedIn);
       window.location.replace("/");
     } catch (error) {
-      throw error;
+      console.error("Error during login:", error);
     }
   };
 
-  const handleLogout = (e) => {
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-    localStorage.removeItem("clientbarcode");
-    localStorage.removeItem("clientpoint");
-    localStorage.removeItem("adminname");
-    localStorage.removeItem("clientname");
-    setIsLoggedIn(false);
-    window.location.replace("/");
+  const handleLogout = async (e) => {
+    try {
+      await logout();
+      setIsLoggedIn(false);
+      window.location.replace("/");
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
   };
 
-  const handleAdminLogout = (e) => {
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-    localStorage.removeItem("clientbarcode");
-    localStorage.removeItem("clientpoint");
-    localStorage.removeItem("adminname");
-    localStorage.removeItem("clientname");
-    setIsLoggedIn(false);
-    window.location.replace("/admin");
-  }
 
   return {
     email,
@@ -94,6 +77,5 @@ export const useAuth = () => {
     handleSubmit,
     handleLogout,
     isLoggedIn,
-    handleAdminLogout,
   };
 };

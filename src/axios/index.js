@@ -6,21 +6,8 @@ export const axiosInstance = axios.create({
     headers: {
         "Content-Type": "application/json",
     },
+    withCredentials: true  // 이렇게 설정하면 요청시에 자동으로 쿠키가 포함됩니다.
 });
-
-// Request interceptor: Add tokens to headers if they exist.
-axiosInstance.interceptors.request.use(
-    function (config) {
-        const accToken = localStorage.getItem("access");
-        const refToken = localStorage.getItem("refresh");
-        if (accToken) config.headers["Access"] = accToken;
-        if (refToken) config.headers["Refresh"] = refToken;
-        return config;
-    },
-    function (error) {
-        return Promise.reject(error);
-    }
-);
 
 // Response interceptor: Handle token renewals.
 axiosInstance.interceptors.response.use(
@@ -31,23 +18,12 @@ axiosInstance.interceptors.response.use(
         if (error.response && error.response.status === 403) {
             const { access, refresh } = error.response.data;
 
-            // If a new access token is provided, save it and retry the request.
-            if (access) {
-                localStorage.setItem("access", access);
-                error.config.headers["Access"] = access;
-                return axiosInstance.request(error.config);
-            }
-            
-            // If a new refresh token is provided, save it and retry the request.
-            if (refresh) {
-                localStorage.setItem("refresh", refresh);
-                error.config.headers["Refresh"] = refresh;
+            // If a new access or refresh token is provided, just retry the request.
+            if (access || refresh) {
                 return axiosInstance.request(error.config);
             }
 
-            // If no tokens are provided, clear the existing ones.
-            localStorage.removeItem("access");
-            localStorage.removeItem("refresh");
+            // If no tokens are provided, it's likely an authentication error.
         }
 
         return Promise.reject(error);
@@ -58,20 +34,6 @@ export const checkToken = async (hello) => {
     try {
         const response = await axiosInstance.post("/me", { hello });
         return response.data;
-    } catch (error) {
-        throw error;
-    }
-};
-
-export const getPoint = async () => {
-    try {
-        const response = await axiosInstance.get("/studentinfo");
-        return {
-            number: response.data.number,
-            name: response.data.name,
-            code: response.data.code,
-            point: response.data.point,
-        };
     } catch (error) {
         throw error;
     }

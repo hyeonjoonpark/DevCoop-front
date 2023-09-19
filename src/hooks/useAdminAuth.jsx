@@ -8,9 +8,8 @@ export const adminlogin = async (email, password) => {
       email: email,
       password: password,
     });
+    // access와 refresh 토큰은 서버에서 쿠키로 설정되므로 여기에서 반환할 필요가 없습니다.
     return {
-      access: response.data.accToken,
-      refresh: response.data.refToken,
       name: response.data.name,
       point: response.data.point,
       message: response.data.message,
@@ -25,15 +24,13 @@ export const useAdminAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  useEffect(() => {
-    const access = localStorage.getItem("access");
-    const refresh = localStorage.getItem("refresh");
 
-    if (access && refresh) {
-      setIsLoggedIn(true); // 로그인 성공 시 isLoggedIn을 true로 설정
-    } else {
-      setIsLoggedIn(false);
-    }
+  useEffect(() => {
+    // Check if user is logged in by trying to access a protected resource or endpoint
+    // Alternatively, server could return isLoggedIn status
+    // Here I'm assuming it's based on the presence of cookies.
+    // If cookies are not present or invalid, server should handle it.
+    setIsLoggedIn(document.cookie.includes('isAdminLoggedIn')); 
   }, [isLoggedIn]);
 
   const handleInputId = (e) => {
@@ -48,25 +45,23 @@ export const useAdminAuth = () => {
     e.preventDefault();
 
     try {
-      const { access, refresh, name, point, message } = await adminlogin(
-        email,
-        password
-      );
-      localStorage.setItem("access", access);
-      localStorage.setItem("refresh", refresh);
+      const { name, point, message } = await adminlogin(email, password);
       localStorage.setItem("adminname", name);
-      // setIsLoggedIn((prev) => !prev); // 로그인 성공 시 isLoggedIn을 true로 설정
-      window.location.replace("/studentinfo");
+      navigate("/studentinfo"); // React Router의 navigate를 사용하여 페이지 리다이렉트
     } catch (error) {
-      throw error;
+      console.error("Login error:", error);
     }
   };
 
-  const handleLogout = (e) => {
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-    setIsLoggedIn(false);
-    window.location.replace("/");
+  const handleLogout = async () => {
+    // 서버에 로그아웃 요청을 보내 쿠키를 제거합니다.
+    try {
+      await axiosInstance.post("/logout");
+      setIsLoggedIn(false);
+      navigate("/admin");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return {
