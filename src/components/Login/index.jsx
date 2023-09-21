@@ -4,12 +4,10 @@ import { useAuth } from "../../hooks/useAuth";
 import * as L from "./style";
 
 function Login() {
-  const { email, password, handleInputId, handleInputPw, handleSubmit } =
-    useAuth();
+  const { email, password, handleInputId, handleInputPw, handleSubmit, errorMessage} = useAuth();
 
   return (
     <div>
-      {
         <L.LoginWrap onSubmit={handleSubmit}>
           <L.LogoImg src={imgLogo} alt="logo image" />
           <L.LoginInput
@@ -26,9 +24,9 @@ function Login() {
             onChange={handleInputPw}
             placeholder="비밀번호를 입력해주세요"
           />
+          {errorMessage && <L.ErrorText>{errorMessage}</L.ErrorText>} {/* 에러 메시지 스타일은 직접 정의하셔야 합니다. */}
           <L.LoginButton>로그인</L.LoginButton>
         </L.LoginWrap>
-      }
     </div>
   );
 }

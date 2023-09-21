@@ -15,23 +15,7 @@ const ChargeComplete = () => {
   const [name, setName] = useState(null);
 
   useEffect(() => {
-    // axiosInstance
-    //   .get("/chargecomplete", {
-    //     params: {
-    //       id: id,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     setData(response.data);
-    //     console.log(response.data);
-    //     setName(response.data.name);
-    //     setInner(response.data.inner_point);
-    //     setPoint(response.data.point);
-    //     setTotal(response.data.total);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+
     console.log(chargeDataFromState)
     setName(chargeDataFromState.student_name);
     setInner(chargeDataFromState.plusPoint);

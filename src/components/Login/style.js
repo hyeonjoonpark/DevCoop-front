@@ -27,3 +27,10 @@ export const LoginButton = styled.button`
   margin-top: 20px;
   background-color: #f5d410;
 `;
+
+export const ErrorText = styled.p`
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+`;

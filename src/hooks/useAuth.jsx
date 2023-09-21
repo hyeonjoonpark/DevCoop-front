@@ -29,6 +29,7 @@ export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     // Check if user is logged in by trying to access a protected resource or endpoint
@@ -50,10 +51,15 @@ export const useAuth = () => {
     e.preventDefault();
     try {
       const { name, point, message } = await login(email, password);
-      setIsLoggedIn(true); 
+      setIsLoggedIn(true);
       console.log(name, point, message, isLoggedIn);
       window.location.replace("/");
     } catch (error) {
+      if (error.response && error.response.data) {
+        setErrorMessage(error.response.data.message || "아이디와 암호를 다시 확인해주세요");
+      } else {
+        setErrorMessage("내부 서버 오류");
+      }
       console.error("Error during login:", error);
     }
   };
@@ -77,5 +83,6 @@ export const useAuth = () => {
     handleSubmit,
     handleLogout,
     isLoggedIn,
+    errorMessage,
   };
 };
