@@ -28,3 +28,25 @@ export const LoginButton = styled.button`
   margin-top: 20px;
   background-color: #41434C;
 `;
+
+export const ModalOverlay = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+`;
+
+export const ModalContent = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;

@@ -8,7 +8,6 @@ export const adminlogin = async (email, password) => {
       email: email,
       password: password,
     });
-    // access와 refresh 토큰은 서버에서 쿠키로 설정되므로 여기에서 반환할 필요가 없습니다.
     return {
       name: response.data.name,
       point: response.data.point,
@@ -24,12 +23,9 @@ export const useAdminAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // 모달에 표시될 에러 메시지
 
   useEffect(() => {
-    // Check if user is logged in by trying to access a protected resource or endpoint
-    // Alternatively, server could return isLoggedIn status
-    // Here I'm assuming it's based on the presence of cookies.
-    // If cookies are not present or invalid, server should handle it.
     setIsLoggedIn(document.cookie.includes('isAdminLoggedIn')); 
   }, [isLoggedIn]);
 
@@ -47,14 +43,22 @@ export const useAdminAuth = () => {
     try {
       const { name, point, message } = await adminlogin(email, password);
       localStorage.setItem("adminname", name);
-      navigate("/studentinfo"); // React Router의 navigate를 사용하여 페이지 리다이렉트
+      navigate("/studentinfo");
     } catch (error) {
-      console.error("Login error:", error);
+      if (error.response && error.response.status === 401) {
+        setErrorMessage("아이디 혹은 암호가 잘못되었습니다");
+      } else {
+        setErrorMessage("내부 서버 오류");
+      }
+      setTimeout(() => setErrorMessage(""), 3000);
     }
   };
 
+  const handleModalClose = () => {
+    setErrorMessage("");
+  };
+
   const handleLogout = async () => {
-    // 서버에 로그아웃 요청을 보내 쿠키를 제거합니다.
     try {
       await axiosInstance.post("/logout");
       setIsLoggedIn(false);
@@ -72,5 +76,7 @@ export const useAdminAuth = () => {
     handleSubmit,
     handleLogout,
     isLoggedIn,
+    errorMessage, 
+    handleModalClose 
   };
 };

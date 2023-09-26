@@ -17,14 +17,6 @@ export const login = async (email, password) => {
   }
 };
 
-export const logout = async () => {
-  try {
-    await axiosInstance.post("/logout"); // Assuming your server uses "/logout" endpoint for logout
-  } catch (error) {
-    throw error;
-  }
-};
-
 export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
@@ -32,10 +24,6 @@ export const useAuth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    // Check if user is logged in by trying to access a protected resource or endpoint
-    // Alternatively, server could return isLoggedIn status
-    // Here I'm assuming it's based on the presence of cookies.
-    // If cookies are not present or invalid, server should handle it.
     setIsLoggedIn(document.cookie.includes('isLoggedIn')); 
   }, [isLoggedIn]);
 
@@ -49,31 +37,33 @@ export const useAuth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const { name, point, message } = await login(email, password);
       setIsLoggedIn(true);
+      // 알림 혹은 로그로 사용자 정보와 로그인 상태 표시
       console.log(name, point, message, isLoggedIn);
+      // 로그인 후 리디렉션 처리
       window.location.replace("/");
     } catch (error) {
-      if (error.response && error.response.data) {
-        setErrorMessage(error.response.data.message || "아이디와 암호를 다시 확인해주세요");
+      if (error.response && error.response.status === 401) {
+        setErrorMessage("아이디 혹은 암호가 잘못되었습니다");
       } else {
         setErrorMessage("내부 서버 오류");
       }
-      console.error("Error during login:", error);
+      setTimeout(() => setErrorMessage(""), 3000);
     }
   };
 
-  const handleLogout = async (e) => {
+  const handleLogout = async () => {
     try {
-      await logout();
+      await axiosInstance.post("/logout");
       setIsLoggedIn(false);
       window.location.replace("/");
     } catch (error) {
       console.error("Error during logout:", error);
     }
   };
-
 
   return {
     email,

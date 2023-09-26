@@ -4,6 +4,7 @@ import * as P from "../../common/PageWrapStyle";
 import Header from "../Header";
 import { useAuth } from "../../hooks/useAuth";
 import { usePoint } from "../../hooks/usePoint";
+import { Link } from "react-router-dom";
 
 const Main = ({ student }) => {
   const { isLoggedIn } = useAuth();
@@ -38,34 +39,45 @@ const Main = ({ student }) => {
           </_.Maintop>
 
           <_.Mainbottom>
-            <_.UseBox>
-              <div>
-                How
-                <br />
-                To
-                <br />
-                Use?
-                <br />
-                <p>
-                  아리페이를 더 똑똑하게
+            <a
+              href="https://www.instagram.com/p/Cxc21Z0Plc5/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA=="
+              target="_blank"
+            >
+              <_.UseBox>
+                <div>
+                  How
                   <br />
-                  사용하는 방법
-                </p>
-              </div>
-            </_.UseBox>
+                  To
+                  <br />
+                  Use?
+                  <br />
+                  <p>
+                    아리페이를 더 똑똑하게
+                    <br />
+                    사용하는 방법
+                  </p>
+                </div>
+              </_.UseBox>
+            </a>
 
-            <_.AskBox>
-              <_.AskInTop>
-                <a
-                  href="https://www.instagram.com/bsm_devcoop/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  문의하기
-                </a>
-              </_.AskInTop>
-              <_.CallLogoStyle />
-            </_.AskBox>
+            
+            <a
+              href="https://www.instagram.com/bsm_devcoop/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <_.AskBox>
+                <_.AskInTop>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    문의하기
+                  </a>
+                </_.AskInTop>
+                <_.CallLogoStyle />
+              </_.AskBox>
+            </a>
           </_.Mainbottom>
         </P.PageContainer>
       </P.PageWrap>
