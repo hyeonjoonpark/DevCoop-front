@@ -24,8 +24,12 @@ const ChargeComplete = () => {
   }, []);
 
   const GoBack = () => {
+    navigate("/payments");
+  };
+  const GoBackBarcode = () => {
     navigate("/barcode");
   };
+  
   return (
     <>
       <_.CompeleteWrap>
@@ -67,8 +71,10 @@ const ChargeComplete = () => {
             </_.ExChangeDetailWrap>
           </_.ExChangeWrap>
         </_.PaymentsBottomWrap>
-
-        <_.GoBackBtn onClick={GoBack}>돌아가기</_.GoBackBtn>
+        <_.GoBackBtn onClick={GoBack}>추가 충전 및 결재</_.GoBackBtn>
+        <br />
+        <br />
+        <_.GoBackBtn onClick={GoBackBarcode}>새 바코드</_.GoBackBtn>
       </_.CompeleteWrap>
     </>
   );

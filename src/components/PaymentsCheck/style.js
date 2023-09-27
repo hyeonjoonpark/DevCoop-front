@@ -31,3 +31,9 @@ export const BtnWrap = styled.div`
     height: 100px;
 
 `;
+
+export const ErrorText = styled.div`
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+`;

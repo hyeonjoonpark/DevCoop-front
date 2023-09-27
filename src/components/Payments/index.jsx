@@ -1,11 +1,12 @@
+import React, { useState, useEffect } from "react";
 import PaymentsCheck from "../PaymentsCheck";
 import AdminUsePoint from "../AdminUsePoint";
 import AdminChargePoint from "../AdminChargePoint";
 import * as C from "../ChargeComplete/style";
 import * as _ from "./style";
-// import * as U from "../Userlog/style";
+import { axiosInstance } from "../../axios";
+
 import ChargeCheck from "../ChargeCheck";
-import { useState } from "react";
 import { color } from "../../constants/color";
 
 const Payments = () => {
@@ -13,11 +14,41 @@ const Payments = () => {
 
   const [state, setState] = useState({
     charger: localStorage.getItem("adminname"),
-    clientname: localStorage.getItem("clientname"),
-    clientpoint: localStorage.getItem("clientpoint"),
+    clientname: "",
+    clientpoint: "",
     point: "",
     code_number: localStorage.getItem("clientbarcode"),
   });
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const { stName, nowPoint } = await sendBarcode(state.code_number);
+        setState((prevState) => ({
+          ...prevState,
+          clientname: stName,
+          clientpoint: nowPoint,
+        }));
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+    fetchUserInfo();
+  }, [state.code_number]);
+
+  const sendBarcode = async (barcode) => {
+    try {
+      const response = await axiosInstance.post("/admin/barcode", {
+        code_number: barcode,
+      });
+      return {
+        stName: response.data.studentname,
+        nowPoint: response.data.point,
+        message: response.data.message,
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
 
   const handleChange = (e) => {
     setState({

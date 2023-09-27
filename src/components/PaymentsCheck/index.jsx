@@ -7,9 +7,10 @@ import axiosInstance from "../../axios";
 
 const PaymentsCheck = ({ state }) => {
   console.log("PaymentsCheck work");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null); // 에러 메시지 상태
   const State = state;
   console.log(State);
-  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const compeletePage = (payData) => {
     // payData를 필요한대로 사용하여 state에 전달
@@ -44,7 +45,12 @@ const PaymentsCheck = ({ state }) => {
         compeletePage(payData);
       })
       .catch((error) => {
-        console.log("요청실패", error);
+        if (error.response && error.response.data.message === "잘못된 요청입니다. 잔액초과") {
+          setErrorMessage("잔액이 부족합니다.");
+          setTimeout(() => setErrorMessage(null), 3000);
+        } else {
+          console.log("요청실패", error);
+        }
       });
   };
 
@@ -56,6 +62,7 @@ const PaymentsCheck = ({ state }) => {
           <QuestionLogo style={{ width: "60px", height: "60px" }} />
           <_.ContentTitle>{state.point}원</_.ContentTitle>
           <_.ContentSubTitle>결제하시겠습니까?</_.ContentSubTitle>
+          {errorMessage && <div>{errorMessage}</div>} {/* 에러 메시지가 있으면 표시 */}
         </_.ContentWrap>
         <_.BtnWrap>
           <button onClick={handlePay}>네</button>

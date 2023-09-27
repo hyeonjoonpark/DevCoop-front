@@ -31,10 +31,8 @@ export const Barcode = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        const { message, nowPoint, stName } = await sendBarcode(barcode)
+        const { message } = await sendBarcode(barcode)
         console.log(message, nowPoint, stName)
-        localStorage.setItem("clientname", stName)
-        localStorage.setItem("clientpoint", nowPoint)
         localStorage.setItem("clientbarcode", barcode)
         window.location.replace("/payments")
     } catch (error) {

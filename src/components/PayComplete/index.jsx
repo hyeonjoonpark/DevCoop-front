@@ -15,8 +15,12 @@ const PayComplete = () => {
   const student_name = payDataFromState.student_name;
 
   const GoBack = () => {
+    navigate("/payments");
+  };
+  const GoBackBarcode = () => {
     navigate("/barcode");
   };
+
 
   return (
     <>
@@ -57,9 +61,11 @@ const PayComplete = () => {
               </_.Exchange>
             </_.ExChangeDetailWrap>
           </_.ExChangeWrap>
-        </_.PaymentsBottomWrap>
-
-        <_.GoBackBtn onClick={GoBack}>돌아가기</_.GoBackBtn>
+        </_.PaymentsBottomWrap>     
+        <_.GoBackBtn onClick={GoBack}>추가 충전 및 결재</_.GoBackBtn>
+        <br />
+        <br />
+        <_.GoBackBtn onClick={GoBackBarcode}>새 바코드</_.GoBackBtn>
       </_.CompeleteWrap>
     </>
   );

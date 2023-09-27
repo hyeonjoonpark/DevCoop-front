@@ -83,7 +83,7 @@ export const Exchange = styled.p`
 export const GoBackBtn = styled.button`
     width: 100%;
     height: 60px;
-
+   
     font-size: 30px;
     font-weight: 700;
 `;
