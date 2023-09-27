@@ -32,7 +32,7 @@ export const Barcode = () => {
     e.preventDefault();
     try{
         const { message } = await sendBarcode(barcode)
-        console.log(message, nowPoint, stName)
+        console.log(message)
         localStorage.setItem("clientbarcode", barcode)
         window.location.replace("/payments")
     } catch (error) {
