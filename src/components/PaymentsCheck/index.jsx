@@ -14,7 +14,7 @@ const PaymentsCheck = ({ state }) => {
   const navigate = useNavigate();
   const compeletePage = (payData) => {
     // payData를 필요한대로 사용하여 state에 전달
-    navigate("/paycomplete", { 
+    navigate("/admin/paycomplete", { 
       state: { 
         id: state.charger,
         payData: payData  // 예시로 payData를 전달

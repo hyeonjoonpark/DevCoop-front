@@ -15,10 +15,10 @@ const PayComplete = () => {
   const student_name = payDataFromState.student_name;
 
   const GoBack = () => {
-    navigate("/payments");
+    navigate("/admin/payments");
   };
   const GoBackBarcode = () => {
-    navigate("/barcode");
+    navigate("/admin/barcode");
   };
 
 

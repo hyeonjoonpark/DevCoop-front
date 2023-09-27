@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import * as _ from "./style";
 import * as P from "../../common/PageWrapStyle";
-import Header from "../Header";
 import AdminHeader from "../AdminHeader ";
-import { StudentinfoItem } from "./StudentinfoItem";
-// import { getStudentinfo } from "../../axios";
-// import data from "./data.json";
+import { AdminMainItem } from "./AdminMainItem";
 import { useNavigate } from "react-router-dom";
-// import { ReactComponent as SearchIcon } from "../../assets/Searchicon.svg";
+
 import { ReactComponent as BarcodeIcon } from "../../assets/BarcodeIcon.svg";
 import { ReactComponent as FilterIcon } from "../../assets/FilterIcon.svg";
 // import Modal from "../Modal";
 import StudentCharge from "../StudentCharge";
 
-const Studentinfo = () => {
+const AdminMain = () => {
   const [selectAll, setSelectAll] = useState(false); // 라디오 박스 전체 선택 상태
 
 
@@ -26,7 +23,7 @@ const Studentinfo = () => {
   const movePage = useNavigate();
 
   function barcode() {
-    movePage("/barcode");
+    movePage("/admin/barcode");
   }
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,7 +76,7 @@ const Studentinfo = () => {
                 </_.Infochoose>
               </_.Info>
               <div>
-                <StudentinfoItem checked={selectAll} />
+                <AdminMainItem checked={selectAll} />
               </div>
             </_.Infolist>
           </_.InfoContainer>
@@ -89,4 +86,4 @@ const Studentinfo = () => {
   );
 };
 
-export default Studentinfo;
+export default AdminMain;

@@ -3,7 +3,7 @@ import * as _ from "./style";
 import styled from "styled-components";
 import { axiosInstance } from "../../../axios";
 
-export const StudentinfoItem = ({ checked }) => {
+export const AdminMainItem = ({ checked }) => {
   const [alluser, setAllUser] = useState([]);
   const [checkboxValues, setCheckboxValues] = useState({});
 

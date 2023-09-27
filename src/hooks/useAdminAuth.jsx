@@ -20,14 +20,14 @@ export const adminlogin = async (email, password) => {
 
 export const useAdminAuth = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(document.cookie.includes('isAdminLoggedIn'));
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // 모달에 표시될 에러 메시지
 
   useEffect(() => {
     setIsLoggedIn(document.cookie.includes('isAdminLoggedIn')); 
-  }, [isLoggedIn]);
+  }, []);
 
   const handleInputId = (e) => {
     setEmail(e.target.value);
@@ -43,7 +43,7 @@ export const useAdminAuth = () => {
     try {
       const { name, point, message } = await adminlogin(email, password);
       localStorage.setItem("adminname", name);
-      navigate("/studentinfo");
+      navigate("/admin");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setErrorMessage("아이디 혹은 암호가 잘못되었습니다");
@@ -62,7 +62,7 @@ export const useAdminAuth = () => {
     try {
       await axiosInstance.post("/logout");
       setIsLoggedIn(false);
-      navigate("/admin");
+      navigate("/admin/login");
     } catch (error) {
       console.error("Logout error:", error);
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Studentinfo from '../../components/Studentinfo'
+import Studentinfo from '../../components/AdminMain'
 
 export default function StudentinfoPage() {
   return (

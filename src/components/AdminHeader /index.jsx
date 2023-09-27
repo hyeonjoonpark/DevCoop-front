@@ -8,7 +8,7 @@ const AdminHeader = () => {
   const navigate = useNavigate();
 
   const goToBarcode = () => {
-    navigate("/barcode");
+    navigate("/admin/barcode");
   }
 
   return (

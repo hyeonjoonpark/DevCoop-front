@@ -24,10 +24,10 @@ const ChargeComplete = () => {
   }, []);
 
   const GoBack = () => {
-    navigate("/payments");
+    navigate("/admin/payments");
   };
   const GoBackBarcode = () => {
-    navigate("/barcode");
+    navigate("/admin/barcode");
   };
   
   return (

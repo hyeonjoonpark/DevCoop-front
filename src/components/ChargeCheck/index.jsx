@@ -11,7 +11,7 @@ const ChargeCheck = ({ state }) => {
 
   const completePage = (chargeData) => {
     // chargeData를 필요한대로 사용하여 state에 전달
-    navigate("/chargecomplete", { 
+    navigate("/admin/chargecomplete", { 
       state: { 
         id: state.charger, 
         chargeData: chargeData  // 예시로 chargeData를 전달

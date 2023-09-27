@@ -34,7 +34,7 @@ export const Barcode = () => {
         const { message } = await sendBarcode(barcode)
         console.log(message)
         localStorage.setItem("clientbarcode", barcode)
-        window.location.replace("/payments")
+        window.location.replace("/admin/payments")
     } catch (error) {
         console.log("바코드 인식에 실패했습니다.", error);
     }

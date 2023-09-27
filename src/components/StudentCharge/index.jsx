@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
-// import * as C from "../ChargeComplete/style";
-// import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
-// import axios from "axios";
 import { axiosInstance } from "../../axios/index";
 import ChargeCheck from "../ChargeCheck";
-// import { checkboxValues } from "../Studentinfo/StudentinfoItem"
 const StudentCharge = () => {
   const TextColor = "#8A8A8A";
 

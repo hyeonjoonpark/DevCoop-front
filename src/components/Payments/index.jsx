@@ -59,7 +59,7 @@ const Payments = () => {
       setState(prevState => ({
         ...prevState,
         point: "자연수로 입력해주세요", // 오류 메시지를 `point`에 설정
-        errorMessage: "자연수로 입력해주세요" // 오류 메시지 설정 (이것은 선택적입니다. 필요에 따라 사용하거나 제거할 수 있습니다.)
+        errorMessage: "point value error" // 오류 메시지 설정 (이것은 선택적입니다. 필요에 따라 사용하거나 제거할 수 있습니다.)
       }));
   
       setTimeout(() => {
