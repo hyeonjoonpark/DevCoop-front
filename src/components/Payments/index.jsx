@@ -18,6 +18,7 @@ const Payments = () => {
     clientpoint: "",
     point: "",
     code_number: localStorage.getItem("clientbarcode"),
+    errorMessage: "",
   });
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -51,12 +52,36 @@ const Payments = () => {
   };
 
   const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+  
+    const isNumeric = /^\d+$/; // 숫자만 포함하는 정규 표현식
+    if (name === "point" && (!isNumeric.test(value) || parseInt(value, 10) < 1)) {
+      setState(prevState => ({
+        ...prevState,
+        point: "자연수로 입력해주세요", // 오류 메시지를 `point`에 설정
+        errorMessage: "자연수로 입력해주세요" // 오류 메시지 설정 (이것은 선택적입니다. 필요에 따라 사용하거나 제거할 수 있습니다.)
+      }));
+  
+      setTimeout(() => {
+        setState(prevState => ({
+          ...prevState,
+          point: "",
+          errorMessage: ""
+        }));
+      }, 2000);
+      return;
+    }
+  
+    setState(prevState => ({
+      ...prevState,
+      [name]: value,
+      errorMessage: ""
+    }));
     console.log(state);
   };
+
+
+
   return (
     <C.CompeleteWrap>
       <C.StudentInfo>
@@ -79,11 +104,12 @@ const Payments = () => {
       <_.PointWrap>
         <_.PointInTop>
           <C.InfoText color={TextColor}>포인트</C.InfoText>
-          <_.PointInput
-            name="point"
-            value={state.point.toLocaleString()}
-            onChange={handleChange}
-          />
+            <_.PointInput
+              name="point"
+              value={state.point.toLocaleString()}
+              onChange={handleChange}
+              isError={!!state.errorMessage} // 에러 메시지가 있으면 true, 아니면 false
+            />
         </_.PointInTop>
 
         <_.PointBottom>

@@ -18,6 +18,10 @@ export const PointInTop = styled.div`
 export const PointInput = styled.input`
   width: 450px;
   border-radius: 10px;
+  border: 1px solid #ccc; /* 기본값 설정 */
+  
+  border: ${({ isError }) => (isError ? "2px solid red" : "1px solid #ccc")};
+  font-weight: ${({ isError }) => (isError ? "bold" : "normal")};
 `;
 
 export const NumberInput = styled.input`
