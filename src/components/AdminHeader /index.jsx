@@ -1,6 +1,6 @@
 import * as H from "../../common/PageWrapStyle";
 import { ReactComponent as AriPayLogo } from "../../assets/DevCoopL.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 
 const AdminHeader = () => {
@@ -22,9 +22,7 @@ const AdminHeader = () => {
         {isAdminLoggedIn ? (
           <H.LogOutBtn onClick={handleLogoutClick}>로그아웃</H.LogOutBtn>
         ) : (
-          <H.LogOutBtn>
-            <Link to="/admin">로그인</Link>
-          </H.LogOutBtn>
+          <H.LogOutBtn onClick={() => navigate("/admin/login")}>로그인</H.LogOutBtn>
         )}
       </H.HeaderInBox>
     </H.PageHeader>

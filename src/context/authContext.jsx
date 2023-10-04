@@ -14,13 +14,19 @@ export const AuthProvider = ({ children }) => {
 };
 
 function useProvideAuth() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    // 쿠키에서 로그인 상태를 가져와 초기 값으로 설정
+    return document.cookie.includes('isLoggedIn');
+  });
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
+    // 쿠키에서 관리자 로그인 상태를 가져와 초기 값으로 설정
+    return document.cookie.includes('isAdminLoggedIn');
+  });
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setIsLoggedIn(document.cookie.includes('isLoggedIn'));
     setIsAdminLoggedIn(document.cookie.includes('isAdminLoggedIn'));
-    // console.log("Here is authContext : " + isLoggedIn)
+    console.log("Here is authContext : " + isLoggedIn)
   }, []);
 
   

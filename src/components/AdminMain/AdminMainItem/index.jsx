@@ -30,6 +30,7 @@ export const AdminMainItem = ({ checked }) => {
       ...prevValues,
       [name]: checked,
     }));
+    console.log(`Checkbox with name ${name} is checked: ${checked}`);
   };
   return (
     <InfoWrap>
