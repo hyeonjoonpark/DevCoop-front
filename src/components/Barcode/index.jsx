@@ -3,7 +3,7 @@ import styled from "styled-components";
 import imgLogo from "../../assets/DevCoopL.svg";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../../axios";
-
+import { useNavigate } from 'react-router-dom';
 
 export const sendBarcode = async (barcode) => {
   try {
@@ -24,6 +24,7 @@ export const sendBarcode = async (barcode) => {
 
 export const Barcode = () => {
   const [barcode, setBarcode] = useState("");
+  const navigate = useNavigate();
   const handleChange = (e) => {
     console.log(e.target.value);
     setBarcode(e.target.value);
@@ -34,7 +35,7 @@ export const Barcode = () => {
         const { message } = await sendBarcode(barcode)
         console.log(message)
         localStorage.setItem("clientbarcode", barcode)
-        window.location.replace("/admin/payments")
+        navigate("/admin/payments"); // 네비게이트 서야 됨
     } catch (error) {
         console.log("바코드 인식에 실패했습니다.", error);
     }

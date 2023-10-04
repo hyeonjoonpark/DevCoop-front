@@ -1,20 +1,19 @@
 import React from 'react'
 import AdminMain from '../../components/AdminMain'
-import { useAdminAuth } from '../../hooks/useAdminAuth';
+import { useAuth } from "../../context/authContext";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 
 
 
 export default function AdminMainPage() {
-  const { isLoggedIn } = useAdminAuth();
+  const { isAdminLoggedIn } = useAuth();
   const navigate = useNavigate();
-  console.log(isLoggedIn)
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/admin/login'); // ¾îµå¹Î ±â´É ÀÌ¿ë½Ã ¾îµå¹Î ·Î±×ÀÎ »óÅÂ Ã¼Å©
+    if (!isAdminLoggedIn) {
+      navigate('/admin/login'); // ì–´ë“œë¯¼ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ë¦¬ë‹¤ì´ë ‰íŠ¸
     }
-  }, [isLoggedIn, navigate]);
+  }, [isAdminLoggedIn, navigate]);
   
   return (
     <>

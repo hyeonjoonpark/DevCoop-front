@@ -1,22 +1,26 @@
 import * as H from "../../common/PageWrapStyle";
 import { ReactComponent as AriPayLogo } from "../../assets/DevCoopL.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useAdminAuth } from "../../hooks/useAdminAuth";
+import { useAuth } from "../../context/authContext";
 
 const AdminHeader = () => {
-  const { isLoggedIn,handleLogout } = useAdminAuth();
+  const { isAdminLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
 
   const goToBarcode = () => {
     navigate("/admin/barcode");
-  }
+  };
+
+  const handleLogoutClick = () => {
+    logout(true, navigate);
+  };
 
   return (
     <H.PageHeader>
       <H.HeaderInBox>
-          <AriPayLogo width={"100px"} height={"90px"} onClick={goToBarcode}/>
-        {isLoggedIn ? (
-          <H.LogOutBtn onClick={handleLogout}>로그아웃</H.LogOutBtn>
+        <AriPayLogo width={"100px"} height={"90px"} onClick={goToBarcode} />
+        {isAdminLoggedIn ? (
+          <H.LogOutBtn onClick={handleLogoutClick}>로그아웃</H.LogOutBtn>
         ) : (
           <H.LogOutBtn>
             <Link to="/admin">로그인</Link>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../axios";
-import { useAuth } from "./useAuth";
+import { useAuth } from "../context/authContext";
 
-export const getPoint = async (email) => {
+export const getPoint = async () => {
   try {
-    const response = await axiosInstance.post("/studentinfo", {email});
+    const response = await axiosInstance.post("/studentinfo");
+    console.log(response.data.student_name)
     return {
       number: response.data.student_number,
       name: response.data.student_name,
@@ -17,22 +18,22 @@ export const getPoint = async (email) => {
 };
 
 export const usePoint = () => {
-  const [point, setPoint] = useState([]);
+  const [point, setPoint] = useState(0);
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [number, setNumber] = useState("");
-  const { isLoggedIn, email } = useAuth(); // useAuth에서 isLoggedIn와 email을 가져옵니다.
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     fetchPoint();
-  }, [isLoggedIn, email]); // isLoggedIn과 email의 변경에 따라 fetchPoint를 다시 호출합니다.
+  }, [isLoggedIn]); // isLoggedIn과 email의 변경에 따라 fetchPoint를 다시 호출합니다.
 
   const fetchPoint = async () => {
     if (!isLoggedIn) {
       return;
     }
     try {
-      const response = await getPoint(email);
+      const response = await getPoint();
       setPoint(response.point);
       setName(response.name);
       setCode(response.code);

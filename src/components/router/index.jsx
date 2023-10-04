@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes as Switch } from "react-router-dom";
-import MainPage from "../Main"; 
+import MainPage from "../../pages/MainPage"; 
 import PaymentsPage from '../../pages/Payments';
 import NotFoundPage from '../../pages/NotFoundPage';
 import BarcodePage from "../../pages/BarcodePage";
