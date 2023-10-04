@@ -54,7 +54,11 @@ function useProvideAuth() {
               errMsg = "관리자가 아닙니다.";
           }
       }  
-      setErrorMessage(errMsg); 
+      setErrorMessage(errMsg);
+      
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
     }
   };
 
