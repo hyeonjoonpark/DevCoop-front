@@ -6,11 +6,11 @@ import * as _ from "./style";
 import axiosInstance from "../../axios";
 
 const PaymentsCheck = ({ state }) => {
-  console.log("PaymentsCheck work");
+  // console.log("PaymentsCheck work");
   const [modalOpen, setModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null); // 에러 메시지 상태
   const State = state;
-  console.log(State);
+  // console.log(State);
   const navigate = useNavigate();
   const compeletePage = (payData) => {
     // payData를 필요한대로 사용하여 state에 전달

@@ -26,7 +26,7 @@ export const Barcode = () => {
   const [barcode, setBarcode] = useState("");
   const navigate = useNavigate();
   const handleChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setBarcode(e.target.value);
   };
   const handleSubmit = async (e) => {

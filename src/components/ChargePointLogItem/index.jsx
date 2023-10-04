@@ -16,7 +16,7 @@ const UsePointLogItem = () => {
   // const [date, setDate] = useState([null]);
   // const [point, setPoint] = useState([null]);
   // const [type, setType] = useState([null]);
-  console.log("Check userlog");
+  // console.log("Check userlog");
   useEffect(() => {
     const clientname = localStorage.getItem("clientname");
     if (clientname) {
@@ -35,7 +35,7 @@ const UsePointLogItem = () => {
     }
   }, []);
 
-  console.log(data);
+  // console.log(data);
   return (
     <div style={{ flexDirection: "column" }}>
       {data &&

@@ -7,12 +7,7 @@ const Main = () => {
   const { isLoggedIn } = useAuth();
   const { point } = usePoint();
   const formatPoint = point.toLocaleString();
-  useEffect(() => {
-    console.log("Main component mounted");
-    return () => {
-        console.log("Main component unmounted");
-    };
-}, []);
+
   useEffect(() => {
     console.log("isLoggedIn changed:", isLoggedIn);
 }, [isLoggedIn]);

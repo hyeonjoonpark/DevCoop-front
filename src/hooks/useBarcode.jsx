@@ -21,17 +21,17 @@ export const sendBarcode = async (barcode) => {
 
 
 export const useBarcode = () => {
-    console.log("BArcord~")
+    // console.log("BArcord~")
     const [barcode,setBarcode] = useState("");
 
     const handleChange = (e)=> {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setBarcode(e.target.value);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Hello")
+        // console.log("Hello")
         try{
             const { message, point, student_number } = await sendbarcode(
                 barcode

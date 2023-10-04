@@ -10,7 +10,7 @@ function PrettyDateTime(date) {
   };
 
   const formattedDate = new Date(date+"Z");
-  console.log( formattedDate)
+  // console.log( formattedDate)
   return formattedDate.toLocaleDateString("ko-KR", options) + " " +
          formattedDate.toLocaleTimeString("en-US", options);
 }

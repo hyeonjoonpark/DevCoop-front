@@ -27,7 +27,7 @@ const UsePointLogItem = () => {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setData(response.data);
         })
         .catch((error) => {
@@ -36,7 +36,7 @@ const UsePointLogItem = () => {
     }
   }, []);
 
-  console.log(data);
+  // console.log(data);
   return (
     <div style={{ flexDirection: "column" }}>
       {data &&

@@ -16,7 +16,7 @@ const ChargeComplete = () => {
 
   useEffect(() => {
 
-    console.log(chargeDataFromState)
+    // console.log(chargeDataFromState)
     setName(chargeDataFromState.student_name);
     setInner(chargeDataFromState.plusPoint);
     setOldPoint(chargeDataFromState.oldPoint);

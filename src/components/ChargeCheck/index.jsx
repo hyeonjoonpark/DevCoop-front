@@ -35,7 +35,7 @@ const ChargeCheck = ({ state }) => {
     })
     .then((chargeResponse) => {
       const chargeData = chargeResponse.data;
-      console.log(chargeData);
+      // console.log(chargeData);
       
       // 충전이 성공적으로 완료되었다면 completePage를 호출
       completePage(chargeData);
