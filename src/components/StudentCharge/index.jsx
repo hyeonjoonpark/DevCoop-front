@@ -1,86 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../Modal";
-import * as _ from "./style";
+import * as S from "./style";
 import { axiosInstance } from "../../axios/index";
-import ChargeCheck from "../ChargeCheck";
-const StudentCharge = () => {
-  const TextColor = "#8A8A8A";
 
+const StudentCharge = ({ selectedStudents, onBulkCharge }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [studentsInfo, setStudentsInfo] = useState([]);
+  const [point, setPoint] = useState("");
+  const charger = localStorage.getItem("adminname");
 
-  const openModal = () => {
-    setModalOpen(true);
+  useEffect(() => {
+    if (selectedStudents.length) {
+      axiosInstance.get('/admin/alluser')
+        .then(response => {
+          const matchedStudents = response.data.filter(student => 
+            selectedStudents.includes(student.code_number)
+          );
+          setStudentsInfo(matchedStudents);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }, [selectedStudents]);
+
+  const handlePointChange = (e) => {
+    setPoint(e.target.value);
   };
 
-  const closeModal = () => {
+  const handleBulkChargeClick = () => {
+    onBulkCharge(point, selectedStudents);
     setModalOpen(false);
-  };
-
-  const [state, setState] = useState({
-    charger: localStorage.getItem("adminname"),
-    clientname: localStorage.getItem("clientname"),
-    clientpoint: localStorage.getItem("clientpoint"),
-    point: "",
-    code_number: localStorage.getItem("clientbarcode"),
-  });
-
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
-    // console.log(state);
-  };
-
-  const handleCharge = () => {
-    axiosInstance
-      .post(`/admin/charge`, {
-        charger: state.charger,
-        changePoint: state.point,
-        code_number: state.code_number,
-      })
-      .then((result) => {
-        console.log("요청성공");
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log("요청실패");
-        console.log(error);
-      });
   };
 
   return (
     <>
-      <_.Infobutton onClick={openModal}>일괄충전</_.Infobutton>
+      <S.Infobutton onClick={() => setModalOpen(true)}>일괄충전</S.Infobutton>
       <Modal isOpen={modalOpen}>
-        <_.TitleWrap>
-          <_.ContentTitle style={{ textAlign: "left" }}>
+        <S.TitleWrap>
+          <S.ContentTitle>
             선택한 학생들에게 포인트를 일괄 충전합니다.
-          </_.ContentTitle>
-        </_.TitleWrap>
-        <_.String />
-        <_.PointWrap>
-          <_.PointInTop>
-            <_.InfoText color={TextColor}>포인트</_.InfoText>
-            <_.PointInput
+          </S.ContentTitle>
+        </S.TitleWrap>
+        <S.StudentList>
+          {studentsInfo.map(student => (
+            <S.StudentListItem key={student.code_number}>
+              이름: {student.student_name} - 바코드: {student.code_number}
+            </S.StudentListItem>
+          ))}
+        </S.StudentList>
+        <S.String />
+        <S.PointWrap>
+          <S.PointInTop>
+            <S.InfoText color="#8A8A8A">포인트</S.InfoText>
+            <S.PointInput
               name="point"
-              value={state.point.toLocaleString()}
-              onChange={handleChange}
+              value={point.toLocaleString()}
+              onChange={handlePointChange}
             />
-          </_.PointInTop>
-          <_.PointBottom>
-            <_.NumberInput
-              placeholder={state.charger}
-              name="charger"
-              value={state.charger}
-              onChange={handleChange}
-            />
-          </_.PointBottom>
-        </_.PointWrap>
-        <_.BtnWrap>
-          <button onClick={closeModal}>취소</button>
-          <ChargeCheck state={state} />
-        </_.BtnWrap>
+          </S.PointInTop>
+          <S.PointBottom>
+            <span>관리자: {charger}</span>
+          </S.PointBottom>
+        </S.PointWrap>
+        <S.BtnWrap>
+          <button onClick={() => setModalOpen(false)}>취소</button>
+          <button onClick={handleBulkChargeClick}>일괄충전</button>
+        </S.BtnWrap>
       </Modal>
     </>
   );

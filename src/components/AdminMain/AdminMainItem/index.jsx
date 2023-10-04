@@ -3,7 +3,7 @@ import * as _ from "./style";
 import styled from "styled-components";
 import { axiosInstance } from "../../../axios";
 
-export const AdminMainItem = ({ checked }) => {
+export const AdminMainItem = ({ checked, onToggleStudentSelection, searchTerm }) => {
   const [alluser, setAllUser] = useState([]);
   const [checkboxValues, setCheckboxValues] = useState({});
 
@@ -12,7 +12,6 @@ export const AdminMainItem = ({ checked }) => {
       .get("/admin/alluser")
       .then((response) => {
         setAllUser(response.data);
-        // Initialize checkboxValues with the default checked state
         const initialCheckboxValues = {};
         response.data.forEach((user) => {
           initialCheckboxValues[user.code_number] = checked;
@@ -30,16 +29,21 @@ export const AdminMainItem = ({ checked }) => {
       ...prevValues,
       [name]: checked,
     }));
-    console.log(`Checkbox with name ${name} is checked: ${checked}`);
+    onToggleStudentSelection(name);
   };
+
+  const filteredUsers = alluser.filter(user => 
+    user.student_name.includes(searchTerm)
+  );
+
   return (
     <InfoWrap>
-      {alluser.map((user, index) => (
+      {filteredUsers.map((user, index) => (
         <_.Info key={index}>
           <_.Infochoose>
             <input
               type="checkbox"
-              name={`${user.code_number}`} // Use a unique identifier for each checkbox
+              name={`${user.code_number}`} 
               checked={checkboxValues[user.code_number] || false}
               onChange={handleCheckboxChange}
             />
@@ -55,6 +59,7 @@ export const AdminMainItem = ({ checked }) => {
     </InfoWrap>
   );
 };
+
 
 const InfoWrap = styled.div`
   display: flex;

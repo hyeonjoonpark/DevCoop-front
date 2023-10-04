@@ -37,7 +37,9 @@ function useProvideAuth() {
         email: email,
         password: password,
       });
+      const { name, point, message } = response.data; // 여기에서 name 값을 구조 분해 할당으로 받음
       if (admin) {
+        localStorage.setItem("adminname", name); // 관리자 로그인 성공시 name 값을 localStorage에 저장
         setIsAdminLoggedIn(true);
         setIsLoggedIn(true);
       } else {
@@ -46,9 +48,9 @@ function useProvideAuth() {
       navigate(admin ? "/admin" : "/");
       setErrorMessage("")
       return {
-        name: response.data.name,
-        point: response.data.point,
-        message: response.data.message,
+        name,
+        point,
+        message
       };
     } catch (error) {
 

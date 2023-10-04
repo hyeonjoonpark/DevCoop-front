@@ -82,3 +82,14 @@ export const InfoText = styled.div`
     font-size: 23px;
     width: 100px;
 `;
+
+export const StudentList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+`;
+
+export const StudentListItem = styled.li`
+  padding: 5px 0;
+  font-size: 18px;
+`;

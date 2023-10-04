@@ -13,12 +13,12 @@ export const ModalOverlay = styled.div`
 export const ModalContent = styled.div`
   position: absolute;
   width: 600px;
-  height: 400px;
+  max-height: 80%; // or any other value you deem fit
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   border-radius: 4px;
+  overflow-y: auto; // Allow scroll if content overflows
 `;
-
