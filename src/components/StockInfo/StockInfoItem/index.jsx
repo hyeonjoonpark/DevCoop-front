@@ -10,20 +10,21 @@ export const StockInfoItem = () => {
     axiosInstance
       .get("/admin/inventoryCheck",)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setStockInfo(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
 
-  },{});
+  },[]);
 
   return (
     <InfoWrap>
       {stockinfo && 
       stockinfo.map((item) => (
-        <_.Info key={item}>
+        // 중요한부분, 키값에 아이템 넣지 말고 고유한 식별자로 사용할 수 있는 값을 지정할 것
+        <_.Info key={item.inventory_id}> 
           <_.Infochoose>
             <_.Infotext>{item.inventory_id}</_.Infotext>
           </_.Infochoose>
@@ -39,7 +40,7 @@ export const StockInfoItem = () => {
         </_.Info>
       ))}
     </InfoWrap>
-  );
+  );  
 };
 
 
