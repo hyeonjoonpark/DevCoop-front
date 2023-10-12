@@ -42,6 +42,9 @@ const AdminMain = () => {
     movePage("/admin/barcode");
   }
 
+  function stockinfo(){
+    movePage("/admin/stockinfo");
+  }
 
   const openModal = () => {
     setModalOpen(true);
@@ -90,6 +93,7 @@ const AdminMain = () => {
                             <_.Barcode onClick={barcode}>
                                 <BarcodeIcon />
                             </_.Barcode>
+                            <_.Infobutton onClick={stockinfo} mRight="10px">재고확인</_.Infobutton>
                             <StudentCharge selectedStudents={selectedStudents} onBulkCharge={handleBulkCharge} />
                         </_.ButtonContainer>
                     </_.InfoHeader>

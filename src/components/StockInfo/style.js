@@ -35,26 +35,32 @@ export const Infolist = styled.div`
   height: 100vh;
   border: white;
   border-radius: 10px;
+  margin-top: 10px;
 `;
 
 export const Info = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
-  width: 850px;
+  width: ${maxWidth};
   height: 55px;
-  border-top: 1px solid #d3d3d3;
   border-bottom: 1px solid #d3d3d3;
-  color: #8a8a8a;
+  background-color: #E8EBF5;
+  border-radius: 30px 30px 0 0;
 `;
 
 export const Infochoose = styled.div`
-  width: 150px;
+  width: 100px;
   height: 55px;
   text-align: center;
   line-height: 60px;
 `;
-
+export const Infochooses = styled.div`
+  width: 300px;
+  height: 55px;
+  text-align: center;
+  line-height: 60px;
+`;
 export const Infotext = styled.p`
   font-size: 20px;
   font-weight: bold;
@@ -82,13 +88,6 @@ export const Inputbutton = styled.div`
   margin-left: 350px;
   width: 40px;
   height: 40px;
-`;
-
-export const Barcode = styled.div`
-  margin-right: 10px ${(props) => (props.mRight ? props.mRight : "")};
-  width: 55px;
-  height: 55px;
-  color: #fff;
 `;
 
 export const Filter = styled.div`
@@ -128,7 +127,6 @@ export const StudentList = styled.div`
 export const StudentListItem = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
   padding: 5px 0;
 `;
 
