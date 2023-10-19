@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 export const ContentWrap = styled.div`
     margin: 0 auto;
-    padding-top: 60px;
     text-align: center;
 
-    width: 250px;
+    width: 500px;
     height: 250px;
     /* background-color: orange; */
 `;
 
-export const ContentTitle = styled.h1`
-    font-size: 50px;
+export const ContentTitle = styled.div`
+    font-size: 23px;
     color: #333;
+    text-align: left;
 `;
 
 export const ContentSubTitle = styled.h3`
@@ -42,7 +42,7 @@ export const Infobutton = styled.button`
 
 export const InfoInput = styled.input`
   position: relative;
-  margin: 10px 0;
+  margin: 50px 0;
   width: 400px;
   height: 55px;
   border-radius: 10px;
@@ -52,5 +52,22 @@ export const InfoHeader = styled.div`
     margin: 0 auto;
     width: 500px;
     height: 50px;
+    border-bottom: 2px solid #d3d3d3;
+`;
+
+export const InfoBody = styled.div`
+    display: flex;
+    margin: 0 auto;
+    width: 500px;
+    height: 200px;
     
+`;
+
+export const InfoText = styled.div`
+  color: ${(props) => (props.color ? props.color : "#333")};
+  margin-top: 60px;
+  font-size: 23px;
+  text-align: left;
+  width: 100px;
+  color: #8A8A8A;
 `;

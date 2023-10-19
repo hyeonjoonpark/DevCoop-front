@@ -5,47 +5,78 @@ import Modal from "../Modal";
 import * as _ from "./style";
 import { useNavigate } from 'react-router-dom';
 
+export const sendBarcode = async (barcode) => {
+  try {
+    const response = await axiosInstance.post("/admin/addItemBarcode", {
+      barcode: barcode,
+    });
+    return response.data; // 서버에서 반환하는 데이터를 반환
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const StockBarcode = () => {
   const [barcode, setBarcode] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [itemInfo, setItemInfo] = useState(null); // 재고명을 저장할 상태
 
-  // 모달창 노출
-  const showModal = (e) => {
-// 페이지 새로고침 방지
+  const handleChange = (e) => {
+    setBarcode(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { message } = await sendBarcode(barcode);
+      setItemInfo(message); // 서버 응답에서 재고명을 추출하여 상태에 저장
+      localStorage.setItem("itembarcode", barcode);
+      showModal();
+    } catch (error) {
+      console.log("바코드 인식에 실패했습니다.", error);
+    }
+  };
+
+  const showModal = () => {
     setModalOpen(true);
   };
 
-  // "네" 버튼 클릭 시 모달을 닫지 않도록
   const handleYesClick = () => {
-    setModalOpen(false); // 모달을 닫음
-    // 네 버튼 클릭 시 수행할 작업 추가
+    setModalOpen(false);
+    setItemInfo(null); // 모달 닫을 때 재고명 상태 초기화
   };
 
   return (
     <BarcodeWrap>
-      <BarcodeIn>
+      <BarcodeIn onSubmit={handleSubmit}>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
           placeholder="상품번호를 스캔해주세요"
           type="password"
+          onChange={handleChange}
           autoFocus
         />
         <br />
         <div>
-          <ConfirmButton type = "button" onClick={showModal}>확인</ConfirmButton>
+          <ConfirmButton type="button" onClick={showModal}>확인</ConfirmButton>
         </div>
-        <Modal isOpen={modalOpen}>
-          <_.ContentWrap> 
-            모다라먹겠네
-          </_.ContentWrap>
-          <_.BtnWrap>
-            <_.Infobutton mRight={"10px"}>등록</_.Infobutton>
-            <_.Infobutton mRight={"10px"}>손실</_.Infobutton>
-            <_.Infobutton>취소</_.Infobutton>
-          </_.BtnWrap>
-        </Modal>
       </BarcodeIn>
+      <Modal isOpen={modalOpen}>
+        <_.ContentWrap>
+          <_.InfoHeader>
+            <_.ContentTitle>{itemInfo}</_.ContentTitle>
+          </_.InfoHeader>
+          <_.InfoBody>
+            <_.InfoText>수량</_.InfoText>
+            <_.InfoInput/>
+          </_.InfoBody>
+        </_.ContentWrap>
+        <_.BtnWrap>
+          <_.Infobutton mRight={"10px"}>등록</_.Infobutton>
+          <_.Infobutton mRight={"10px"}>손실</_.Infobutton>
+          <_.Infobutton onClick={handleYesClick}>취소</_.Infobutton>
+        </_.BtnWrap>
+      </Modal>
     </BarcodeWrap>
   );
 };
@@ -81,5 +112,4 @@ const ConfirmButton = styled.button`
 const LogoImg = styled.img`
   height: 130px;
   margin-bottom: 30px;
-
 `;
