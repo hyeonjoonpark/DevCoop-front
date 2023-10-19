@@ -2,19 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
-
-function PrettyDateTime(date) {
-  const options = {
-    timeZone: "Asia/Seoul",
-    hour12: false
-  };
-
-  const formattedDate = new Date(date+"Z");
-  // console.log( formattedDate)
-  return formattedDate.toLocaleDateString("ko-KR", options) + " " +
-         formattedDate.toLocaleTimeString("en-US", options);
-}
-
+import PrettyDateTime from "../../utils/date";
 
 const AdminUsePoint = () => {
   const [data, setData] = useState(null);
