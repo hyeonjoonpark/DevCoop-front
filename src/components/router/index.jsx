@@ -10,7 +10,6 @@ import AdminLoginPage from '../../pages/AdminLoginPage';
 import AdminMainPage from "../../pages/AdminMainPage";
 import ChargeCompletePage from "../../pages/ChargeComplete";
 import PayCompletePage from "../../pages/PayComplete";
-import CongratePage from "../../pages/CongratePage";
 import { useAuth } from "../../context/authContext";
 import StockInfoPage from "../../pages/StockInfoPage";
 import StockBarcodPage from "../../pages/StockBarcodePage";
@@ -30,7 +29,6 @@ const Router = () => {
       <Route path="/admin/paycomplete" element={<PayCompletePage />} />
       <Route path="/admin/barcode" element={<BarcodePage />} />
       <Route path="/*" element={<NotFoundPage />} />
-      <Route path="/congrate" element={<CongratePage />} />
       <Route path="/admin/stockinfo" element={<StockInfoPage />} />
       <Route path="/admin/stockbarcode" element={<StockBarcodPage />} />
     </Routes>
