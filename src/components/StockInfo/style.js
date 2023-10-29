@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as FilterIcon } from "../../assets/FilterIcon.svg";
 
 const maxWidth = "900px";
 
@@ -30,17 +31,19 @@ export const Infobutton = styled.button`
 `;
 
 export const Infolist = styled.div`
-  margin: 0 auto;
+  display: flex;
   width: ${maxWidth};
   height: 100vh;
   border: white;
   border-radius: 10px;
   margin-top: 10px;
+  flex-direction: column;
 `;
 
 export const Info = styled.div`
   margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   width: ${maxWidth};
   height: 55px;
@@ -60,8 +63,12 @@ export const Infochooses = styled.div`
   height: 55px;
   text-align: center;
   line-height: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
 `;
-export const Infotext = styled.p`
+export const Infotext = styled.span`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -163,3 +170,15 @@ export const ButtonConfirm = styled(ButtonCancel)`
   background-color: #3498db;
   color: #fff;
 `;
+
+
+export const FilterImg = styled(FilterIcon)`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+`
+
+export const StockInfoWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`

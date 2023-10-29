@@ -32,7 +32,8 @@ const StockInfo = () => {
                         </_.ButtonContainer>
                     </_.InfoHeader>
 
-                    {/*이제 추가기능으로 날짜범위를 지정해야함, 자동적으로 월초부터 현재 날짜까지 범위가 지정되게 해주고, 
+                    {/*이제 추가기능으로 날짜범위를 지정해야함, 
+                    자동적으로 월초부터 현재 날짜까지 범위가 지정되게 해주고, 
                     필요시 원하는 범위까지 조회해서 알 수 있도록 할것! */}
 
                     <_.Infolist>
@@ -49,14 +50,13 @@ const StockInfo = () => {
                             <_.Infochooses>
                                 <_.Infotext>
                                     최종 변동 일시
-                                    
-                                    <FilterIcon/>
                                 </_.Infotext>
+                                <_.FilterImg />
                             </_.Infochooses>
                         </_.Info>
-                        <div>
+                        <_.StockInfoWrap>
                             <StockInfoItem />
-                        </div>
+                        </_.StockInfoWrap>
                     </_.Infolist>
                 </_.InfoContainer>
                 </P.PageContainer>
