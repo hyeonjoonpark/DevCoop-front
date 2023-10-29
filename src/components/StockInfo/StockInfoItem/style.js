@@ -4,14 +4,14 @@ const maxWidth = "900px";
 
 export const Info = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: ${maxWidth};
   height: 55px;
   border-bottom: 1px solid #d3d3d3;
 `;
 
 export const Infochoose = styled.div`
-  width: 100px;
+  width: 25%;
   height: 55px;
   text-align: center;
   line-height: 60px;

@@ -3,6 +3,8 @@ import * as _ from "./style";
 import styled from "styled-components";
 import { axiosInstance } from "../../../axios";
 import PrettyDateTime from "../../../utils/date";
+import axios from "axios";
+
 export const StockInfoItem = () => {
   const [stockinfo, setStockInfo] = useState([]);
 
@@ -16,14 +18,25 @@ export const StockInfoItem = () => {
       .catch((error) => {
         console.error(error);
       });
-
   },[]);
+
+  useEffect(() => {
+    axios
+      .get("/admin/inventoryCheck")
+      .then((response) => {
+        console.log(response.data);
+        setStockInfo(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },[]);
+
 
   return (
     <InfoWrap>
       {stockinfo && 
       stockinfo.map((item) => (
-        // 중요한부분, 키값에 아이템 넣지 말고 고유한 식별자로 사용할 수 있는 값을 지정할 것
         <_.Info key={item.inventory_id}> 
           <_.Infochoose>
             <_.Infotext>{item.inventory_id}</_.Infotext>
