@@ -4,7 +4,7 @@ const maxWidth = "900px";
 
 export const Info = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: ${maxWidth};
   height: 55px;
   border-bottom: 1px solid #d3d3d3;

@@ -53,7 +53,7 @@ export const Info = styled.div`
 `;
 
 export const Infochoose = styled.div`
-  width: 100px;
+  width: 25%;
   height: 55px;
   text-align: center;
   line-height: 60px;

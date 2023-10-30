@@ -20,19 +20,6 @@ export const StockInfoItem = () => {
       });
   },[]);
 
-  useEffect(() => {
-    axios
-      .get("/admin/inventoryCheck")
-      .then((response) => {
-        console.log(response.data);
-        setStockInfo(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },[]);
-
-
   return (
     <InfoWrap>
       {stockinfo && 
