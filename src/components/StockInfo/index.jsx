@@ -5,6 +5,8 @@ import AdminHeader from "../AdminHeader ";
 import { useNavigate } from "react-router-dom";
 import { StockInfoItem } from "./StockInfoItem";
 import { ReactComponent as FilterIcon } from "../../assets/FilterIcon.svg";
+import axios from "axios";
+// import axiosInstance from "../../axios";
 
 const StockInfo = () => {
     const movePage = useNavigate();
@@ -16,6 +18,30 @@ const StockInfo = () => {
     function barcode() {
         movePage("/admin/stockbarcode");
     }
+    
+    const excelDownload = () => {
+        axios({
+            method: 'get',
+            url: '/api/admin/excelDownload',
+            responseType: 'blob',
+        })
+        .then((response) => {
+            const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'excel_file.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            console.log("엑셀 파일로 다운로드를 했습니다");
+        })
+        .catch((error) => {
+            console.error("엑셀 파일 다운로드 중 오류 발생:", error);
+        });
+    
+}
+
 
     return(
         <>
@@ -26,7 +52,7 @@ const StockInfo = () => {
                     <_.InfoHeader>
                         <_.Infotitle>재고확인</_.Infotitle>
                         <_.ButtonContainer>
-                            <_.Infobutton mRight="10px">엑셀출력</_.Infobutton>
+                            <_.Infobutton mRight="10px" onClick={excelDownload}>엑셀출력</_.Infobutton>
                             <_.Infobutton onClick={barcode} mRight="10px">재고등록</_.Infobutton>
                             <_.Infobutton onClick={main}>메인으로</_.Infobutton>
                         </_.ButtonContainer>
