@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import "react-datepicker/dist/react-datepicker.css";
 import { ReactComponent as FilterIcon } from "../../assets/FilterIcon.svg";
 
 const maxWidth = "900px";
-
 
 export const InfoContainer = styled.div`
   margin: 0 auto;
@@ -30,6 +30,13 @@ export const Infobutton = styled.button`
   color: #fff;
 `;
 
+export const Dbutton = styled.button`
+  margin-right: 20px;
+  width: 120px;
+  height: 40px;
+  color: #fff;
+`;
+
 export const Infolist = styled.div`
   display: flex;
   width: ${maxWidth};
@@ -48,7 +55,7 @@ export const Info = styled.div`
   width: ${maxWidth};
   height: 55px;
   border-bottom: 1px solid #d3d3d3;
-  background-color: #E8EBF5;
+  background-color: #e8ebf5;
   border-radius: 30px 30px 0 0;
 `;
 
@@ -109,12 +116,12 @@ export const ButtonContainer = styled.div`
   display: flex;
 `;
 
-
-
 export const ModalContent = styled.div`
   padding: 20px;
   background-color: #f7f7f7;
   border-radius: 10px;
+  width: 100%;
+  height: 300px;
 `;
 
 export const ModalTitle = styled.p`
@@ -127,7 +134,7 @@ export const StudentList = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
-  max-height: 200px; 
+  max-height: 200px;
   overflow-y: auto;
 `;
 
@@ -171,14 +178,39 @@ export const ButtonConfirm = styled(ButtonCancel)`
   color: #fff;
 `;
 
-
 export const FilterImg = styled(FilterIcon)`
   display: flex;
   justify-content: center;
   height: 100%;
-`
+`;
 
 export const StockInfoWrap = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
+
+export const Modal = styled.div`
+  display: flex;
+  background-color: #3498db;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  max-width: 80%;
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 30px;
+  text-align: center;
+  justify-content: flex-end;
+
+  width: 500px;
+  height: 100px;
+`;
+
+export const Date = styled.div`
+
+`;

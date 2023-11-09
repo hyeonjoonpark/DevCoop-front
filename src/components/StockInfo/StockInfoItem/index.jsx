@@ -5,12 +5,14 @@ import { axiosInstance } from "../../../axios";
 import PrettyDateTime from "../../../utils/date";
 import axios from "axios";
 
-export const StockInfoItem = () => {
+export const StockInfoItem = ({startDate, endDate}) => {
   const [stockinfo, setStockInfo] = useState([]);
+  console.log("startDate:", startDate);
+  console.log("endDate:", endDate);
 
   useEffect(() => {
     axiosInstance
-      .get("/admin/inventoryCheck",)
+      .get("/admin/inventoryCheck")
       .then((response) => {
         // console.log(response.data);
         setStockInfo(response.data);
@@ -18,15 +20,16 @@ export const StockInfoItem = () => {
       .catch((error) => {
         console.error(error);
       });
-  },[]);
+  }, []);
 
-  return (
+  
+return (
     <InfoWrap>
       {stockinfo && 
       stockinfo.map((item) => (
         <_.Info key={item.inventory_id}> 
           <_.Infochoose>
-            <_.Infotext>{item.inventory_id}</_.Infotext>
+            <_.Infotext>{item.item_id}</_.Infotext>
           </_.Infochoose>
           <_.Infochooses>
             <_.Infotext>{item.item_name}</_.Infotext>
@@ -42,7 +45,6 @@ export const StockInfoItem = () => {
     </InfoWrap>
   );  
 };
-
 
 const InfoWrap = styled.div`
   display: flex;
