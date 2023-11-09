@@ -29,12 +29,11 @@ export const LoginButton = styled.button`
 `;
 
 export const ErrorText = styled.p`
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
 `;
-
 
 export const ModalOverlay = styled.div`
   position: fixed;

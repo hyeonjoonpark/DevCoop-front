@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import imgLogo from "../../assets/DevCoopL.svg";
 import { useAuth } from "../../context/authContext";
 import * as L from "./style";
+import { PageTitle } from "./style";
 
 function AdminLogin() {
   const navigate = useNavigate(); // <-- 추가
@@ -37,6 +38,7 @@ function AdminLogin() {
   return (
     <div>
       <L.LoginWrap onSubmit={handleSubmit}>
+        <PageTitle>Admin 로그인 페이지</PageTitle>
         <L.LogoImg src={imgLogo} alt="logo image" />
         <L.LoginInput
           type="email"

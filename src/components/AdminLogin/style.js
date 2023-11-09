@@ -50,3 +50,10 @@ export const ModalContent = styled.div`
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
+
+export const PageTitle = styled.div`
+  font-size: 32px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+`;

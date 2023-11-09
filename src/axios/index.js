@@ -15,7 +15,7 @@ axiosInstance.interceptors.response.use(
         return response;
     },
     async function (error) {
-        if (error.response && error.response.status === 403) {
+        if (error.response && error.response.status === 401) {
             const { access, refresh } = error.response.data;
 
             // If a new access or refresh token is provided, just retry the request.

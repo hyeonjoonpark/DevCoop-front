@@ -45,6 +45,7 @@ export const Barcode = () => {
   return (
     <BarcodeWrap>
       <BarcodeIn onSubmit={handleSubmit}>
+      <div style={{fontSize:'32px',  marginTop : '20px', textAlign:'center', fontWeight: 600}}> 학생증 스캔 페이지</div>
         <LogoImg src={imgLogo} alt='logo image' />
         <BarcodeInput
           placeholder="바코드를 스캔해주세요"
