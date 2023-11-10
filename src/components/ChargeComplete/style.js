@@ -41,7 +41,7 @@ export const InfoText = styled.div`
   color: ${(props) => (props.color ? props.color : "#333")};
   font-weight: 400;
   font-size: 23px;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 5px;
 `;
 

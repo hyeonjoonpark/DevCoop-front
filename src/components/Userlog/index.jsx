@@ -1,6 +1,5 @@
 import React from "react";
-import UsePointLogItem from "../UsePointLogItem";
-import ChargePointLogItem from "../ChargePointLogItem";
+import PointLogItem from "../PointLogItem";
 import { usePoint } from "../../hooks/usePoint";
 import { color } from "../../constants/color";
 import * as C from "../ChargeComplete/style";
@@ -25,12 +24,12 @@ export const Userlog = () => {
           <_.PointContainer>
             <P.rightWrap>
               <li style={{display: "flex"}}>
-                <UsePointLogItem />
+                <PointLogItem type={0}/>
               </li>
             </P.rightWrap>
             <P.leftWrap>
               <li style={{display: "flex"}}>
-                <ChargePointLogItem />
+                <PointLogItem type={1}/>
               </li>
             </P.leftWrap>
           </_.PointContainer>

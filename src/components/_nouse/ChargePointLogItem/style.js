@@ -8,7 +8,7 @@ export const rightPointLogWrap = styled.div`
 export const PointLogWrap = styled.div`
   display: flex;
   justify-content: space-around;
-
+  
   margin-right: 5px;
   margin-bottom: 10px;
   padding-top: 20px;
@@ -20,4 +20,11 @@ export const PointLogWrap = styled.div`
   border-radius: 8px;
 `;
 
+export const DateText = styled.span`
+  margin-right: 30px; // 오른쪽 마진으로 간격 조정
+`;
+
+export const AmountText = styled.span`
+  // 필요하다면 여기에 추가 스타일을 적용할 수 있습니다.
+`;
 

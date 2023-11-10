@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
-import { axiosInstance } from "../../axios";
+import {axiosInstance } from "../../axios";
 
-const UsePointLogItem = () => {
+const PayPointLogItem = () => {
   // const handlePoint = () => {
   //   // TODO : 만약 결제를 했다면 isPoint를 false로, 성공했다면 true로 반환하는 함수 로직 작성
   // }
@@ -16,17 +16,18 @@ const UsePointLogItem = () => {
   // const [date, setDate] = useState([null]);
   // const [point, setPoint] = useState([null]);
   // const [type, setType] = useState([null]);
-  // console.log("Check userlog");
+  console.log("Check userlog");
   useEffect(() => {
-    const clientname = localStorage.getItem("clientname");
-    if (clientname) {
+    const clientbarcode = localStorage.getItem("clientbarcode");
+    if (clientbarcode) {
       axiosInstance
-        .get("/admin/chargeuserlog", {
+        .get("/payuserlog", {
           params: {
-            clientname: clientname,
+            clientbarcode: clientbarcode,
           },
         })
         .then((response) => {
+          // console.log(response.data);
           setData(response.data);
         })
         .catch((error) => {
@@ -40,22 +41,23 @@ const UsePointLogItem = () => {
     <div style={{ flexDirection: "column" }}>
       {data &&
         data.map((item) => (
-          <_.PointLogWrap key={item.id} style={{ background: "#E6EBFF" }}> {/* <-- key를 여기에 설정 */}
+          <_.PointLogWrap>
             <div
+              key={item}
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <C.InfoText>
+              <C.InfoText key={item}>
                 {new Date(item.date).toLocaleDateString()}
               </C.InfoText>
-              <C.InfoText>
-                +{item.inner_point.toLocaleString()}원
+              <C.InfoText key={item}>
+                -{item.inner_point.toLocaleString()}원
               </C.InfoText>
-              <C.InfoText>{"충전"}</C.InfoText>
+              <C.InfoText key={item}>{"결제"}</C.InfoText>
             </div>
           </_.PointLogWrap>
         ))}
     </div>
   );
-}
+};
 
-export default UsePointLogItem;
+export default PayPointLogItem;

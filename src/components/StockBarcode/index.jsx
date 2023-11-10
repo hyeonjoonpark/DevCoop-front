@@ -10,17 +10,18 @@ export const StockBarcode = () => {
   const [barcode, setBarcode] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [itemInfo, setItemInfo] = useState(null); // 재고명을 저장할 상태
-  //const [quantity, setQuantity] = useState(null);
   const [quantity, setQuantity] = useState("");
+  const [reason, setReason] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
-  
-  const sendBarcode = async (barcode, quantity) => {
+
+  const sendBarcode = async (barcode, quantity, reason) => {
     try {
-      const response = await axiosInstance.post("/admin/addItemBarcode", {
+      const response = await axiosInstance.post("/admin/insertinventory", {
         barcode,
         quantity,
+        reason,
       });
       navigate("/admin/stockinfo");
       // return response.data;
@@ -31,19 +32,19 @@ export const StockBarcode = () => {
 
   const handleAddItem = async () => {
     try {
-      await sendBarcode(barcode, quantity);
+      await sendBarcode(barcode, quantity, reason);
       setModalOpen(false);
       setItemInfo(null);
       setQuantity("");
     } catch (error) {
-      console.error("등록 중 오류가 발생했습니다.", error);
+      console.error("재고 등록 중 오류가 발생했습니다.", error);
     }
   };
 
   const showModal = async () => {
     try {
       const response = await axiosInstance.get(
-        `/admin/addItemBarcode/${barcode}`
+        `/admin/insertinventory/${barcode}`
       );
       if (response.data.message === "바코드가 존재하지 않습니다.") {
         //console.log("바코드가 존재하지 않습니다.");
@@ -65,27 +66,16 @@ export const StockBarcode = () => {
     }
   };
 
-const handleRemoveItem = async () => {
-  try {
-    if (quantity !== "" && Number(quantity) > 0) {
-      const response = await axiosInstance.post("/admin/removedItemBarcode", {
-        barcode,
-        quantity,
-      });
-
-      if (response.data.success) {
-        console.log("상품이 손실 처리되었습니다.");
-        setQuantity("");
-      } else {
-        console.error("상품 손실 처리 중 오류가 발생했습니다.");
-      }
-    } else {
-      console.error("유효하지 않은 수량을 입력하셨습니다.");
+  const handleRemoveItem = async () => {
+    try {
+      await sendBarcode(barcode, -quantity, reason);
+      setModalOpen(false);
+      setItemInfo(null);
+      setQuantity("");
+    } catch (error) {
+      console.error("손실 등록 중 오류가 발생했습니다.", error);
     }
-  } catch (error) {
-    console.error("등록 중 오류가 발생했습니다.", error);
-  }
-};
+  };
   const stockinfo = () => {
     navigate("/admin/stockinfo");
   };
@@ -121,6 +111,11 @@ const handleRemoveItem = async () => {
     setQuantity(e.target.value);
   };
 
+  const handleReasonChange = (e) => {
+    //console.log(e.target.value);
+    setReason(e.target.value);
+  };
+
   return (
     <BarcodeWrap>
       <BarcodeIn onSubmit={handleSubmit}>
@@ -134,7 +129,7 @@ const handleRemoveItem = async () => {
         >
           재고 등록 페이지
         </div>
-           <LogoImg src={imgLogo} alt="logo image" onClick={stockinfo} />
+        <LogoImg src={imgLogo} alt="logo image" onClick={stockinfo} />
         <BarcodeInput
           placeholder="상품 바코드를 입력해주세요"
           type="password"
@@ -166,6 +161,14 @@ const handleRemoveItem = async () => {
                 name="quantity"
                 value={quantity}
                 onChange={handleQuantityChange}
+              />
+            </_.InfoBody>
+            <_.InfoBody>
+              <_.InfoText>사유</_.InfoText>
+              <_.InfoInput
+                name="reason"
+                value={reason}
+                onChange={handleReasonChange}
               />
             </_.InfoBody>
           </_.ContentWrap>

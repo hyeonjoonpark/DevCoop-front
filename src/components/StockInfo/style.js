@@ -31,7 +31,8 @@ export const Infobutton = styled.button`
 `;
 
 export const Dbutton = styled.button`
-  margin-right: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
   width: 120px;
   height: 40px;
   color: #fff;
@@ -79,6 +80,7 @@ export const Infotext = styled.span`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  margin-Right: 10px;
 `;
 
 export const Infosearch = styled.div`
@@ -113,6 +115,7 @@ export const Filter = styled.div`
 
 export const ButtonContainer = styled.div`
   margin: auto 0;
+  justify-content: flex-end;
   display: flex;
 `;
 
@@ -213,4 +216,10 @@ export const BtnWrap = styled.div`
 
 export const Date = styled.div`
 
+`;
+
+export const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
 `;
