@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../Modal";
 import * as S from "./style";
-import { axiosInstance } from "../../axios/index";
+import { axiosInstance } from "../../axios";
 
 const StudentCharge = ({ selectedStudents, onBulkCharge }) => {
   const [modalOpen, setModalOpen] = useState(false);

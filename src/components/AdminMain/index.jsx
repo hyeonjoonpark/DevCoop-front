@@ -5,28 +5,19 @@ import AdminHeader from "../AdminHeader ";
 import { AdminMainItem } from "./AdminMainItem";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext"
-import { axiosInstance } from "../../axios";
 import { ReactComponent as BarcodeIcon } from "../../assets/BarcodeIcon.svg";
 import { ReactComponent as FilterIcon } from "../../assets/FilterIcon.svg";
-// import Modal from "../Modal";
+import { handleBulkCharge } from "../../utils/Charge"
 import StudentCharge from "../StudentCharge";
 
 const AdminMain = () => {
   const [selectedStudents, setSelectedStudents] = useState([]);
   const movePage = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-
   const handleSearchChange = (event) => {
       setSearchTerm(event.target.value);
   };
-  // 라디오 박스 상태 전환 함수
-  const toggleSelectAll = () => {
-    setSelectAll(!selectAll);
-    if (!selectAll) {
-      // 전체 선택을 해제한 경우, 선택된 학생 목록 초기화
-      setSelectedStudents([]);
-    }
-  };
+
   const toggleStudentSelection = (studentId) => {
     // 학생 선택 상태를 토글
     console.log(selectedStudents)
@@ -46,36 +37,27 @@ const AdminMain = () => {
     movePage("/admin/stockinfo");
   }
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-  const handleBulkCharge = (amount) => {
+  const onBulkCharge = (amount) => {
     const validAmount = parseInt(amount, 10);
-  
     if (isNaN(validAmount) || validAmount <= 0) {
       alert("올바른 금액을 입력해주세요 (자연수).");
       return;
     }
-  
     console.log("Selected Students:");
     console.log(selectedStudents);
   
     // 선택된 학생들에게 일정 금액을 똑같이 충전합니다.
-    axiosInstance.post('/admin/allcharge', {
-      code_number: selectedStudents,
+    handleBulkCharge({
+      list_code_number: selectedStudents,
       plusPoint: validAmount,
       charger: localStorage.getItem("adminname")
     })
-    .then((response) => {
+    .then(response => {
       console.log(response.data); 
       alert("충전이 성공적으로 완료되었습니다.");
       // 충전 후 필요한 상태 업데이트나 UI 업데이트를 여기에 추가하세요.
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(error);
       alert("충전 중 오류가 발생했습니다.");
     });
@@ -94,7 +76,7 @@ const AdminMain = () => {
                                 <BarcodeIcon />
                             </_.Barcode>
                             <_.Infobutton onClick={stockinfo} mRight="10px">재고확인</_.Infobutton>
-                            <StudentCharge selectedStudents={selectedStudents} onBulkCharge={handleBulkCharge} />
+                            <StudentCharge selectedStudents={selectedStudents} onBulkCharge={onBulkCharge} />
                         </_.ButtonContainer>
                     </_.InfoHeader>
 

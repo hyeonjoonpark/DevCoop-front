@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
-import PrettyDateTime from "../../utils/date";
+import PrettyDateTime from "../../utils/Date";
 
 const AdminUsePoint = () => {
   const [data, setData] = useState(null);

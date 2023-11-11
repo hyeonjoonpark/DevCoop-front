@@ -4,7 +4,7 @@ import { ReactComponent as QuestionLogo } from "../../assets/QuestionLogo.svg";
 import { useNavigate } from "react-router-dom";
 import * as _ from "./style";
 import { axiosInstance } from "../../axios";
-
+import { handleCharge } from "../../utils/Charge"
 const ChargeCheck = ({ state }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -26,24 +26,37 @@ const ChargeCheck = ({ state }) => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
-  const handleCharge = () => {
-    axiosInstance.post(`/admin/charge`, {
+  
+  const onCharge = () => {
+    handleCharge({
       charger: state.charger,
-      plusPoint: state.point,
       code_number: state.code_number,
-    })
-    .then((chargeResponse) => {
-      const chargeData = chargeResponse.data;
-      // console.log(chargeData);
-      
+      point: state.point
+    }).then(chargeData => {
       // 충전이 성공적으로 완료되었다면 completePage를 호출
       completePage(chargeData);
-    })
-    .catch((error) => {
+    }).catch(error => {
       console.error(error);
+      alert("충전 중 오류가 발생했습니다.");
     });
   };
+  // const handleCharge = () => {
+  //   axiosInstance.post(`/admin/charge`, {
+  //     charger: state.charger,
+  //     plusPoint: state.point,
+  //     code_number: state.code_number,
+  //   })
+  //   .then((chargeResponse) => {
+  //     const chargeData = chargeResponse.data;
+  //     // console.log(chargeData);
+      
+  //     // 충전이 성공적으로 완료되었다면 completePage를 호출
+  //     completePage(chargeData);
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+  // };
 
   return (
     <>
@@ -57,7 +70,7 @@ const ChargeCheck = ({ state }) => {
           <_.ContentSubTitle>충전하시겠습니까?</_.ContentSubTitle>
         </_.ContentWrap>
         <_.BtnWrap>
-          <button onClick={handleCharge}>네</button>
+          <button onClick={onCharge}>네</button>
           <button onClick={closeModal}>아니오</button>
         </_.BtnWrap>
       </Modal>

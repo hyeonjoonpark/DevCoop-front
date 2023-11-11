@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as _ from "./style";
 import * as C from "../ChargeComplete/style";
 import axiosInstance from "../../axios";
-import PrettyDateTime from "../../utils/date";
+import PrettyDateTime from "../../utils/Date";
 
 const AdminChargePoint = () => {
   const [data, setData] = useState(null);
@@ -48,13 +48,6 @@ const AdminChargePoint = () => {
     const newModalStates = [...modalStates];
     newModalStates[index] = !newModalStates[index];
     setModalStates(newModalStates);
-
-    // 3초 후에 모달 자동으로 닫기
-    // setTimeout(() => {
-    //   const newModalStates = [...modalStates];
-    //   newModalStates[index] = false;
-    //   setModalStates(newModalStates);
-    // }, 3000);
   };
 
   const PointToggleWrap = ({ logEntry }) => {
