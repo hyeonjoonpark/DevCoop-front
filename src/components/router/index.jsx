@@ -1,18 +1,21 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import MainPage from "../../pages/MainPage"; 
-import PaymentsPage from '../../pages/Payments';
-import NotFoundPage from '../../pages/NotFoundPage';
-import BarcodePage from "../../pages/BarcodePage";
-import LoginPage from '../../pages/LoginPage';
-import UserlogPage from '../../pages/UserlogPage';
-import AdminLoginPage from '../../pages/AdminLoginPage';
-import AdminMainPage from "../../pages/AdminMainPage";
-import ChargeCompletePage from "../../pages/ChargeComplete";
-import PayCompletePage from "../../pages/PayComplete";
-import { useAuth } from "../../context/authContext";
-import StockInfoPage from "../../pages/StockInfoPage";
-import StockBarcodPage from "../../pages/StockBarcodePage";
+import { useAuth } from "context/authContext";
+
+import MainPage from "pages/User/MainPage"; 
+import NotFoundPage from 'pages/NotFoundPage';
+import PaymentsPage from 'pages/Admin/Payments';
+import BarcodePage from "pages/Admin/BarcodePage";
+import LoginPage from 'pages/User/LoginPage';
+import UserlogPage from 'pages/User/UserlogPage';
+import AdminLoginPage from 'pages/Admin/LoginPage';
+import AdminMainPage from "pages/Admin/MainPage";
+import ChargeCompletePage from "pages/Admin/ChargeComplete";
+import PayCompletePage from "pages/Admin/PayComplete";
+import StockInfoPage from "pages/Admin/StockInfoPage";
+import StockBarcodPage from "pages/Admin/StockBarcodePage";
+
+
 
 const Router = () => {
   const { isAdminLoggedIn } = useAuth();

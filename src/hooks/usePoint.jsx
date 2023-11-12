@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "../utils/Axios";
 import { useAuth } from "../context/authContext";
 
 export const getPoint = async () => {

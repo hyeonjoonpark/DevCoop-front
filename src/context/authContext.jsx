@@ -1,6 +1,6 @@
 // AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { axiosInstance } from '../axios'; 
+import { axiosInstance } from '../utils/Axios'; 
 
 const AuthContext = createContext();
 
@@ -43,6 +43,7 @@ function useProvideAuth() {
         setIsAdminLoggedIn(true);
         setIsLoggedIn(true);
       } else {
+        localStorage.setItem("clientname", name); // 관리자 로그인 성공시 name 값을 localStorage에 저장
         setIsLoggedIn(true);
       }
       navigate(admin ? "/admin" : "/");

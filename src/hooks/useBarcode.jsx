@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "../utils/Axios";
 
 export const sendBarcode = async (barcode) => {
     try {
