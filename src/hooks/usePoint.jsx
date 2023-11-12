@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "../utils/Axios";
 import { useAuth } from "../context/authContext";
 
 export const getPoint = async () => {
   try {
-    const response = await axiosInstance.post("/studentinfo");
+    const response = await axiosInstance.post("/userinfo");
     console.log(response.data.student_name)
     return {
       number: response.data.student_number,

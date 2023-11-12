@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "../utils/Axios";
 
 export const sendBarcode = async (barcode) => {
     try {
@@ -33,7 +33,7 @@ export const useBarcode = () => {
         e.preventDefault();
         // console.log("Hello")
         try{
-            const { message, point, student_number } = await sendbarcode(
+            const { message, point, student_number } = await sendBarcode(
                 barcode
             )
             console.log(message, point, student_number)
