@@ -55,21 +55,18 @@ export const InfoHeader = styled.div`
 
 export const InfoBody = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  grid-template-columns: auto auto;
   margin: 0 auto;
   width: 500px;
+  gap: 10px;
+  align-items: center;
 `;
 
 export const InfoText = styled.div`
   color: ${(props) => (props.color ? props.color : "#333")};
-  margin-top: 20px;
   font-size: 23px;
   text-align: left;
-  width: 100px;
   color: #8a8a8a;
-  display: inline-block;
-  margin-top: 10px;
 `;
 
 export const ModalOverlay = styled.div`

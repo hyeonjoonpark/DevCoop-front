@@ -7,27 +7,30 @@ export const rightPointLogWrap = styled.div`
 
 export const PointLogWrap = styled.div`
   display: flex;
-  justify-content: space-around;
-  
+  justify-content: space-between;
   margin-right: 5px;
   margin-bottom: 10px;
   padding-top: 15px;
   width: 440px;
   height: 70px;
-
-  background-color: ${props => props.backgroundColor ? props.backgroundColor : "#eff0f2"};
-  border: 1px solid ${props => props.borderColor ? props.borderColor : "#EFF0F2"};
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "#eff0f2"};
+  border: 1px solid
+    ${(props) => (props.borderColor ? props.borderColor : "#EFF0F2")};
   border-radius: 8px;
 `;
 
 export const DateText = styled.span`
-  margin-right: 30px; // 오른쪽 마진으로 간격 조정
+  margin-left: 70px;
+  text-align: left;
+  font-size: 23px;
 `;
 
 export const AmountText = styled.span`
-  // 필요하다면 여기에 추가 스타일을 적용할 수 있습니다.
+  margin-right: 50px;
+  text-align: right;
+  font-size: 23px;
 `;
-
 
 export const CompeleteWrap = styled.div`
   margin: 0 auto;
@@ -38,9 +41,7 @@ export const CompeleteWrap = styled.div`
 export const PaymentsTopWrap = styled.div`
   width: 100%;
   height: 300px;
-
   text-align: center;
-
   border-bottom: 1px solid #333;
 `;
 
@@ -67,6 +68,8 @@ export const StudentInfo = styled.div`
 `;
 
 export const InfoText = styled.div`
+  display: flex;
+  justify-content: space-between;
   color: ${(props) => (props.color ? props.color : "#333")};
   font-weight: 400;
   font-size: 23px;

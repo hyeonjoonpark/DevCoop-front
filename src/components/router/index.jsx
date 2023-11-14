@@ -20,6 +20,7 @@ import StockBarcodPage from "pages/Admin/StockBarcodePage";
 const Router = () => {
   const { isAdminLoggedIn } = useAuth();
 
+  
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />

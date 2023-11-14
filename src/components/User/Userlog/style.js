@@ -12,8 +12,6 @@ export const PointList = styled.ul`
   padding: 0;
 `;
 
-
-
 export const CompeleteWrap = styled.div`
   margin: 0 auto;
   width: 900px;

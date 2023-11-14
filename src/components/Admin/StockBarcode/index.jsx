@@ -5,6 +5,7 @@ import Modal from "components/Modal";
 import * as _ from "./style";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "utils/Axios";
+import { FlexRow } from "../StockInfo/style";
 
 export const StockBarcode = () => {
   const [barcode, setBarcode] = useState(null);
@@ -157,8 +158,16 @@ export const StockBarcode = () => {
             <_.InfoHeader>
               <_.ContentTitle>{itemInfo}</_.ContentTitle>
             </_.InfoHeader>
-            <_.InfoBody style={{marginTop:"30px"}}>
-              <_.InfoText>수량</_.InfoText>
+            <_.InfoBody style={{ marginTop: "30px" }}>
+              <_.InfoText
+                style={{
+                  display: "flex",
+                  justifyContent: "space-btween",
+                  alignItems: "center"
+                }}
+              >
+                수량
+              </_.InfoText>
               <_.InfoInput
                 name="quantity"
                 value={quantity}

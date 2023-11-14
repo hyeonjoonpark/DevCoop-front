@@ -15,7 +15,7 @@ export const StockInfoItem = ({ stockInfo }) => {
           <_.Infotext>{stockInfo.item_name}</_.Infotext>
         </_.Infochooses>
         <_.Infochoose>
-          <_.Infotext>{stockInfo.quantity}</_.Infotext>
+          <_.Infotext>{stockInfo.total_change}</_.Infotext>
         </_.Infochoose>
         <_.Infochooses>
           <_.Infotext>{PrettyDateTime(stockInfo.last_updated)}</_.Infotext>
