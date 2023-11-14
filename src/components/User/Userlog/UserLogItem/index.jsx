@@ -24,29 +24,24 @@ const PointLogItem = ({ type }) => {
   }, []);
 
   // console.log(data);
-  return (
-    <div style={{ flexDirection: "column" }}>
-      {data &&
-        data.map((item, index) => (
-          <_.PointLogWrap
-            key={`${type}-${index}`}
-            style={{ background: background }}
-          >
-            <div style={{ display: "flex" }}>
-              <_.InfoText>
-                <_.DateText>
-                  {new Date(item.date).toLocaleDateString()}
-                </_.DateText>
-                <_.AmountText>
-                  {`${parseInt(item.inner_point).toLocaleString()}원 ${Type}`}{" "}
-                  {}
-                </_.AmountText>
-              </_.InfoText>
-            </div>
-          </_.PointLogWrap>
-        ))}
-    </div>
-  );
+return (
+  <div style={{ flexDirection: "column" }}>
+    {data &&
+      data.map((item, index) => (
+        <_.PointLogWrap
+          key={`${type}-${index}`}
+          style={{ background: background }}
+        >
+          <_.DateText>{new Date(item.date).toLocaleDateString()}</_.DateText>
+          <div style={{ display: "flex", justifyContent: "flex-end"}}>
+            <_.AmountText>
+              {`${parseInt(item.inner_point).toLocaleString()}원 ${Type}`}
+            </_.AmountText>
+          </div>
+        </_.PointLogWrap>
+      ))}
+  </div>
+);
 };
 
 export default PointLogItem;

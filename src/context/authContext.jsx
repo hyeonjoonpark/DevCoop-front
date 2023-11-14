@@ -26,7 +26,8 @@ function useProvideAuth() {
   useEffect(() => {
     setIsLoggedIn(document.cookie.includes('isLoggedIn'));
     setIsAdminLoggedIn(document.cookie.includes('isAdminLoggedIn'));
-    console.log("Here is authContext : " + isLoggedIn)
+    // console.log("Here is authContext, IsLoggedIn? : " + isLoggedIn);
+    // console.log("Here is authContext, IsAdminLoggedIn? : " + isAdminLoggedIn)
   }, []);
 
   
