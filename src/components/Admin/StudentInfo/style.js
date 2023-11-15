@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const maxWidth = "900px";
-
+const maxWidth = '900px';
 
 export const InfoContainer = styled.div`
   margin: 0 auto;
@@ -10,6 +9,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoHeader = styled.div`
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
   width: ${maxWidth};
@@ -23,7 +23,7 @@ export const Infotitle = styled.p`
 `;
 
 export const Infobutton = styled.button`
-  margin-right: ${(props) => (props.mRight ? props.mRight : "")};
+  margin-right: ${(props) => (props.mRight ? props.mRight : '')};
   width: 150px;
   height: 45px;
   color: #fff;
@@ -85,7 +85,7 @@ export const Inputbutton = styled.div`
 `;
 
 export const Barcode = styled.div`
-  margin-right: 10px ${(props) => (props.mRight ? props.mRight : "")};
+  margin-right: 10px ${(props) => (props.mRight ? props.mRight : '')};
   width: 55px;
   height: 55px;
   color: #fff;
@@ -103,8 +103,6 @@ export const ButtonContainer = styled.div`
   display: flex;
 `;
 
-
-
 export const ModalContent = styled.div`
   padding: 20px;
   background-color: #f7f7f7;
@@ -121,7 +119,7 @@ export const StudentList = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
-  max-height: 200px; 
+  max-height: 200px;
   overflow-y: auto;
 `;
 

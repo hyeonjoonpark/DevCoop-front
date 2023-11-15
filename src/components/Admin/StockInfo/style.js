@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import "react-datepicker/dist/react-datepicker.css";
-import { ReactComponent as FilterIcon } from "assets/FilterIcon.svg";
+import styled from 'styled-components';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ReactComponent as FilterIcon } from 'assets/FilterIcon.svg';
 
-const maxWidth = "900px";
+const maxWidth = '900px';
 
 export const InfoContainer = styled.div`
   margin: 0 auto;
@@ -24,7 +24,7 @@ export const Infotitle = styled.p`
 `;
 
 export const Infobutton = styled.button`
-  margin-right: ${(props) => (props.mRight ? props.mRight : "")};
+  margin-right: ${(props) => (props.mRight ? props.mRight : '')};
   width: 150px;
   height: 45px;
   color: #fff;
@@ -80,7 +80,7 @@ export const Infotext = styled.span`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  margin-Right: 10px;
+  margin-right: 10px;
 `;
 
 export const Infosearch = styled.div`
@@ -214,12 +214,23 @@ export const BtnWrap = styled.div`
   height: 100px;
 `;
 
-export const Date = styled.div`
-
-`;
+export const Date = styled.div``;
 
 export const FlexRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
+`;
+
+export const StyledDatePickerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container,
+  .react-datepicker__input-container input {
+    width: 125px; // 원하는 너비로 설정
+    height: 50px; // 원하는 높이로 설정
+    font-size: 20px; // 원하는 폰트 크기로 설정
+    margin-right: 10px;
+  }
 `;

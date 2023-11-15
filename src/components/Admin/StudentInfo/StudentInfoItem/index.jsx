@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
-import * as _ from "./style";
-import styled from "styled-components";
-import axiosInstance from "utils/Axios";
+import React, { useState, useEffect } from 'react';
+import * as _ from './style';
+import styled from 'styled-components';
+import axiosInstance from 'utils/Axios';
 
-export const AdminMainItem = ({ checked, onToggleStudentSelection, searchTerm }) => {
+export const StudentInfoItem = ({
+  checked,
+  onToggleStudentSelection,
+  searchTerm,
+}) => {
   const [alluser, setAllUser] = useState([]);
   const [checkboxValues, setCheckboxValues] = useState({});
 
   useEffect(() => {
     axiosInstance
-      .get("/admin/alluser")
+      .get('/admin/alluser')
       .then((response) => {
         setAllUser(response.data);
         const initialCheckboxValues = {};
@@ -32,7 +36,7 @@ export const AdminMainItem = ({ checked, onToggleStudentSelection, searchTerm })
     onToggleStudentSelection(name);
   };
 
-  const filteredUsers = alluser.filter(user => 
+  const filteredUsers = alluser.filter((user) =>
     user.student_name.includes(searchTerm)
   );
 
@@ -43,7 +47,7 @@ export const AdminMainItem = ({ checked, onToggleStudentSelection, searchTerm })
           <_.Infochoose>
             <input
               type="checkbox"
-              name={`${user.code_number}`} 
+              name={`${user.code_number}`}
               checked={checkboxValues[user.code_number] || false}
               onChange={handleCheckboxChange}
             />
@@ -59,7 +63,6 @@ export const AdminMainItem = ({ checked, onToggleStudentSelection, searchTerm })
     </InfoWrap>
   );
 };
-
 
 const InfoWrap = styled.div`
   display: flex;
