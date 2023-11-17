@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { ReactComponent as CallLogo } from "assets/CallLogo.svg";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { ReactComponent as CallLogo } from 'assets/CallLogo.svg';
+import { Link } from 'react-router-dom';
 
 export const Maintop = styled.div`
   margin: 0 auto;

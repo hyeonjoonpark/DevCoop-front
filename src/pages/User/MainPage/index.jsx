@@ -1,7 +1,7 @@
-import React from "react";
-import Main from "components/User/UserMain";
-import UserHeader from "components/User/UserHeader";
-import * as P from "common/PageWrapStyle";
+import React from 'react';
+import Main from 'components/User/UserMain';
+import UserHeader from 'components/User/UserHeader';
+import * as P from 'common/PageWrapStyle';
 
 export default function MainPage() {
   return (
