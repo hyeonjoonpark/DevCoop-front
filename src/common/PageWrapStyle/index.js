@@ -39,7 +39,7 @@ export const AdminSubPageContainer = styled.div`
 
 export const PageContainer = styled.div`
   margin: 0 auto;
-  width: 1000px;
+  width: 900;
   height: 100%;
   overflow: auto;
   background-color: #fff;

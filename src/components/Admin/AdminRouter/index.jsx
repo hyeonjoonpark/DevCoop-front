@@ -1,27 +1,36 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
-import StudentInfoComponent from 'components/Admin/StudentInfo';
-import PaymentsPage from 'pages/Admin/Payments';
-import BarcodePage from 'pages/Admin/BarcodePage';
-import ChargeCompletePage from 'pages/Admin/ChargeComplete';
-import PayCompletePage from 'pages/Admin/PayComplete';
-import StockInfoPage from 'pages/Admin/StockInfoPage';
-import StockBarcodePage from 'pages/Admin/StockBarcodePage';
+import StudentInfoComponent from 'components/Admin/Transaction/StudentInfo';
+import PaymentsComponent from 'components/Admin/Transaction/Payments';
+import BarcodeComponent from 'components/Admin/Transaction/Barcode';
+import ChargeCompleteComponent from 'components/Admin/Transaction/ChargeComplete';
+import PayCompleteComponent from 'components/Admin/Transaction/PayComplete';
+
+import StockInfoComponent from 'components/Admin/Inventory/StockInfo';
+import StockBarcodeComponent from 'components/Admin/Inventory/StockBarcode';
+import ItemInfoComponent from 'components/Admin/Inventory/ItemInfo';
+import InventoryCheckComponent from 'components/Admin/Inventory/InventoryCheck';
+import ReceityCheckComponent from 'components/Admin/Inventory/ReceiptCheck';
+import NotFoundPage from 'pages/NotFoundPage';
 
 const AdminRoutes = () => {
   const { isAdminLoggedIn } = useAuth();
 
   return isAdminLoggedIn ? (
     <Routes>
-      <Route path="/" element={<StudentInfoComponent />} />
-      <Route path="payments" element={<PaymentsPage />} />
-      <Route path="chargecomplete" element={<ChargeCompletePage />} />
-      <Route path="paycomplete" element={<PayCompletePage />} />
-      <Route path="barcode" element={<BarcodePage />} />
-      <Route path="stockinfo" element={<StockInfoPage />} />
-      <Route path="stockbarcode" element={<StockBarcodePage />} />
-      {/* 다른 어드민 라우트들... */}
+      <Route path="/" element={<BarcodeComponent />} />
+      <Route path="studentinfo" element={<StudentInfoComponent />} />
+      <Route path="payments" element={<PaymentsComponent />} />
+      <Route path="chargecomplete" element={<ChargeCompleteComponent />} />
+      <Route path="paycomplete" element={<PayCompleteComponent />} />
+      <Route path="barcode" element={<BarcodeComponent />} />
+      <Route path="stockinfo" element={<StockInfoComponent />} />
+      <Route path="stockbarcode" element={<StockBarcodeComponent />} />
+      <Route path="item" element={<ItemInfoComponent />} />
+      <Route path="inventory" element={<InventoryCheckComponent />} />
+      <Route path="receipt" element={<ReceityCheckComponent />} />
+      <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   ) : (
     <Navigate to="/admin/login" />

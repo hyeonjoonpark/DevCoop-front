@@ -11,6 +11,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoHeader = styled.div`
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
   width: ${maxWidth};

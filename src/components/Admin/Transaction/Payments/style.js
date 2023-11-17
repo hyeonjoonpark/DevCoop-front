@@ -52,3 +52,10 @@ export const rightWrap = styled.div`
 export const leftWrap = styled.div`
   width: 50%;
 `;
+
+export const PageWrap = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: #fff;
+`;

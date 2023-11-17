@@ -5,6 +5,7 @@ import AdminChargePoint from "../AdminChargePoint";
 import * as C from "../ChargeComplete/style";
 import * as _ from "./style";
 import axiosInstance from "utils/Axios";
+import * as P from "common/PageWrapStyle";
 
 import ChargeCheck from "../ChargeCheck";
 import { color } from "constants/color";
@@ -80,64 +81,64 @@ const Payments = () => {
     console.log(state);
   };
 
-
-
   return (
-    <C.CompeleteWrap>
-      <C.StudentInfo>
-        <C.InfoText color={color.default}>학생 정보</C.InfoText>
-        <C.StudentInfoDetail>
-          <C.InfoText>이름 : {state.clientname}</C.InfoText>
-        </C.StudentInfoDetail>
-      </C.StudentInfo>
+    <>
+      <P.InfoContainer>
+          <C.StudentInfo>
+            <C.InfoText color={color.default}>학생 정보</C.InfoText>
+            <C.StudentInfoDetail>
+              <C.InfoText>이름 : {state.clientname}</C.InfoText>
+            </C.StudentInfoDetail>
+          </C.StudentInfo>
 
-      <C.ExChangeDetailWrap
-        width={"900px"}
-        paddingTop={"10px"}
-        marginTop={"5px"}
-      >
-        <C.InfoText color={color.default}>남은 금액</C.InfoText>
-        <C.Exchange fontSize={"30px"} fontWeight={"700"}>
-          {state.clientpoint.toLocaleString()}원
-        </C.Exchange>
-      </C.ExChangeDetailWrap>
-      <_.PointWrap>
-        <_.PointInTop>
-          <C.InfoText color={TextColor}>포인트</C.InfoText>
-            <_.PointInput
-              name="point"
-              value={state.point.toLocaleString()}
-              onChange={handleChange}
-              isError={!!state.errorMessage} // 에러 메시지가 있으면 true, 아니면 false
-            />
-        </_.PointInTop>
+          <C.ExChangeDetailWrap
+            width={"900px"}
+            paddingTop={"10px"}
+            marginTop={"5px"}
+          >
+            <C.InfoText color={color.default}>남은 금액</C.InfoText>
+            <C.Exchange fontSize={"30px"} fontWeight={"700"}>
+              {state.clientpoint.toLocaleString()}원
+            </C.Exchange>
+          </C.ExChangeDetailWrap>
+          <_.PointWrap>
+            <_.PointInTop>
+              <C.InfoText color={TextColor}>포인트</C.InfoText>
+              <_.PointInput
+                name="point"
+                value={state.point.toLocaleString()}
+                onChange={handleChange}
+                isError={!!state.errorMessage} // 에러 메시지가 있으면 true, 아니면 false
+              />
+            </_.PointInTop>
 
-        <_.PointBottom>
-          <_.NumberInput
-            placeholder={state.charger}
-            name="charger"
-            value={state.charger}
-            onChange={handleChange}
-          />
-          <ChargeCheck state={state} />
-          <PaymentsCheck state={state} />
-        </_.PointBottom>
-      </_.PointWrap>
+            <_.PointBottom>
+              <_.NumberInput
+                placeholder={state.charger}
+                name="charger"
+                value={state.charger}
+                onChange={handleChange}
+              />
+              <ChargeCheck state={state} />
+              <PaymentsCheck state={state} />
+            </_.PointBottom>
+          </_.PointWrap>
 
-      <C.InfoText>사용내역</C.InfoText>
-      <_.UseLogWrap>
-        <_.rightWrap>
-          <li>
-            <AdminUsePoint />
-          </li>
-        </_.rightWrap>
-        <_.leftWrap>
-          <li>
-            <AdminChargePoint />
-          </li>
-        </_.leftWrap>
-      </_.UseLogWrap>
-    </C.CompeleteWrap>
+          <C.InfoText>사용내역</C.InfoText>
+          <_.UseLogWrap>
+            <_.rightWrap>
+              <li>
+                <AdminUsePoint />
+              </li>
+            </_.rightWrap>
+            <_.leftWrap>
+              <li>
+                <AdminChargePoint />
+              </li>
+            </_.leftWrap>
+          </_.UseLogWrap>
+      </P.InfoContainer>
+    </>
   );
 };
 

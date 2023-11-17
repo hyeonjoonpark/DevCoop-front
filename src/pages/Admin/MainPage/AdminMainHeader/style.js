@@ -10,7 +10,7 @@ export const AdminMainHeader = styled.div`
 
 export const NewHeaderInBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex;
   width: 100%
   height: 100%;
 
@@ -25,9 +25,19 @@ export const NewHeaderInBox = styled.div`
 
 export const NewLogOutBtn = styled.button`
   margin-top: 0px;
-  margin-right: 10px;
+  margin-left: 930px;
   background-color: #34343c;
   color: #fff;
   font-weight: 600;
   font-size: 20px;
+`;
+
+export const ListBtn = styled.button`
+  margin-left: 77px;
+  width: 100px;
+  height: 50px;
+  background-color: #51515e;
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
 `;

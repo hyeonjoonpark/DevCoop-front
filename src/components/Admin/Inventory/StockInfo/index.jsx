@@ -35,7 +35,7 @@ const StockInfo = () => {
     }&end_date=${endDate.toISOString().split('T')[0]}`;
 
     axiosInstance
-      .get(`/admin/inventoryCheck${queryParams}`)
+      .get(`/admin/stockinfo${queryParams}`)
       .then((response) => {
         if (response.status === 204) {
           // 사용자에게 데이터가 없음을 알리고, data 상태를 빈 배열로 설정합니다.
@@ -90,73 +90,71 @@ const StockInfo = () => {
 
   return (
     <>
-      <P.PageWrap>
-        <P.PageContainer>
-          <_.InfoContainer>
-            <_.InfoHeader>
-              <_.Infotitle>재고확인</_.Infotitle>
-            </_.InfoHeader>
-            <_.FlexRow>
-              <_.StyledDatePickerWrapper>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                />
-                <_.Infotext>부터</_.Infotext>
-                <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                />
-                <_.Infotext>까지 재고변동 </_.Infotext>
-              </_.StyledDatePickerWrapper>
-              <_.ButtonContainer>
-                {/* <_.Dbutton onClick={handleSearch}>조회</_.Dbutton> */}
-                <_.Dbutton onClick={handleDownload}>출력</_.Dbutton>
-                <_.Dbutton onClick={barcode}>재고등록</_.Dbutton>
-                <_.Dbutton onClick={main}>메인으로</_.Dbutton>
-              </_.ButtonContainer>
-            </_.FlexRow>
+      <P.PageContainer>
+        <P.InfoContainer>
+          <_.InfoHeader>
+            <_.Infotitle>재고확인</_.Infotitle>
+          </_.InfoHeader>
+          <_.FlexRow>
+            <_.StyledDatePickerWrapper>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+              />
+              <_.Infotext>부터</_.Infotext>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+              />
+              <_.Infotext>까지 재고변동 </_.Infotext>
+            </_.StyledDatePickerWrapper>
+            <_.ButtonContainer>
+              {/* <_.Dbutton onClick={handleSearch}>조회</_.Dbutton> */}
+              <_.Dbutton onClick={handleDownload}>출력</_.Dbutton>
+              <_.Dbutton onClick={barcode}>재고등록</_.Dbutton>
+              <_.Dbutton onClick={main}>메인으로</_.Dbutton>
+            </_.ButtonContainer>
+          </_.FlexRow>
 
-            <_.Infolist>
-              <_.Info>
-                <_.Infochoose>
-                  <_.Infotext>상품번호</_.Infotext>
-                </_.Infochoose>
-                <_.Infochooses>
-                  <_.Infotext>상품이름</_.Infotext>
-                </_.Infochooses>
-                <_.Infochoose>
-                  <_.Infotext>남은수량</_.Infotext>
-                </_.Infochoose>
-                <_.Infochooses>
-                  <_.Infotext>최종 변동 일시</_.Infotext>
-                  <_.FilterImg
-                    onClick={() => setIsEndDateVisible(!isEndDateVisible)}
-                    style={{ cursor: 'pointer', marginRight: '5px' }}
-                  />
-                </_.Infochooses>
-              </_.Info>
-              <_.StockInfoWrap>
-                {
-                  <_.StockInfoWrap>
-                    {data.map((item) => (
-                      <StockInfoItem key={item.item_id} stockInfo={item} />
-                    ))}
-                  </_.StockInfoWrap>
-                }
-              </_.StockInfoWrap>
-            </_.Infolist>
-          </_.InfoContainer>
-        </P.PageContainer>
-      </P.PageWrap>
+          <_.Infolist>
+            <_.Info>
+              <_.Infochoose>
+                <_.Infotext>상품번호</_.Infotext>
+              </_.Infochoose>
+              <_.Infochooses>
+                <_.Infotext>상품이름</_.Infotext>
+              </_.Infochooses>
+              <_.Infochoose>
+                <_.Infotext>남은수량</_.Infotext>
+              </_.Infochoose>
+              <_.Infochooses>
+                <_.Infotext>최종 변동 일시</_.Infotext>
+                <_.FilterImg
+                  onClick={() => setIsEndDateVisible(!isEndDateVisible)}
+                  style={{ cursor: 'pointer', marginRight: '5px' }}
+                />
+              </_.Infochooses>
+            </_.Info>
+            <_.StockInfoWrap>
+              {
+                <_.StockInfoWrap>
+                  {data.map((item) => (
+                    <StockInfoItem key={item.item_id} stockInfo={item} />
+                  ))}
+                </_.StockInfoWrap>
+              }
+            </_.StockInfoWrap>
+          </_.Infolist>
+        </P.InfoContainer>
+      </P.PageContainer>
     </>
   );
 };
