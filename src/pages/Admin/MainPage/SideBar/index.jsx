@@ -58,7 +58,7 @@ const SideBar = () => {
       name: 'AriPay',
       links: [
         { to: '/admin/', text: '학생증 스캔' },
-        { to: '/admin/studentinfo', text: '일괄 충전' },
+        { to: '/admin/manycharge', text: '일괄 충전' },
       ],
     },
     {
@@ -73,8 +73,8 @@ const SideBar = () => {
     {
       name: '재정관리',
       links: [
-        { to: '/admin/barcode', text: '매입매출' },
-        { to: '/admin/stockinfo', text: '금전출납부' },
+        { to: '/admin/preparing', text: '매입매출' },
+        { to: '/admin/preparing', text: '금전출납부' },
       ],
     },
     {
@@ -84,8 +84,8 @@ const SideBar = () => {
     {
       name: '설정',
       links: [
-        { to: '/admin/?', text: '기본설정' },
-        { to: '/admin/?', text: '계좌설정' },
+        { to: '/admin/preparing', text: '기본설정' },
+        { to: '/admin/preparing', text: '계좌설정' },
       ],
     },
     // 다른 항목들을 이 배열에 추가

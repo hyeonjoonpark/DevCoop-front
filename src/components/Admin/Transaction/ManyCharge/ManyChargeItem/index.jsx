@@ -3,7 +3,7 @@ import * as _ from './style';
 import styled from 'styled-components';
 import axiosInstance from 'utils/Axios';
 
-export const StudentInfoItem = ({
+export const ManyChargeItem = ({
   checked,
   onToggleStudentSelection,
   searchTerm,

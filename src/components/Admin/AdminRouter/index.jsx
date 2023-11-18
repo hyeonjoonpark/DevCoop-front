@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
-import StudentInfoComponent from 'components/Admin/Transaction/StudentInfo';
+import ManyChargeComponent from 'components/Admin/Transaction/ManyCharge';
 import PaymentsComponent from 'components/Admin/Transaction/Payments';
 import BarcodeComponent from 'components/Admin/Transaction/Barcode';
 import ChargeCompleteComponent from 'components/Admin/Transaction/ChargeComplete';
@@ -22,7 +22,7 @@ const AdminRoutes = () => {
   return isAdminLoggedIn ? (
     <Routes>
       <Route path="/" element={<BarcodeComponent />} />
-      <Route path="studentinfo" element={<StudentInfoComponent />} />
+      <Route path="manycharge" element={<ManyChargeComponent />} />
       <Route path="payments" element={<PaymentsComponent />} />
       <Route path="chargecomplete" element={<ChargeCompleteComponent />} />
       <Route path="paycomplete" element={<PayCompleteComponent />} />

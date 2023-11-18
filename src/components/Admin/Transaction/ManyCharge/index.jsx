@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import * as _ from './style';
 import * as P from 'common/PageWrapStyle';
-import { StudentInfoItem } from './StudentInfoItem';
+import { ManyChargeItem } from './ManyChargeItem';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BarcodeIcon } from 'assets/BarcodeIcon.svg';
 import { ReactComponent as FilterIcon } from 'assets/FilterIcon.svg';
 import { handleBulkCharge } from 'utils/Charge';
 import StudentCharge from '../StudentCharge';
 
-const AdminMain = () => {
+const ManyCharge = () => {
   const [selectedStudents, setSelectedStudents] = useState([]);
   const movePage = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,8 +67,7 @@ const AdminMain = () => {
         <P.InfoHeader>
           <_.Infotitle>학생 정보 조회</_.Infotitle>
           <_.ButtonContainer>
-            <_.Barcode onClick={barcode}>
-            </_.Barcode>
+            <_.Barcode onClick={barcode}></_.Barcode>
             <_.Infobutton onClick={stockinfo} mRight="10px">
               재고확인
             </_.Infobutton>
@@ -103,7 +102,7 @@ const AdminMain = () => {
             </_.Infochoose>
           </_.Info>
           <div>
-            <StudentInfoItem
+            <ManyChargeItem
               onToggleStudentSelection={toggleStudentSelection}
               searchTerm={searchTerm}
             />
@@ -114,4 +113,4 @@ const AdminMain = () => {
   );
 };
 
-export default AdminMain;
+export default ManyCharge;
