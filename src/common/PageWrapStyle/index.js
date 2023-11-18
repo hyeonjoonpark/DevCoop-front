@@ -27,10 +27,10 @@ export const AdminMainPageContainer = styled.div`
 `;
 
 export const AdminSubPageContainer = styled.div`
-  margin-left: auto;
-  margin-right: 0;
+  margin-left: 0;
+  margin-right: auto;
 
-  width: 80%;
+  width: 90%;
   height: 100%;
   overflow: auto;
   background-color: #fff;
@@ -39,7 +39,7 @@ export const AdminSubPageContainer = styled.div`
 
 export const PageContainer = styled.div`
   margin: 0 auto;
-  width: 900;
+  width: 1000px;
   height: 100%;
   overflow: auto;
   background-color: #fff;
@@ -119,6 +119,6 @@ export const NotFoundContent = styled.p`
 
 export const LeftBar = styled.div`
   background-color: #34343c;
-  width: 300px;
+  width: 200px;
   height: 100%;
 `;

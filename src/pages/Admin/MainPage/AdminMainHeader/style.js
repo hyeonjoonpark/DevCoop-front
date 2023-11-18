@@ -10,22 +10,35 @@ export const AdminMainHeader = styled.div`
 
 export const NewHeaderInBox = styled.div`
   display: flex;
-  justify-content: flex;
-  width: 100%
+  justify-content: left;
+  width: 100%;
   height: 100%;
 
-  text-align: ${(props) => (props.testAlign ? props.testAlign : '')};
+  text-align: ${(props) => (props.textAlign ? props.testAlign : 'left')};
   font-size: 10px;
   font-weight: 700;
   color: #8a8a8a;
 
   padding-left: 20px;
-  padding-top: ${(props) => (props.paddingTop ? props.paddingTop : '')};
+  padding-top: ${(props) => (props.paddingTop ? props.paddingTop : '0')};
+`;
+
+export const NewHeaderComponents = styled.div`
+  display: flex;
+  justify-content: left;
+  width: 80%;
+  height: 100%;
+
+  text-align: ${(props) => (props.textAlign ? props.testAlign : 'left')};
+  font-size: 10px;
+  font-weight: 700;
+  color: #8a8a8a;
+
+  padding-left: 20px;
+  padding-top: ${(props) => (props.paddingTop ? props.paddingTop : '0')};
 `;
 
 export const NewLogOutBtn = styled.button`
-  margin-top: 0px;
-  margin-left: 930px;
   background-color: #34343c;
   color: #fff;
   font-weight: 600;

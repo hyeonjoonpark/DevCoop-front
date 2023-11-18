@@ -10,11 +10,11 @@ export default function AdminMainPage() {
     <P.AdminWrap>
       <AdminMainHeader />
       <P.AdminMainPageContainer>
-        <SideBar/>
+        <SideBar />
         <P.AdminSubPageContainer>
           <AdminRouter />
         </P.AdminSubPageContainer>
       </P.AdminMainPageContainer>
     </P.AdminWrap>
-  );  
+  );
 }

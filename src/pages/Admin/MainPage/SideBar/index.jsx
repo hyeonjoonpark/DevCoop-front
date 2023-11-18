@@ -23,17 +23,23 @@ const SubItems = styled.div`
 const SidebarItemLink = styled(Link)`
   /* 링크 스타일 */
   display: block;
-  color: #fff; // 예시 색상
+  color: #fff;
   padding: 10px 15px;
   text-decoration: none;
   font-weight: 450;
   font-size: 20px;
-  /* 아랫줄 추가 */
-  border-bottom: 2px solid #51515e;
+  /* 클릭된 항목의 스타일 */
+  background-color: ${(props) =>
+    props.isActive ? '#F7BD4C' : 'transparent'}; // 노란색으로 변경
+
+  &:hover {
+    background-color: #666; // 호버 스타일
+  }
 `;
 
 const SideBar = () => {
   const [openItems, setOpenItems] = useState({});
+  const [activeLink, setActiveLink] = useState(''); // 활성화된 링크를 추적하는 상태
 
   const toggleItem = (itemName) => {
     setOpenItems((prev) => ({
@@ -42,11 +48,16 @@ const SideBar = () => {
     }));
   };
 
+  // 항목 링크 클릭 이벤트 핸들러
+  const handleLinkClick = (linkText) => {
+    setActiveLink(linkText); // 클릭된 링크를 활성화된 링크 상태로 설정
+  };
+
   const sidebarItems = [
     {
       name: 'AriPay',
       links: [
-        { to: '/admin/', text: '바코드 입력' },
+        { to: '/admin/', text: '학생증 스캔' },
         { to: '/admin/studentinfo', text: '일괄 충전' },
       ],
     },
@@ -68,7 +79,7 @@ const SideBar = () => {
     },
     {
       name: '조합원관리',
-      links: [{ to: '/admin/?', text: '조합원 목록' }],
+      links: [{ to: '/admin/userlist', text: '조합원 목록' }],
     },
     {
       name: '설정',
@@ -79,7 +90,6 @@ const SideBar = () => {
     },
     // 다른 항목들을 이 배열에 추가
   ];
-
   return (
     <P.LeftBar>
       {sidebarItems.map((item) => (
@@ -89,7 +99,12 @@ const SideBar = () => {
           </SidebarItem>
           <SubItems isOpen={openItems[item.name]}>
             {item.links.map((link) => (
-              <SidebarItemLink key={link.text} to={link.to}>
+              <SidebarItemLink
+                key={link.text}
+                to={link.to}
+                isActive={activeLink === link.text} // 현재 링크가 활성화된 링크인지에 따라 스타일 적용
+                onClick={() => handleLinkClick(link.text)} // 링크 클릭 시 핸들러 호출
+              >
                 {link.text}
               </SidebarItemLink>
             ))}

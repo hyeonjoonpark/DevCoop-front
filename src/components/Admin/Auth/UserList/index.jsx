@@ -11,12 +11,12 @@ const stockData = [
   },
 ];
 
-export default function ItemPage() {
+export default function UserList() {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
     axiosInstance
-      .get(`/admin/itemCheck`)
+      .get(`/admin/userlist`)
       .then((response) => {
         if (response.status === 204) {
           console.log('No content');
@@ -33,5 +33,5 @@ export default function ItemPage() {
     fetchData();
   }, []); // 빈 의존성 배열을 전달하여 이 useEffect가 마운트 시에만 실행되도록 합니다.
 
-  return <DataTable TableName="상품 내역" data={data} />;
+  return <DataTable TableName="조합원 목록" data={data} />;
 }

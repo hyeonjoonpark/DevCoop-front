@@ -15,7 +15,7 @@ export const InfoHeader = styled.div`
   margin-left: 50px;
   display: flex;
   justify-content: space-between;
-  width: ${maxWidth};
+  width: 90%;
   height: 55px;
 `;
 

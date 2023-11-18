@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DataTablePage from 'pages/Admin/InventoryTablePage';
+import DataTablePage from 'pages/Admin/TablePage';
 import axiosInstance from 'utils/Axios';
 
 const stockData = [

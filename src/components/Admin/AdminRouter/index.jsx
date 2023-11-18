@@ -7,6 +7,8 @@ import BarcodeComponent from 'components/Admin/Transaction/Barcode';
 import ChargeCompleteComponent from 'components/Admin/Transaction/ChargeComplete';
 import PayCompleteComponent from 'components/Admin/Transaction/PayComplete';
 
+import UserListComponent from 'components/Admin/Auth/UserList';
+
 import StockInfoComponent from 'components/Admin/Inventory/StockInfo';
 import StockBarcodeComponent from 'components/Admin/Inventory/StockBarcode';
 import ItemInfoComponent from 'components/Admin/Inventory/ItemInfo';
@@ -25,6 +27,7 @@ const AdminRoutes = () => {
       <Route path="chargecomplete" element={<ChargeCompleteComponent />} />
       <Route path="paycomplete" element={<PayCompleteComponent />} />
       <Route path="barcode" element={<BarcodeComponent />} />
+      <Route path="userlist" element={<UserListComponent />} />
       <Route path="stockinfo" element={<StockInfoComponent />} />
       <Route path="stockbarcode" element={<StockBarcodeComponent />} />
       <Route path="item" element={<ItemInfoComponent />} />

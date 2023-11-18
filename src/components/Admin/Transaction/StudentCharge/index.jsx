@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
-import Modal from "components/Modal";
-import * as S from "./style";
-import { axiosInstance } from "utils/Axios";
+import React, { useState, useEffect } from 'react';
+import Modal from 'components/Modal';
+import * as S from './style';
+import { axiosInstance } from 'utils/Axios';
 
 const StudentCharge = ({ selectedStudents, onBulkCharge }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [studentsInfo, setStudentsInfo] = useState([]);
-  const [point, setPoint] = useState("");
-  const charger = localStorage.getItem("adminname");
+  const [point, setPoint] = useState('');
+  const charger = localStorage.getItem('adminname');
 
   useEffect(() => {
     if (selectedStudents.length) {
-      axiosInstance.get('/admin/alluser')
-        .then(response => {
-          const matchedStudents = response.data.filter(student => 
+      axiosInstance
+        .get('/admin/userlist')
+        .then((response) => {
+          const matchedStudents = response.data.filter((student) =>
             selectedStudents.includes(student.code_number)
           );
           setStudentsInfo(matchedStudents);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
     }
@@ -43,7 +44,7 @@ const StudentCharge = ({ selectedStudents, onBulkCharge }) => {
           </S.ContentTitle>
         </S.TitleWrap>
         <S.StudentList>
-          {studentsInfo.map(student => (
+          {studentsInfo.map((student) => (
             <S.StudentListItem key={student.code_number}>
               이름: {student.student_name} - 바코드: {student.code_number}
             </S.StudentListItem>

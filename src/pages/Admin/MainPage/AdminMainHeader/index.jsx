@@ -19,14 +19,15 @@ const AdminMainHeader = () => {
   return (
     <_.AdminMainHeader>
       <_.NewHeaderInBox>
-        <AriPayLogo width={"200px"} height={"75px"} onClick={goToBarcode} />
-        <_.ListBtn onClick={() => navigate("/admin")}>
-          조합원목록
-        </_.ListBtn>
+        <AriPayLogo width={'200px'} height={'75px'} onClick={goToBarcode} />
+        <_.NewHeaderComponents>
+          <_.ListBtn onClick={() => navigate('/admin')}>조합원목록</_.ListBtn>
+        </_.NewHeaderComponents>
+
         {isAdminLoggedIn ? (
           <_.NewLogOutBtn onClick={handleLogoutClick}>로그아웃</_.NewLogOutBtn>
         ) : (
-          <_.NewLogOutBtn onClick={() => navigate("/admin/login")}>
+          <_.NewLogOutBtn onClick={() => navigate('/admin/login')}>
             로그인
           </_.NewLogOutBtn>
         )}

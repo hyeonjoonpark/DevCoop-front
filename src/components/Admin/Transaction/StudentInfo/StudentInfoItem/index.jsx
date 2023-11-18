@@ -13,7 +13,7 @@ export const StudentInfoItem = ({
 
   useEffect(() => {
     axiosInstance
-      .get('/admin/alluser')
+      .get('/admin/userlist')
       .then((response) => {
         setAllUser(response.data);
         const initialCheckboxValues = {};
