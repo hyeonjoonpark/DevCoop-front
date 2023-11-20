@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import * as _ from './style';
 import * as P from 'common/PageWrapStyle';
 import { useNavigate } from 'react-router-dom';
-import { StockInfoItem } from './StockInfoItem';
+import { StockVarianceItem } from './StockVarianceItem';
 import DatePicker from 'react-datepicker';
-import { Dbutton } from './style';
-
-import styled from 'styled-components';
 import axiosInstance from 'utils/Axios';
 
-const StockInfo = () => {
+const StockVariance = () => {
   const movePage = useNavigate();
 
   const [startDate, setStartDate] = useState(
@@ -35,7 +32,7 @@ const StockInfo = () => {
     }&end_date=${endDate.toISOString().split('T')[0]}`;
 
     axiosInstance
-      .get(`/admin/stockinfo${queryParams}`)
+      .get(`/admin/stockVariance${queryParams}`)
       .then((response) => {
         if (response.status === 204) {
           // 사용자에게 데이터가 없음을 알리고, data 상태를 빈 배열로 설정합니다.
@@ -118,7 +115,7 @@ const StockInfo = () => {
           <_.ButtonContainer>
             {/* <_.Dbutton onClick={handleSearch}>조회</_.Dbutton> */}
             <_.Dbutton onClick={handleDownload}>출력</_.Dbutton>
-            <_.Dbutton onClick={barcode}>재고등록</_.Dbutton>
+            <_.Dbutton onClick={barcode}>재고변동</_.Dbutton>
             <_.Dbutton onClick={main}>메인으로</_.Dbutton>
           </_.ButtonContainer>
         </_.FlexRow>
@@ -146,7 +143,7 @@ const StockInfo = () => {
             {
               <_.StockInfoWrap>
                 {data.map((item) => (
-                  <StockInfoItem key={item.item_id} stockInfo={item} />
+                  <StockVarianceItem key={item.item_id} stockVariance={item} />
                 ))}
               </_.StockInfoWrap>
             }
@@ -157,4 +154,4 @@ const StockInfo = () => {
   );
 };
 
-export default StockInfo;
+export default StockVariance;

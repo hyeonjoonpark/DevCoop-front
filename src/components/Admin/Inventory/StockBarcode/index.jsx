@@ -5,7 +5,7 @@ import Modal from 'components/Modal';
 import * as _ from './style';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from 'utils/Axios';
-import { FlexRow } from '../StockInfo/style';
+import { FlexRow } from '../StockVariance/style';
 
 export const StockBarcode = () => {
   const [barcode, setBarcode] = useState(null);
@@ -24,19 +24,7 @@ export const StockBarcode = () => {
         quantity,
         reason,
       });
-      navigate('/admin/stockinfo');
-      // return response.data;
-    } catch (error) {
-      console.error('Error in sendBarcode:', error);
-    }
-  };
-  const sendBarcodeForSnapshot = async (barcode, quantity, reason) => {
-    try {
-      const response = await axiosInstance.post('/admin/createsnapshots', {
-        barcode,
-        quantity,
-      });
-      navigate('/admin/stockinfo');
+      navigate('/admin/stockVariance');
       // return response.data;
     } catch (error) {
       console.error('Error in sendBarcode:', error);
@@ -52,17 +40,6 @@ export const StockBarcode = () => {
       setReason('');
     } catch (error) {
       console.error('재고 등록 중 오류가 발생했습니다.', error);
-    }
-  };
-  const handleSnapshotItem = async () => {
-    try {
-      await sendBarcodeForSnapshot(barcode, quantity, reason);
-      setModalOpen(false);
-      setItemInfo(null);
-      setQuantity('');
-      setReason('');
-    } catch (error) {
-      console.error('스냅샷 생성 중 오류가 발생했습니다.', error);
     }
   };
 
@@ -102,8 +79,8 @@ export const StockBarcode = () => {
       console.error('손실 등록 중 오류가 발생했습니다.', error);
     }
   };
-  const stockinfo = () => {
-    navigate('/admin/stockinfo');
+  const stockVariance = () => {
+    navigate('/admin/stockVariance');
   };
 
   const handleChange = (e) => {
@@ -155,7 +132,7 @@ export const StockBarcode = () => {
         >
           재고 등록 페이지
         </div>
-        <LogoImg src={imgLogo} alt="logo image" onClick={stockinfo} />
+        <LogoImg src={imgLogo} alt="logo image" onClick={stockVariance} />
         <BarcodeInput
           placeholder="상품 바코드를 입력해주세요"
           type="password"
@@ -211,9 +188,6 @@ export const StockBarcode = () => {
             </_.Infobutton>
             <_.Infobutton mRight={'10px'} onClick={handleRemoveItem}>
               손실
-            </_.Infobutton>
-            <_.Infobutton mRight={'10px'} onClick={handleSnapshotItem}>
-              재고확인(스냅샷)
             </_.Infobutton>
             <_.Infobutton onClick={handleYesClick}>취소</_.Infobutton>
           </_.BtnWrap>

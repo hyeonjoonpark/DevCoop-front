@@ -9,7 +9,7 @@ import PayCompleteComponent from 'components/Admin/Transaction/PayComplete';
 
 import UserListComponent from 'components/Admin/Auth/UserList';
 
-import StockInfoComponent from 'components/Admin/Inventory/StockInfo';
+import StockVarianceComponent from 'components/Admin/Inventory/StockVariance';
 import StockBarcodeComponent from 'components/Admin/Inventory/StockBarcode';
 import ItemInfoComponent from 'components/Admin/Inventory/ItemInfo';
 import InventoryCheckComponent from 'components/Admin/Inventory/InventoryCheck';
@@ -30,7 +30,7 @@ const AdminRoutes = () => {
       <Route path="paycomplete" element={<PayCompleteComponent />} />
       <Route path="barcode" element={<BarcodeComponent />} />
       <Route path="userlist" element={<UserListComponent />} />
-      <Route path="stockinfo" element={<StockInfoComponent />} />
+      <Route path="stockvariance" element={<StockVarianceComponent />} />
       <Route path="stockbarcode" element={<StockBarcodeComponent />} />
       <Route path="item" element={<ItemInfoComponent />} />
       <Route path="inventory" element={<InventoryCheckComponent />} />

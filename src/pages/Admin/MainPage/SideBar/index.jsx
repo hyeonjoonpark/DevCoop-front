@@ -64,7 +64,7 @@ const SideBar = () => {
     {
       name: '재고관리',
       links: [
-        { to: '/admin/stockinfo', text: '기간별재고변동' },
+        { to: '/admin/stockVariance', text: '기간별재고변동' },
         { to: '/admin/inventorybyday', text: '일별재고조회' },
         { to: '/admin/inventory', text: '입고&손실 내역' },
         { to: '/admin/receipt', text: '판매 내역' },

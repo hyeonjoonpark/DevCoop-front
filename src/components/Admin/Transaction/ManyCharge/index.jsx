@@ -31,8 +31,8 @@ const ManyCharge = () => {
     movePage('/admin/barcode');
   }
 
-  function stockinfo() {
-    movePage('/admin/stockinfo');
+  function stockVariance() {
+    movePage('/admin/stockVariance');
   }
 
   const onBulkCharge = (amount) => {
@@ -68,7 +68,7 @@ const ManyCharge = () => {
           <_.Infotitle>학생 정보 조회</_.Infotitle>
           <_.ButtonContainer>
             <_.Barcode onClick={barcode}></_.Barcode>
-            <_.Infobutton onClick={stockinfo} mRight="10px">
+            <_.Infobutton onClick={stockVariance} mRight="10px">
               재고확인
             </_.Infobutton>
             <StudentCharge
