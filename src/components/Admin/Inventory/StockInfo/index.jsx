@@ -92,7 +92,7 @@ const StockInfo = () => {
     <>
       <P.InfoContainer>
         <_.InfoHeader>
-          <_.Infotitle>재고확인</_.Infotitle>
+          <_.Infotitle>기간별재고변동</_.Infotitle>
         </_.InfoHeader>
         <_.FlexRow>
           <_.StyledDatePickerWrapper>
@@ -113,7 +113,7 @@ const StockInfo = () => {
               endDate={endDate}
               dateFormat="yyyy-MM-dd"
             />
-            <_.Infotext>까지 재고변동 </_.Infotext>
+            <_.Infotext>까지 재고변동 취합 </_.Infotext>
           </_.StyledDatePickerWrapper>
           <_.ButtonContainer>
             {/* <_.Dbutton onClick={handleSearch}>조회</_.Dbutton> */}
@@ -132,7 +132,7 @@ const StockInfo = () => {
               <_.Infotext>상품이름</_.Infotext>
             </_.Infochooses>
             <_.Infochoose>
-              <_.Infotext>남은수량</_.Infotext>
+              <_.Infotext>변동수량</_.Infotext>
             </_.Infochoose>
             <_.Infochooses>
               <_.Infotext>최종 변동 일시</_.Infotext>

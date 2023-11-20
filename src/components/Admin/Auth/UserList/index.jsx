@@ -19,10 +19,23 @@ export default function UserList() {
       .get(`/admin/userlist`)
       .then((response) => {
         if (response.status === 204) {
+          // 사용자에게 데이터가 없음을 알리고, data 상태를 빈 배열로 설정합니다.
           console.log('No content');
           setData([]);
         } else {
-          setData(response.data);
+          // 받아온 데이터의 필드를 재매핑합니다.
+          const remappedData = response.data.map((item) => ({
+            사용자바코드: item.code_number,
+            이름: item.student_name,
+            협동조합원: item.is_coop,
+            이메일: item.email,
+            아리페이잔액: item.point,
+            관리자: item.is_admin,
+          }));
+
+          // 재매핑된 데이터를 상태에 설정합니다.
+          console.log('Data sent:', remappedData);
+          setData(remappedData);
         }
       })
       .catch((error) => {

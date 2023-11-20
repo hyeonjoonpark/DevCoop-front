@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as _ from './style';
 import DatePicker from 'react-datepicker';
 import * as xlsx from 'xlsx';
+import { InfoHeader } from 'common/PageWrapStyle';
 
 const TableHeader = ({
   startDate,
@@ -33,46 +34,43 @@ const TableHeader = ({
     window.URL.revokeObjectURL(url);
   };
   console.log(startDate);
-  if (startDate !== undefined) {
-    return (
-      <>
-        <_.InfoHeader>
-          <_.Infotitle>{TableName}</_.Infotitle>
-          <_.StyledDatePickerWrapper>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="yyyy-MM-dd"
-            />
-            <_.Infotext>00시 부터</_.Infotext>
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="yyyy-MM-dd"
-            />
-            <_.Infotext>24시 까지 </_.Infotext>
-          </_.StyledDatePickerWrapper>
-          <_.ButtonContainer>
-            <_.Dbutton onClick={handleDownload}>출력</_.Dbutton>
-          </_.ButtonContainer>
-        </_.InfoHeader>
-      </>
-    );
-  } else {
-    return (
+  return (
+    <>
       <_.InfoHeader>
         <_.Infotitle>{TableName}</_.Infotitle>
+        <_.StyledDatePickerWrapper>
+          {startDate !== undefined && ( // startDate가 null이 아닌 경우에만 아래 부분 렌더링
+            <>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+              />
+              <_.Infotext>00시 부터</_.Infotext>
+            </>
+          )}
+          {endDate !== undefined && (
+            <>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+              />
+              <_.Infotext>24시 까지</_.Infotext>
+            </>
+          )}
+        </_.StyledDatePickerWrapper>
         <_.ButtonContainer>
           <_.Dbutton onClick={handleDownload}>출력</_.Dbutton>
         </_.ButtonContainer>
       </_.InfoHeader>
-    );
-  }
+    </>
+  );
 };
 export default TableHeader;

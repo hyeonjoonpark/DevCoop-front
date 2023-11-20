@@ -13,7 +13,9 @@ import StockInfoComponent from 'components/Admin/Inventory/StockInfo';
 import StockBarcodeComponent from 'components/Admin/Inventory/StockBarcode';
 import ItemInfoComponent from 'components/Admin/Inventory/ItemInfo';
 import InventoryCheckComponent from 'components/Admin/Inventory/InventoryCheck';
+import InventoryByDayComponent from 'components/Admin/Inventory/InventoryByDay';
 import ReceityCheckComponent from 'components/Admin/Inventory/ReceiptCheck';
+import PrepairPage from 'pages/Admin/Preparing';
 import NotFoundPage from 'pages/NotFoundPage';
 
 const AdminRoutes = () => {
@@ -32,7 +34,9 @@ const AdminRoutes = () => {
       <Route path="stockbarcode" element={<StockBarcodeComponent />} />
       <Route path="item" element={<ItemInfoComponent />} />
       <Route path="inventory" element={<InventoryCheckComponent />} />
+      <Route path="inventorybyday" element={<InventoryByDayComponent />} />
       <Route path="receipt" element={<ReceityCheckComponent />} />
+      <Route path="preparing" element={<PrepairPage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   ) : (

@@ -46,6 +46,7 @@ const StyledThead = styled.thead`
 
 const StyledTh = styled.th`
   padding: 16px;
+  font-size: 20px;
   color: white; // 테이블 헤더 글자색
   font-weight: bold;
 
@@ -62,7 +63,7 @@ const StyledTbody = styled.tbody`
     background-color: #efefef; /* 짝수 행 배경색 */
   }
   tr:hover {
-    background-color: #f2f2f2; /* 마우스 오버 시 배경색 */
+    background-color: #f7bd4c; /* 마우스 오버 시 배경색 */
   }
 `;
 

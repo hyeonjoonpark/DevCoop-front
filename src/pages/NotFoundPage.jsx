@@ -1,13 +1,13 @@
-import React from "react";
-import { ReactComponent as NotFoundLogo } from "../assets/404AriPayC.svg";
-import * as N from "../common/PageWrapStyle";
+import React from 'react';
+import { ReactComponent as NotFoundLogo } from 'assets/404AriPayC.svg';
+import * as N from 'common/PageWrapStyle';
 
 export default function NotFoundPage() {
   return (
     <N.NotFoundWrap>
-      <NotFoundLogo width={"400px"} height={"200px"} />
+      <NotFoundLogo width={'400px'} height={'200px'} />
       <N.NotFoundTitle>
-        죄송합니다. 페이지를 찾을 수 없습니다 :{"("}{" "}
+        죄송합니다. 페이지를 찾을 수 없습니다 :{'('}{' '}
       </N.NotFoundTitle>
       <N.NotFoundContent>
         존재하지 않는 주소를 입력하셨거나
@@ -18,4 +18,3 @@ export default function NotFoundPage() {
     </N.NotFoundWrap>
   );
 }
-

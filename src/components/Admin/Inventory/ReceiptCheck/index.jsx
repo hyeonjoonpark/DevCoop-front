@@ -37,9 +37,21 @@ export default function ReceiptCheck() {
           console.log('No content');
           setData([]);
         } else {
-          // 그렇지 않으면 정상적으로 데이터를 상태에 설정합니다
-          console.log('Data sent:', response.data);
-          setData(response.data);
+          // 받아온 데이터의 필드를 재매핑합니다.
+          const remappedData = response.data.map((item) => ({
+            거래번호: item.number,
+            가격: item.dcm_sale_amt,
+            상품번호: item.item_id,
+            판매or반품여부: item.sale_yn,
+            영수증번호: item.bill_num,
+            상품이름: item.item_name,
+            판매량: item.sale_qty,
+            거래일시: item.date,
+          }));
+
+          // 재매핑된 데이터를 상태에 설정합니다.
+          console.log('Data sent:', remappedData);
+          setData(remappedData);
         }
       })
       .catch((error) => {

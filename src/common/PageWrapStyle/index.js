@@ -122,3 +122,18 @@ export const LeftBar = styled.div`
   width: 200px;
   height: 100%;
 `;
+
+
+export const PreWrap = styled.p`
+  margin-top: 150px;
+  text-align: center;
+`;
+
+export const PreTitle = styled.h1`
+  font-weight: 400;
+  color: #fcc800;
+`;
+
+export const PreContent = styled.p`
+  margin: 20px 0 20px 0;
+`;
