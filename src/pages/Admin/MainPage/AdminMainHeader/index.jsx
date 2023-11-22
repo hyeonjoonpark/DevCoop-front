@@ -1,13 +1,32 @@
+import React from 'react';
 import * as H from 'common/PageWrapStyle';
 import { ReactComponent as AriPayLogo } from 'assets/AdminMainHeader.svg';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
 import * as _ from './style';
 
-const AdminMainHeader = () => {
+const getActiveMenu = (menuItems, openItems) => {
+  const activeItems = Object.entries(openItems)
+    .filter(([_, value]) => value.isOpen)
+    .sort((a, b) => b[1].timestamp - a[1].timestamp); // timestamp 내림차순 정렬
+
+  if (activeItems.length > 0) {
+    const activeItemName = activeItems[0][0];
+    return menuItems.find((item) => item.name === activeItemName);
+  }
+
+  return null;
+};
+
+const AdminMainHeader = ({
+  handleLinkClick,
+  menuItems,
+  openItems,
+  activeLink,
+}) => {
   const { isAdminLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
-
+  const activeMenu = getActiveMenu(menuItems, openItems);
   const goToBarcode = () => {
     navigate('/admin/');
   };
@@ -21,7 +40,19 @@ const AdminMainHeader = () => {
       <_.NewHeaderInBox>
         <AriPayLogo width={'200px'} height={'75px'} onClick={goToBarcode} />
         <_.NewHeaderComponents>
-          <_.ListBtn onClick={() => navigate('/admin')}>조합원목록</_.ListBtn>
+          {activeMenu &&
+            activeMenu.links.map((link) => (
+              <_.HeaderLink
+                isActive={activeLink === link.text}
+                key={link.text}
+                to={link.to}
+                onClick={() => {
+                  handleLinkClick(link.text);
+                }}
+              >
+                {link.text}
+              </_.HeaderLink>
+            ))}
         </_.NewHeaderComponents>
 
         {isAdminLoggedIn ? (

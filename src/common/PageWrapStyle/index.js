@@ -24,6 +24,7 @@ export const AdminMainPageContainer = styled.div`
   overflow: auto;
   background-color: #d9d9d9;
   overflow-x: hidden;
+  z-index: 1001;
 `;
 
 export const AdminSubPageContainer = styled.div`
@@ -119,8 +120,18 @@ export const NotFoundContent = styled.p`
 
 export const LeftBar = styled.div`
   background-color: #34343c;
-  width: 200px;
+  width: 253px;
   height: 100%;
+  overflow-y: scroll;
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll {
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
 `;
 
 

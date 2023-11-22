@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TableHeader from 'pages/Admin/TablePage/TableHeader';
 import DataTable from 'pages/Admin/TablePage/Table';
+import DataTablePage from 'pages/Admin/TablePage';
 import axiosInstance from 'utils/Axios';
 import Modal from 'components/Modal';
 import * as _ from './style';
@@ -133,16 +134,15 @@ export default function InventoryByDay() {
 
   return (
     <>
-      <TableHeader
+      <DataTablePage 
+        data={data} 
+        TableName="일별재고조회"
         endDate={endDate}
         setEndDate={setEndDate}
-        TableName="일별재고조회"
       />
-
       <_.ButtonContainer>
         <_.Dbutton onClick={openModal}>재고기준등록</_.Dbutton>
       </_.ButtonContainer>
-      <DataTable data={data} />
 
       <Modal isOpen={isModalOpen}>
         <_.ModalContent>

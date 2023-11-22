@@ -115,7 +115,7 @@ export const Filter = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-right: 0px;
+  margin-right: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   justify-content: flex-end;

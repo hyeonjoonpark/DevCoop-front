@@ -41,8 +41,9 @@ export const NewHeaderComponents = styled.div`
 export const NewLogOutBtn = styled.button`
   background-color: #34343c;
   color: #fff;
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 17px;
+  margin-right: 20px;
 `;
 
 export const ListBtn = styled.button`
@@ -53,4 +54,29 @@ export const ListBtn = styled.button`
   font-size: 17px;
   color: #fff;
   text-align: center;
+`;
+
+export const ListBtn2 = styled.button`
+  width: 100px;
+  height: 50px;
+  background-color: #51515e;
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  border-radius: 0px;
+`;
+
+export const HeaderLink = styled(Link)`
+  margin-right: 3px;
+  width: 120px;
+  height: 50px;
+  background-color: ${(props) =>
+    props.isActive ? '#F7BD4C' : '#51515e'}; // 노란색으로 변경
+  font-size: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; /* 링크 밑줄 제거 */
+  border-radius: 0px;
 `;
