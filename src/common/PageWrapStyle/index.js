@@ -134,8 +134,7 @@ export const LeftBar = styled.div`
   }
 `;
 
-
-export const PreWrap = styled.p`
+export const PreWrap = styled.div`
   margin-top: 150px;
   text-align: center;
 `;

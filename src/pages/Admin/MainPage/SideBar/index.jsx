@@ -16,7 +16,7 @@ const SideBar = ({ openItems, toggleItem, activeLink, handleLinkClick }) => {
               <_.SidebarItemLink
                 key={link.text}
                 to={link.to}
-                isActive={activeLink === link.text}
+                data-isactive={(activeLink === link.text).toString()}
                 onClick={() => handleLinkClick(link.text)}
               >
                 {link.text}
