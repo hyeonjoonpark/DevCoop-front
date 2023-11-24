@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'pages/Admin/TablePage';
 import axiosInstance from 'utils/Axios';
-
+import { PrettyDateTime } from 'utils/Date';
 const stockData = [
   {
     item_id: 1,
@@ -43,7 +43,7 @@ export default function InventoryCheck() {
             상품번호: item.item_id,
             상품이름: item.item_name,
             수량: item.quantity,
-            최종업데이트: item.last_updated,
+            최종업데이트: PrettyDateTime(item.last_updated),
             작성자아이디: item.writer_id,
             사유: item.reason,
           }));

@@ -6,6 +6,7 @@ import DataTablePage from 'pages/Admin/TablePage';
 import axiosInstance from 'utils/Axios';
 import Modal from 'components/Modal';
 import * as _ from './style';
+import { PrettyDateTime } from 'utils/Date';
 
 export default function InventoryByDay() {
   const movePage = useNavigate();
@@ -117,7 +118,7 @@ export default function InventoryByDay() {
             상품번호: item.item_id,
             상품이름: item.item_name,
             수량: item.quantity,
-            최종업데이트: item.last_updated,
+            최종업데이트: PrettyDateTime(item.last_updated),
           }));
           console.log('Data sent:', remappedData);
           setData(remappedData);
@@ -134,8 +135,8 @@ export default function InventoryByDay() {
 
   return (
     <>
-      <DataTablePage 
-        data={data} 
+      <DataTablePage
+        data={data}
         TableName="일별재고조회"
         endDate={endDate}
         setEndDate={setEndDate}

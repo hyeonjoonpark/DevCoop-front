@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DataTablePage from 'pages/Admin/TablePage';
 import axiosInstance from 'utils/Axios';
-
-const stockData = [
-  {
-    item_id: 1,
-    item_name: '상품 A',
-    quantity: 100,
-    last_updated: '2023-11-14 18:46:41',
-  },
-];
+import { PrettyDateTime } from 'utils/Date';
 
 export default function ReceiptCheck() {
   const [startDate, setStartDate] = useState(
@@ -20,7 +12,6 @@ export default function ReceiptCheck() {
       Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth() + 1, 0)
     )
   );
-  const [isEndDateVisible, setIsEndDateVisible] = useState(false);
   const [data, setData] = useState([]);
 
   // 월초부터 월말까지 기본 조회
@@ -46,7 +37,7 @@ export default function ReceiptCheck() {
             영수증번호: item.bill_num,
             상품이름: item.item_name,
             판매량: item.sale_qty,
-            거래일시: item.date,
+            거래일시: PrettyDateTime(item.date),
           }));
 
           // 재매핑된 데이터를 상태에 설정합니다.

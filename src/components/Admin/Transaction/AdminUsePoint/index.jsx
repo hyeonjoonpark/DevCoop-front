@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import * as _ from "./style";
-import * as C from "../ChargeComplete/style";
-import axiosInstance from "utils/Axios";
-import PrettyDateTime from "utils/Date";
+import React, { useEffect, useState } from 'react';
+import * as _ from './style';
+import * as C from '../ChargeComplete/style';
+import axiosInstance from 'utils/Axios';
+import { PrettyDateTime } from 'utils/Date';
 
 const AdminUsePoint = () => {
   const [data, setData] = useState(null);
@@ -11,14 +11,14 @@ const AdminUsePoint = () => {
 
   // console.log("Check user pay log");
   useEffect(() => {
-    const clientbarcode = localStorage.getItem("clientbarcode");
+    const clientbarcode = localStorage.getItem('clientbarcode');
     if (clientbarcode) {
       const adminChargeUserLogPromise = axiosInstance.post(
-        "/admin/payuserlog",
+        '/admin/payuserlog',
         { clientbarcode }
       );
-    // console.log("UseLog Test!")
-      const chargeLogPromise = axiosInstance.get("/admin/paylog", {
+      // console.log("UseLog Test!")
+      const chargeLogPromise = axiosInstance.get('/admin/paylog', {
         params: {
           id: clientbarcode,
         },
@@ -66,10 +66,10 @@ const AdminUsePoint = () => {
             <_.PPointInfo>결제금액</_.PPointInfo>
             <_.PPointInfo>-{inner_point.toLocaleString()}원</_.PPointInfo>
           </_.PointInfoWrap>
-          <hr style={{ marginTop: "40px" }} />
+          <hr style={{ marginTop: '40px' }} />
           <_.PointInfoWrap>
             <_.PPointInfo>최종금액</_.PPointInfo>
-            <_.PPointInfo style={{ color: "black", fontWeight: 700 }}>
+            <_.PPointInfo style={{ color: 'black', fontWeight: 700 }}>
               {total.toLocaleString()}원
             </_.PPointInfo>
           </_.PointInfoWrap>
@@ -79,22 +79,18 @@ const AdminUsePoint = () => {
   };
 
   return (
-    <div style={{ flexDirection: "column" }}>
+    <div style={{ flexDirection: 'column' }}>
       {data &&
         data.map((item, index) => (
           <div key={index}>
             <_.PointLogWrap
               onClick={() => toggleModal(index)}
-              style={{ background: "#E7E7E7" }}
+              style={{ background: '#E7E7E7' }}
             >
-              <div
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
-                <C.InfoText name="date">
-                  {PrettyDateTime(item.date)}
-                </C.InfoText>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <C.InfoText name="date">{PrettyDateTime(item.date)}</C.InfoText>
                 <C.InfoText>-{item.inner_point.toLocaleString()}원</C.InfoText>
-                <C.InfoText>{"결제"}</C.InfoText>
+                <C.InfoText>{'결제'}</C.InfoText>
               </div>
             </_.PointLogWrap>
             <div>
@@ -107,9 +103,6 @@ const AdminUsePoint = () => {
         ))}
     </div>
   );
-
-
-
 };
 
 export default AdminUsePoint;

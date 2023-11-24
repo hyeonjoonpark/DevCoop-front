@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import * as _ from "./style";
-import * as C from "../ChargeComplete/style";
-import axiosInstance from "utils/Axios";
-import PrettyDateTime from "utils/Date";
+import React, { useEffect, useState } from 'react';
+import * as _ from './style';
+import * as C from '../ChargeComplete/style';
+import axiosInstance from 'utils/Axios';
+import { PrettyDateTime } from 'utils/Date';
 
 const AdminChargePoint = () => {
   const [data, setData] = useState(null);
@@ -10,20 +10,16 @@ const AdminChargePoint = () => {
   const [modalStates, setModalStates] = useState([]);
   // console.log("Check user charge log");
   useEffect(() => {
-    const clientbarcode = localStorage.getItem("clientbarcode");
+    const clientbarcode = localStorage.getItem('clientbarcode');
     if (clientbarcode) {
-      const adminUserLogPromise = axiosInstance.post(
-        "/admin/chargeuserlog",
-        { clientbarcode }
-      );
-      const chargeLogPromise = axiosInstance.get(
-        "/admin/chargelog",
-        {
-          params: {
-            id: clientbarcode,
-          },
-        }
-      );
+      const adminUserLogPromise = axiosInstance.post('/admin/chargeuserlog', {
+        clientbarcode,
+      });
+      const chargeLogPromise = axiosInstance.get('/admin/chargelog', {
+        params: {
+          id: clientbarcode,
+        },
+      });
 
       Promise.all([adminUserLogPromise, chargeLogPromise])
         .then(([adminChargeResponse, chargeLogResponse]) => {
@@ -67,10 +63,10 @@ const AdminChargePoint = () => {
             <_.PPointInfo>충전금액</_.PPointInfo>
             <_.PPointInfo>+{inner_point.toLocaleString()}원</_.PPointInfo>
           </_.PointInfoWrap>
-          <hr style={{ marginTop: "40px" }} />
+          <hr style={{ marginTop: '40px' }} />
           <_.PointInfoWrap>
             <_.PPointInfo>최종금액</_.PPointInfo>
-            <_.PPointInfo style={{ color: "black", fontWeight: 700 }}>
+            <_.PPointInfo style={{ color: 'black', fontWeight: 700 }}>
               {total.toLocaleString()}원
             </_.PPointInfo>
           </_.PointInfoWrap>
@@ -80,22 +76,18 @@ const AdminChargePoint = () => {
   };
 
   return (
-    <div style={{ flexDirection: "column" }}>
+    <div style={{ flexDirection: 'column' }}>
       {data &&
         data.map((item, index) => (
           <div key={index}>
             <_.PointLogWrap
               onClick={() => toggleModal(index)}
-              style={{ background: "#E6EBFF" }}
+              style={{ background: '#E6EBFF' }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <C.InfoText name="date">
-                  {PrettyDateTime(item.date)}
-                </C.InfoText>
-                <C.InfoText>
-                  { item.inner_point.toLocaleString() }
-                </C.InfoText>
-                <C.InfoText> {"충전"} </C.InfoText>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <C.InfoText name="date">{PrettyDateTime(item.date)}</C.InfoText>
+                <C.InfoText>{item.inner_point.toLocaleString()}</C.InfoText>
+                <C.InfoText> {'충전'} </C.InfoText>
               </div>
             </_.PointLogWrap>
             <div>
@@ -109,6 +101,5 @@ const AdminChargePoint = () => {
     </div>
   );
 };
-
 
 export default AdminChargePoint;

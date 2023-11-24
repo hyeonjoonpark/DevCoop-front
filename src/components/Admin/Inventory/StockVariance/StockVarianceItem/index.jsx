@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as _ from './style';
 import styled from 'styled-components';
-import PrettyDateTime from 'utils/Date';
+import { PrettyDateTime } from 'utils/Date';
 
 export const StockVarianceItem = ({ stockVariance }) => {
   return (
