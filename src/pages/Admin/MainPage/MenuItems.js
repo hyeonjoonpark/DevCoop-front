@@ -6,6 +6,8 @@ const MenuItems = [
     links: [
       { to: '/admin/', text: '학생증 스캔' },
       { to: '/admin/manycharge', text: '일괄 충전' },
+      { to: '/admin/chargelist', text: '기간별 충전 내역' },
+      { to: '/admin/paylist', text: '기간별 사용 내역' },
     ],
   },
   {
