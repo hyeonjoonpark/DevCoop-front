@@ -37,7 +37,7 @@ export default function ReceiptCheck() {
             타입: item.type,
             이전포인트: item.point,
             사용포인트: item.inner_point,
-            최종포인트: item.point - item.inner_point,
+            최종포인트: parseInt(item.point) - parseInt(item.inner_point),
             사용담당ID: item.charger_id,
             거래일시: PrettyDateTime(item.date),
           }));
