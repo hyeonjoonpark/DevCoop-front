@@ -3,10 +3,9 @@ import * as _ from './style';
 import * as P from 'common/PageWrapStyle';
 import { ManyChargeItem } from './ManyChargeItem';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as BarcodeIcon } from 'assets/BarcodeIcon.svg';
 import { ReactComponent as FilterIcon } from 'assets/FilterIcon.svg';
-import { handleBulkCharge } from 'utils/Charge';
-import StudentCharge from '../StudentCharge';
+
+import StudentCharge from './ChargeModal';
 
 const ManyCharge = () => {
   const [selectedStudents, setSelectedStudents] = useState([]);
@@ -35,32 +34,6 @@ const ManyCharge = () => {
     movePage('/admin/stockVariance');
   }
 
-  const onBulkCharge = (amount) => {
-    const validAmount = parseInt(amount, 10);
-    if (isNaN(validAmount) || validAmount <= 0) {
-      alert('올바른 금액을 입력해주세요 (자연수).');
-      return;
-    }
-    console.log('Selected Students:');
-    console.log(selectedStudents);
-
-    // 선택된 학생들에게 일정 금액을 똑같이 충전합니다.
-    handleBulkCharge({
-      list_code_number: selectedStudents,
-      plusPoint: validAmount,
-      charger: localStorage.getItem('adminname'),
-    })
-      .then((response) => {
-        console.log(response.data);
-        alert('충전이 성공적으로 완료되었습니다.');
-        // 충전 후 필요한 상태 업데이트나 UI 업데이트를 여기에 추가하세요.
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('충전 중 오류가 발생했습니다.');
-      });
-  };
-
   return (
     <>
       <P.InfoContainer>
@@ -73,7 +46,7 @@ const ManyCharge = () => {
             </_.Infobutton>
             <StudentCharge
               selectedStudents={selectedStudents}
-              onBulkCharge={onBulkCharge}
+              setSelectedStudents={setSelectedStudents}
             />
           </_.ButtonContainer>
         </P.InfoHeader>
@@ -104,6 +77,7 @@ const ManyCharge = () => {
           <div>
             <ManyChargeItem
               onToggleStudentSelection={toggleStudentSelection}
+              selectedStudents={selectedStudents}
               searchTerm={searchTerm}
             />
           </div>

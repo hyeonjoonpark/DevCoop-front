@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axiosInstance from 'utils/Axios';
 
 export const ManyChargeItem = ({
-  checked,
+  selectedStudents,
   onToggleStudentSelection,
   searchTerm,
 }) => {
@@ -18,14 +18,16 @@ export const ManyChargeItem = ({
         setAllUser(response.data);
         const initialCheckboxValues = {};
         response.data.forEach((user) => {
-          initialCheckboxValues[user.code_number] = checked;
+          initialCheckboxValues[user.code_number] = selectedStudents.includes(
+            user.code_number
+          );
         });
         setCheckboxValues(initialCheckboxValues);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [checked]);
+  }, [selectedStudents]);
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
